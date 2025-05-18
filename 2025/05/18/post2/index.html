@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Attention is all you need. | 读书or跑步，旅行or思考</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Attention is all you need.</h1><a id="logo" href="/.">读书or跑步，旅行or思考</a><p class="description">硬性的标准其实限制不了无限可能的我们.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Attention is all you need.</h1><div class="post-meta">2025-05-18<span> | </span><span class="category"><a href="/categories/AI/">AI</a></span></div><div class="post-content"><p>德语-&gt;英语项目：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/TCcjx/pytorch_transformer-remake">https://github.com/TCcjx/pytorch_transformer-remake</a></p>
+<p>项目目录结构（文件说明）：</p>
+<p>.data(文件夹)：数据集Multi30K</p>
+<p>checkpoints(文件夹):训练权重文件保存处</p>
+<p>config.py：全局配置文件，DEVICE以及输入token的最大长度</p>
+<p>dataset.py：数据预处理文件，构建德语和英语词表，实现德语和英语的词元token和IDX的一一隐射，以及德语和英语句子预处理函数（输入德语和英语句子，返回分词后的词元列表信息，以及词元ID列表）</p>
+<p>multihead_attn.py: 构建多头注意力机制模块，这里的实现同时也考虑了解码器中第二个多头注意力机制模块的代码复用，在编码器和解码器的多头注意力机制模块中都可以复用这个多头注意力机制的模块</p>
+<p>encoder_block.py：编码器模块的构建</p>
+<p>encoder.py：编码器的实现，同时自动处理PAD掩码矩阵，再传入encoder_block中，实现多个encoder_block的堆叠使用</p>
+<p>decoder_block.py:解码器模块的构建</p>
+<p>decoder.py: 解码器的实现，同时实现两个掩码矩阵，第一个掩码矩阵主要是PAD掩码以及三角掩码（遮蔽后续词元）， 第二个掩码矩阵主要是为了遮蔽encoder隐藏表示中的PAD填充，防止解码器 Q到PAD</p>
+<p>transformer:将编码器和解码器组装到一起，得到最后的词表大小的输出预测，用于预测下一个词元</p>
+<p>train.py:训练文件</p>
+<p>evaluation:预测效果测试评估文件</p>
+<h1 id="知识碎片-交叉熵损失函数"><a href="#知识碎片-交叉熵损失函数" class="headerlink" title="知识碎片-交叉熵损失函数"></a>知识碎片-交叉熵损失函数</h1><p>在 PyTorch 中，<code>CrossEntropyLoss</code> 是最常用的损失函数之一，适用于分类任务。下面详细介绍其传参方式和注意事项：</p>
+<h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a><strong>基本参数</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.CrossEntropyLoss(</span><br><span class="line">    weight=<span class="literal">None</span>,           <span class="comment"># 各类别的权重，用于不平衡数据集</span></span><br><span class="line">    size_average=<span class="literal">None</span>,     <span class="comment"># 已弃用</span></span><br><span class="line">    ignore_index=-<span class="number">100</span>,     <span class="comment"># 忽略的目标值，不参与损失计算</span></span><br><span class="line">    reduce=<span class="literal">None</span>,           <span class="comment"># 已弃用</span></span><br><span class="line">    reduction=<span class="string">&#x27;mean&#x27;</span>,      <span class="comment"># 损失的聚合方式：&#x27;none&#x27;|&#x27;mean&#x27;|&#x27;sum&#x27;</span></span><br><span class="line">    label_smoothing=<span class="number">0.0</span>    <span class="comment"># 标签平滑参数，0.0 表示不使用</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入要求"><a href="#输入要求" class="headerlink" title="输入要求"></a><strong>输入要求</strong></h3><p><code>CrossEntropyLoss</code> 要求两个输入：</p>
+<ol>
+<li><p><strong>预测值 (</strong><code>**input**</code><strong>)</strong>：</p>
+<ol>
+<li>形状：<code>(N, C, d1, d2, ...)</code>，其中：<ul>
+<li><code>N</code>：批次大小（Batch size）</li>
+<li><code>C</code>：类别数（Number of classes）</li>
+<li><code>d1, d2, ...</code>：可选的空间维度（如序列长度、高度、宽度等）</li>
+</ul>
+</li>
+<li>类型：<strong>未归一化的对数概率（logits）</strong>，不需要经过 Softmax。</li>
+</ol>
+</li>
+<li><p><strong>目标值 (</strong><code>**target**</code><strong>)</strong>：</p>
+<ol>
+<li>形状：<code>(N, d1, d2, ...)</code>（不包含类别维度）</li>
+<li>类型：<strong>类别索引</strong>（整数，范围 <code>0</code> 到 <code>C-1</code>）。</li>
+</ol>
+</li>
+</ol>
+<h3 id="常见场景示例"><a href="#常见场景示例" class="headerlink" title="常见场景示例"></a><strong>常见场景示例</strong></h3><h4 id="1-标准分类（二维输入）"><a href="#1-标准分类（二维输入）" class="headerlink" title="1. 标准分类（二维输入）"></a>1. <strong>标准分类（二维输入）</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入: (batch_size, num_classes)</span></span><br><span class="line">logits = torch.randn(<span class="number">3</span>, <span class="number">5</span>)  <span class="comment"># 3个样本，5个类别</span></span><br><span class="line">target = torch.tensor([<span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>])  <span class="comment"># 每个样本的真实类别</span></span><br><span class="line"></span><br><span class="line">loss_fn = nn.CrossEntropyLoss()</span><br><span class="line">loss = loss_fn(logits, target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Loss: <span class="subst">&#123;loss.item()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-序列分类（三维输入）"><a href="#2-序列分类（三维输入）" class="headerlink" title="2. 序列分类（三维输入）"></a>2. <strong>序列分类（三维输入）</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入: (batch_size, sequence_length, num_classes)</span></span><br><span class="line">logits = torch.randn(<span class="number">2</span>, <span class="number">10</span>, <span class="number">5</span>)  <span class="comment"># 2个样本，序列长度10，5个类别</span></span><br><span class="line">target = torch.randint(<span class="number">0</span>, <span class="number">5</span>, (<span class="number">2</span>, <span class="number">10</span>))  <span class="comment"># 每个位置的真实类别</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要调整维度：将类别维度移到第2维</span></span><br><span class="line">logits = logits.transpose(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># (2, 5, 10)</span></span><br><span class="line"></span><br><span class="line">loss_fn = nn.CrossEntropyLoss()</span><br><span class="line">loss = loss_fn(logits, target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Loss: <span class="subst">&#123;loss.item()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-图像分割（四维输入）"><a href="#3-图像分割（四维输入）" class="headerlink" title="3. 图像分割（四维输入）"></a>3. <strong>图像分割（四维输入）</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入: (batch_size, num_classes, height, width)</span></span><br><span class="line">logits = torch.randn(<span class="number">2</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">32</span>)  <span class="comment"># 2张图像，5个类别，32x32尺寸</span></span><br><span class="line">target = torch.randint(<span class="number">0</span>, <span class="number">5</span>, (<span class="number">2</span>, <span class="number">32</span>, <span class="number">32</span>))  <span class="comment"># 每个像素的真实类别</span></span><br><span class="line"></span><br><span class="line">loss_fn = nn.CrossEntropyLoss()</span><br><span class="line">loss = loss_fn(logits, target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Loss: <span class="subst">&#123;loss.item()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键注意事项"><a href="#关键注意事项" class="headerlink" title="关键注意事项"></a><strong>关键注意事项</strong></h3><ol>
+<li><p><strong>无需手动 Softmax</strong>：<code>CrossEntropyLoss</code> 内部包含 <code>LogSoftmax</code> 和 <code>NLLLoss</code>，输入直接使用未归一化的 logits 即可。</p>
+</li>
+<li><p><strong>目标值格式</strong>：必须是类别索引（整数），而非 one-hot 编码。</p>
+</li>
+<li><p><strong>权重平衡</strong>：通过 <code>weight</code> 参数可为不同类别设置权重，处理类别不平衡问题。</p>
+<ol>
+<li><pre><code class="language-Python"># 示例：为少数类设置更高权重
+weights = torch.tensor([1.0, 2.0, 1.0, 1.0, 1.0])  # 第1类权重为2，其余为1
+loss_fn = nn.CrossEntropyLoss(weight=weights)
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p><strong>忽略特定类别</strong>：通过 <code>ignore_index</code> 参数可忽略某些目标值（如填充标记）。</p>
+</li>
+</ol>
+<h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a><strong>常见错误</strong></h3><ul>
+<li><strong>错误1</strong>：输入经过了 Softmax 处理。<ul>
+<li><strong>解决</strong>：直接使用模型输出的 logits。</li>
+</ul>
+</li>
+<li><strong>错误2</strong>：目标值包含超出类别范围的索引。<ul>
+<li><strong>解决</strong>：确保目标值范围在 <code>0</code> 到 <code>C-1</code> 之间。</li>
+</ul>
+</li>
+<li><strong>错误3</strong>：维度不匹配（如类别维度位置错误）。<ul>
+<li><strong>解决</strong>：使用 <code>transpose</code> 或 <code>permute</code> 调整维度。</li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9BTransformer/" rel="tag">深度学习；Transformer</a></li></ul></div><div class="post-nav"><a class="pre" href="/2025/05/18/hello-world/">Hello World</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css"><script type="text/javascript" src="https://unpkg.com/blueimp-md5/js/md5.js"></script><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+  clientID: 'Ov23liT3T9eAceTuR6LX',
+  clientSecret: 'caac43f4dbaef4c924c490d73d19723d2594392e',
+  repo: 'TCcjx.github.io',
+  owner: 'TCcjx',
+  admin: ['TCcjx'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://tccjx.github.io"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.png"/></a><p>learning by doing,don't think too much</p><a class="info-icon" href="mailto:2278925450@qq.com" title="&lt;i class='fas fa-envelope'&gt;&lt;/i&gt; Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-email-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/tccjx" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 15px;">教程</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9BTransformer/" style="font-size: 15px;">深度学习；Transformer</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2025/05/18/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/05/18/post2/">Attention is all you need.</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://spaces.ac.cn/" title="科学空间(苏剑林)" target="_blank">科学空间(苏剑林)</a><ul></ul><a href="https://ysymyth.github.io/" title="姚顺雨" target="_blank">姚顺雨</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">读书or跑步，旅行or思考.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
