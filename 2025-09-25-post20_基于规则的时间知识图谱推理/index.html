@@ -15,15 +15,14 @@ html.dataset.dark = localStorage.dark;
 <p><strong>CP_Rules(closed path rules) 闭环规则</strong></p>
 <p>cp rules：用规则体 来推导 得到 规则头，规则体成立的情况下，推导规则头也会相应的成立。</p>
 <p>形如如下：<br>$$<br>P_1(x, z_1, t) \land P_2(z_1, z_2, t) \land \ldots \land P_n(z_{n-1}, y, t)<br>\rightarrow P(x, y, t + k).<br>$$<br><strong>2.规则质量评估</strong></p>
-<p><strong>support 时间规则支持度计算</strong><br>$$<br>supp(r^{(k)}, \tau) &#x3D;<br>\begin{cases}<br>0, &amp; \text{if } \tau &lt; k \<br>#(e, e’) : head(r, e, e’, \tau) \land body(r, e, e’, \tau - k), &amp; \text{otherwise}<br>\end{cases}<br>$$<br>在该论文中，对规则质量的评估实际上就是 规则支持度的统计，τ是规则头的时间戳信息，也就是说计算规则体和规则头满足时间条件的成立情况，统计得到的数目就是规则在当前时间的支持度信息。</p>
+<p><strong>support 时间规则支持度计算</strong><br><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2.png" alt="公式"></p>
+<p>在该论文中，对规则质量的评估实际上就是 规则支持度的统计，τ是规则头的时间戳信息，也就是说计算规则体和规则头满足时间条件的成立情况，统计得到的数目就是规则在当前时间的支持度信息。</p>
 <p><strong>引入SC 和 HC度量：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">To normalize support degree, the notions of standard confidence <span class="keyword">and</span> head coverage </span><br><span class="line">have been introduced, which correspond to the standard accuracy <span class="keyword">and</span> recall, respectively  </span><br></pre></td></tr></table></figure>
 
-<p><strong>standard confidence (SC)   body标准置信度计算</strong></p>
-<p> <strong>head coverage (HC)  规则头覆盖度计算</strong></p>
-<p><strong>DSC 和 DHC的引入</strong></p>
-<p>作者认为该时刻的SC和HC与前面时刻的SC和HC有关，因此引入了DSC和DHC指标衡量当前时刻规则的置信度。</p>
-<p><strong>因为DSC和DHC指标的引入，尽管规则集合是一样的，但是在不同时间点上，相同的规则可能会得到不同的规则置信度。</strong></p>
+<p><strong>standard confidence (SC)   body标准置信度计算</strong><br><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/3.png" alt="公式"></p>
+<p> <strong>head coverage (HC)  规则头覆盖度计算</strong><br><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/4.png" alt="公式"></p>
+<p><strong>DSC 和 DHC的引入</strong><br>作者认为该时刻的SC和HC与前面时刻的SC和HC有关，因此引入了DSC和DHC指标衡量当前时刻规则的置信度。<br><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/5.png" alt="公式"><br><strong>因为DSC和DHC指标的引入，尽管规则集合是一样的，但是在不同时间点上，相同的规则可能会得到不同的规则置信度。</strong></p>
 <p><strong>3.规则应用(做预测)</strong></p>
 <p><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/1.png" alt="规则应用"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>StreamLearner是第一篇将规则学习应用于时间知识图谱上的论文，不过在规则定义上存在很多缺陷，比如规则体都是相同时间戳，这就大大限制了规则的范围，同时忽略了一些因果规则推理链的挖掘，在置信度计算上同样也有很大改进空间。</strong></p>
