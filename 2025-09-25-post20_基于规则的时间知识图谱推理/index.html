@@ -32,9 +32,9 @@ html.dataset.dark = localStorage.dark;
 <p><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/1.png" alt="规则应用"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>StreamLearner是第一篇将规则学习应用于时间知识图谱上的论文，不过在规则定义上存在很多缺陷，比如规则体都是相同时间戳，这就大大限制了规则学习的范围，忽略了一些因果规则推理链的挖掘，在置信度计算上同样也有很大改进空间，通过统计和动态DSC的计算来得到当前时刻预测事件的置信度得分，作为该规则预测evevt的一个得分</strong></p>
 <hr>
-<h3 id="2-TLogic-2022"><a href="#2-TLogic-2022" class="headerlink" title="2.TLogic(2022)"></a>2.TLogic(2022)</h3><p>**论文标题：**TLogic: Temporal Logical Rules for Explainable Link Forecasting on Temporal Knowledge Graphs  </p>
-<p>**发表会议：**AAAI-2022</p>
-<p>**内容概要：**作者在提出一种时间随机游走算法用来提取时间逻辑规则，通过固定次数采样 规则体和规则头，获得规则支持度，通过这个规则支持度来评估规则的置信度，最后再将采样的规则进行一个抽象成一个通用的逻辑规则，再通过这个逻辑规则去匹配规则体，实现对规则头的预测，在评估最终预测结果时，会将规则体路径的时间与待查询四元组的时间进行相减，时间差异越小，得分也就越高，综合这两部分来实现对预测结果的打分，将得分作为一个排序的依据。</p>
+<h3 id="2-TLogic-2022"><a href="#2-TLogic-2022" class="headerlink" title="2.TLogic(2022)"></a>2.TLogic(2022)</h3><p><strong>论文标题</strong>：TLogic: Temporal Logical Rules for Explainable Link Forecasting on Temporal Knowledge Graphs  </p>
+<p><strong>发表会议</strong>：   AAAI-2022</p>
+<p><strong>内容概要</strong>：作者在提出一种时间随机游走算法用来提取时间逻辑规则，通过固定次数采样 规则体和规则头，获得规则支持度，通过这个规则支持度来评估规则的置信度，最后再将采样的规则进行一个抽象成一个通用的逻辑规则，再通过这个逻辑规则去匹配规则体，实现对规则头的预测，在评估最终预测结果时，会将规则体路径的时间与待查询四元组的时间进行相减，时间差异越小，得分也就越高，综合这两部分来实现对预测结果的打分，将得分作为一个排序的依据。</p>
 <h4 id="细节部分-1"><a href="#细节部分-1" class="headerlink" title="细节部分"></a>细节部分</h4><p><strong>1.规则学习</strong></p>
 <p><strong>cyclic temporal logical rule</strong>   </p>
 <p><img src="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/6.png" alt="cyclic temporal logical rule"></p>
