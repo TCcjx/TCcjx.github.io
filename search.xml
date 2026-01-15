@@ -364,6 +364,8 @@
       
         <tags>
             
+            <tag> private </tag>
+            
             <tag> 时态知识图谱 </tag>
             
             <tag> 图谱推理任务 </tag>
@@ -371,8 +373,6 @@
             <tag> MRR </tag>
             
             <tag> Hit@1&#92;3&#92;5&#92;10 </tag>
-            
-            <tag> private </tag>
             
         </tags>
       
@@ -422,8 +422,6 @@
       
         <tags>
             
-            <tag> private </tag>
-            
             <tag> 论文阅读笔记 </tag>
             
             <tag> TKGs </tag>
@@ -433,6 +431,8 @@
             <tag> LLM </tag>
             
             <tag> 图结构信息 </tag>
+            
+            <tag> private </tag>
             
         </tags>
       
@@ -521,13 +521,13 @@
       
         <tags>
             
-            <tag> private </tag>
-            
             <tag> 论文阅读笔记 </tag>
             
             <tag> TKGs </tag>
             
             <tag> 补全推理 </tag>
+            
+            <tag> private </tag>
             
             <tag> CyGNet </tag>
             
