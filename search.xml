@@ -4,37 +4,6 @@
   
     
     <entry>
-      <title>发文实例</title>
-      <link href="//2026-01-13-mdhelp/"/>
-      <url>//2026-01-13-mdhelp/</url>
-      
-        <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><ol><li>有序列表</li></ol><ul><li>无序列表</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;&gt;代码框</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="/%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5" alt="图片名字"><br><a href="%E9%93%BE%E6%8E%A5">链接名字</a></p><p><code>高亮文本</code></p><p>清除缓存</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure><p>生成public文件夹</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><p>上传</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>一键三连</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl;hexo g;hexo d</span><br></pre></td></tr></table></figure><p>预览</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 分类1 </category>
-          
-          <category> 分类2 </category>
-          
-          <category> 二级分类 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 标签1 </tag>
-            
-            <tag> 标签2 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Qwen2技术报告</title>
       <link href="//2025-12-03-post26_Qwen2%20Technical%20report/"/>
       <url>//2025-12-03-post26_Qwen2%20Technical%20report/</url>
