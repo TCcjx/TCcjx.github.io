@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>从反向传播角度理解 PPO 损失函数（稳定渲染版）</title>
+      <link href="//2026-05-04-post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/"/>
+      <url>//2026-05-04-post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="从反向传播角度理解-PPO-损失函数"><a href="#从反向传播角度理解-PPO-损失函数" class="headerlink" title="从反向传播角度理解 PPO 损失函数"></a>从反向传播角度理解 PPO 损失函数</h2><p>  从反向传播角度看，PPO 的损失函数可以理解为一个<strong>三通道协同优化系统</strong>，通过三股梯度流共同作用于 Actor（策略网络）和 Critic（价值网络）。</p><h2 id="1-核心公式"><a href="#1-核心公式" class="headerlink" title="1. 核心公式"></a>1. 核心公式</h2><h3 id="Clipped-Surrogate-Objective"><a href="#Clipped-Surrogate-Objective" class="headerlink" title="Clipped Surrogate Objective"></a>Clipped Surrogate Objective</h3><p>$$<br>  L^{\mathrm{CLIP}}(\theta) &#x3D; \mathbb{E}_t [ \min ( r_t(\theta)\hat{A}_t,\ \mathrm{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t ) ]<br>$$</p><h3 id="总损失函数"><a href="#总损失函数" class="headerlink" title="总损失函数"></a>总损失函数</h3><p>$$<br>  L(\theta, \phi) &#x3D; -L^{\mathrm{CLIP}}(\theta) + c_1 L^{\mathrm{VF}}(\phi) - c_2 H(\pi_\theta)<br>$$</p><h2 id="2-各部分展开"><a href="#2-各部分展开" class="headerlink" title="2. 各部分展开"></a>2. 各部分展开</h2><h3 id="2-1-Policy-Loss-Actor"><a href="#2-1-Policy-Loss-Actor" class="headerlink" title="2.1 Policy Loss (Actor)"></a>2.1 Policy Loss (Actor)</h3><p>$$<br>L^{\mathrm{CLIP}}(\theta) &#x3D; \mathbb{E}_t[\min(r_t(\theta)\hat{A}_t,\ \mathrm{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t)]<br>$$</p><h3 id="2-2-Value-Loss-Critic"><a href="#2-2-Value-Loss-Critic" class="headerlink" title="2.2 Value Loss (Critic)"></a>2.2 Value Loss (Critic)</h3><p>$$<br>L^{\mathrm{VF}}(\phi) &#x3D; \mathbb{E}<em>t[(V</em>\phi(s_t) - R_t)^2]<br>$$</p><h3 id="2-3-Entropy-Bonus"><a href="#2-3-Entropy-Bonus" class="headerlink" title="2.3 Entropy Bonus"></a>2.3 Entropy Bonus</h3><p>$$<br>H(\pi_\theta) &#x3D; \mathbb{E}<em>t[H(\pi</em>\theta(\cdot \mid s_t))]<br>$$</p><p>$$<br>H(\pi_\theta(\cdot \mid s_t)) &#x3D; -\sum_a \pi_\theta(a \mid s_t)\log \pi_\theta(a \mid s_t)<br>$$</p><h2 id="3-符号说明"><a href="#3-符号说明" class="headerlink" title="3. 符号说明"></a>3. 符号说明</h2><p>$$<br>r_t(\theta) &#x3D; \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t \mid s_t)}<br>$$</p><ul><li>$r_t(\theta)$：概率比率</li><li>$\hat{A}_t$：优势函数</li><li>$V_\phi(s_t)$：状态价值函数</li><li>$R_t$：回报</li><li>$H(\pi_\theta)$：策略熵</li></ul><h2 id="4-Policy-梯度机制"><a href="#4-Policy-梯度机制" class="headerlink" title="4. Policy 梯度机制"></a>4. Policy 梯度机制</h2><p>  当 $\hat{A}_t &gt; 0$：</p><ul><li>增大动作概率</li><li>若 $r_t &gt; 1+\epsilon$，梯度被截断</li></ul><p>  当 $\hat{A}_t &lt; 0$：</p><ul><li>减小动作概率</li><li>若 $r_t &lt; 1-\epsilon$，梯度被截断</li></ul><p>  👉 <code>min + clip</code> 实现自适应梯度裁剪</p><h2 id="5-Value-梯度"><a href="#5-Value-梯度" class="headerlink" title="5. Value 梯度"></a>5. Value 梯度</h2><p>$$<br>  \nabla_\phi L^{\mathrm{VF}} &#x3D; 2 ( V_\phi(s_t) - R_t ) \nabla_\phi V_\phi(s_t)<br>$$</p><h2 id="6-Entropy-作用"><a href="#6-Entropy-作用" class="headerlink" title="6. Entropy 作用"></a>6. Entropy 作用</h2><p>$$<br>  H(\pi_\theta) &#x3D; - \sum_a \pi_\theta(a)\log \pi_\theta(a)<br>$$</p><p>  👉 推动分布更加均匀，防止策略过早收敛</p><h2 id="7-梯度流分解"><a href="#7-梯度流分解" class="headerlink" title="7. 梯度流分解"></a>7. 梯度流分解</h2><p>  Actor：</p><p>$$<br>  \nabla_\theta L &#x3D; \nabla_\theta L^{\mathrm{CLIP}} - c_2 \nabla_\theta H(\pi_\theta)<br>$$</p><p>  Critic：</p><p>$$<br>  \nabla_\phi L &#x3D; c_1 \nabla_\phi L^{\mathrm{VF}}<br>$$</p><hr><h2 id="8-训练动态"><a href="#8-训练动态" class="headerlink" title="8. 训练动态"></a>8. 训练动态</h2><ol><li>初期：Value Loss 主导，策略接近随机</li><li>中期：Clipping 开始频繁触发</li><li>后期：策略与熵达到平衡</li></ol><hr><h2 id="9-PPO-稳定性来源"><a href="#9-PPO-稳定性来源" class="headerlink" title="9. PPO 稳定性来源"></a>9. PPO 稳定性来源</h2><ol><li>Clipping 限制更新幅度</li><li>Actor-Critic 解耦</li><li>熵正则维持探索</li><li>概率比率提供动态约束</li></ol><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  PPO 的本质是：</p><p>  👉 在反向传播中构建一个<strong>受约束的多目标优化系统</strong></p><p>  同时实现：</p><ul><li>策略优化</li><li>价值估计</li><li>探索控制</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RL </tag>
+            
+            <tag> PPO </tag>
+            
+            <tag> RLHF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</title>
+      <link href="//2026-05-02-post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/"/>
+      <url>//2026-05-02-post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="从底层架构到工程实战：深度拆解生产级-AI-Agent-的记忆机制"><a href="#从底层架构到工程实战：深度拆解生产级-AI-Agent-的记忆机制" class="headerlink" title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制"></a>从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</h1><p>在 AI Agent 领域，有一句非常流行的话：“大模型的上下文窗口（Context Window）就是它的内存，而外挂的向量数据库就是它的硬盘。” </p><p>但如果你真的按照这个思路去构建生产环境下的 Agent，你会发现它不仅极其费钱，而且往往表现得像个“健忘症患者”。本文将从 <strong>DeepSeek-V3 的 MLA（多头潜在注意力机制）<strong>底层逻辑出发，结合</strong>生产级 Agent 记忆分层设计</strong>，深度拆解如何构建一个真正聪明、高效的 AI 记忆系统。</p><h2 id="一、-为什么传统的“向量数据库-RAG”还不够？"><a href="#一、-为什么传统的“向量数据库-RAG”还不够？" class="headerlink" title="一、 为什么传统的“向量数据库 + RAG”还不够？"></a>一、 为什么传统的“向量数据库 + RAG”还不够？</h2><p>很多开发者在面试或设计系统时，第一反应是：把对话存进向量数据库，用户提问时用 RAG 捞出来塞进 Prompt。这在真实的工程实践中存在两个致命陷阱：</p><ol><li><strong>模糊匹配 vs. 精确调用的冲突</strong>：向量检索是模糊的。比如系统只需要知道“用户预算”，检索却可能拉出一大堆无关的闲聊，不仅增加了 Token 消耗，更引入了干扰噪声。</li><li><strong>时间盲区与状态失效</strong>：用户昨天说“预算 5 万”，今天改口“预算 8 万”。向量检索往往会同时召回这两条信息，导致模型在两个矛盾的事实面前陷入逻辑混乱。</li></ol><h2 id="二、-极致的瘦身：从-MLA-看底层的-KV-Cache-压缩"><a href="#二、-极致的瘦身：从-MLA-看底层的-KV-Cache-压缩" class="headerlink" title="二、 极致的瘦身：从 MLA 看底层的 KV Cache 压缩"></a>二、 极致的瘦身：从 MLA 看底层的 KV Cache 压缩</h2><p>在解决“存什么”之前，我们先看大模型底层是如何“存”的。DeepSeek 提出的 <strong>MLA（Multi-Head Latent Attention）</strong> 机制为长文本记忆提供了教科书级的示范。<br>传统的注意力机制（MHA）中，KV Cache 会随着对话长度线性飙升，迅速挤爆显存。MLA 的核心思路是：<strong>“信息脱水”</strong>。</p><ul><li><strong>低秩联合压缩</strong>：它不再存储成百上千个头的 $K$ 和 $V$，而是将其压缩成一个极小的“潜在向量”（Latent Vector）。比如在 DeepSeek-V3 中，它将几万维的信息压缩到 512 维，压缩比高达数十倍。</li><li><strong>内容与位置解耦</strong>：它将 RoPE（旋转位置编码）独立出来，只对内容进行压缩。</li><li><strong>工程意义</strong>：这种“带压存取”的能力，让模型在处理超长上下文时，显存带宽压力大幅降低。这告诉我们一个道理：<strong>记忆系统的核心价值不在于存了多少数据，而在于通道是否顺畅。</strong></li></ul><h2 id="三、-生产级-Agent-的四层记忆架构"><a href="#三、-生产级-Agent-的四层记忆架构" class="headerlink" title="三、 生产级 Agent 的四层记忆架构"></a>三、 生产级 Agent 的四层记忆架构</h2><p>参考 OpenAI 的工程实践，一个稳定的记忆系统不应是“一锅烩”，而应是极其克制的分层设计：</p><h3 id="1-会话原数据（Session-Metadata）"><a href="#1-会话原数据（Session-Metadata）" class="headerlink" title="1. 会话原数据（Session Metadata）"></a>1. 会话原数据（Session Metadata）</h3><p>存储当前的环境信息，如时区、设备、语言偏好。这些信息用完即弃，不进入长期记忆，就像出门前看一眼天气预报，决定带伞后就不必背诵它。</p><h3 id="2-用户结构化档案卡（User-Profile）"><a href="#2-用户结构化档案卡（User-Profile）" class="headerlink" title="2. 用户结构化档案卡（User Profile）"></a>2. 用户结构化档案卡（User Profile）</h3><p>这是解决“预算冲突”的关键。对于明确的事实（如职业、喜好、当前状态），使用 <strong>JSON 格式的结构化存储</strong>。</p><ul><li><strong>逻辑</strong>：状态复写。新数据进来，旧数据覆盖，保证 <strong>Single Source of Truth（单一事实来源）</strong>。</li></ul><h3 id="3-近期对话摘要（Summary）"><a href="#3-近期对话摘要（Summary）" class="headerlink" title="3. 近期对话摘要（Summary）"></a>3. 近期对话摘要（Summary）</h3><p>Agent 不会傻乎乎地存每一句废话。它会在后台异步地将对话主题压缩成一个轻量级的清单。这就好比美剧开头的“前情提要”，让 Agent 能够迅速把话接上，而不必翻看原始记录。</p><h3 id="4-滑动窗口（Sliding-Window）"><a href="#4-滑动窗口（Sliding-Window）" class="headerlink" title="4. 滑动窗口（Sliding Window）"></a>4. 滑动窗口（Sliding Window）</h3><p>这是模型眼前的原始 Token。一旦聊得太多超过上限，最老的信息会被直接丢弃。</p><h2 id="四、-进阶：如何让-Agent-越用越聪明？"><a href="#四、-进阶：如何让-Agent-越用越聪明？" class="headerlink" title="四、 进阶：如何让 Agent 越用越聪明？"></a>四、 进阶：如何让 Agent 越用越聪明？</h2><p>除了“存”和“读”，真正的智能体还需要具备**主动思考（System 2）**的能力。</p><h3 id="1-建立慢思考回路"><a href="#1-建立慢思考回路" class="headerlink" title="1. 建立慢思考回路"></a>1. 建立慢思考回路</h3><p>AI 本质上是一个直觉系统。在处理复杂任务时，我们需要给它装一个“外置机械臂”：当遇到复杂问题，AI 会停下来触发一个决策逻辑——先去资料库翻看用户底细，拿到证据后再决定回复。</p><h3 id="2-双实态时间戳（Bi-temporal-Logic）"><a href="#2-双实态时间戳（Bi-temporal-Logic）" class="headerlink" title="2. 双实态时间戳（Bi-temporal Logic）"></a>2. 双实态时间戳（Bi-temporal Logic）</h3><p>为了处理历史变迁（如“张三去年在 A 公司，今年跳槽到了 B 公司”），每条记忆都要打上两个时间戳：</p><ul><li><strong>现实生效时间</strong>：该事实在物理世界发生的时间。</li><li><strong>系统录入时间</strong>：该信息存入数据库的时间。<br>通过时间切片约束，防止 AI 产生时序幻觉。</li></ul><h3 id="3-程序性记忆（Procedural-Memory）"><a href="#3-程序性记忆（Procedural-Memory）" class="headerlink" title="3. 程序性记忆（Procedural Memory）"></a>3. 程序性记忆（Procedural Memory）</h3><p>这决定了 Agent 是个“数呆子”还是“老练工”。</p><ul><li>如果 Agent 尝试了三次才修好一个 Bug，系统应过滤掉失败的尝试，将成功的操作路径压缩成一个可执行的 <strong>Skill（技能）</strong>。下次遇到类似问题，直接调用“一键执行”指令，这就是 Agent 的进化。</li></ul><h2 id="五、-总结"><a href="#五、-总结" class="headerlink" title="五、 总结"></a>五、 总结</h2><p>构建一个生产级的 Agent 记忆系统，绝对不是买个向量数据库再拼凑几句 Prompt 那么简单。它是一套精密的系统工程：</p><ul><li>在<strong>底层</strong>，我们要像 MLA 一样追求存储与计算的极致压缩；</li><li>在<strong>应用层</strong>，我们要通过分层治理、状态复写和时间约束，确保逻辑的绝对严密。<br>只有让历史数据顺滑地转化为当前的决策，AI 才能真正从“聊天机器人”进化为“独立工作的智能体”。</li></ul><hr><p><em>欢迎在评论区分享你对 Agent 记忆架构的看法，我们一起探讨 AI 落地的更多可能！</em></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LLM </tag>
+            
+            <tag> Agent </tag>
+            
+            <tag> Memory </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>理解学习率调度（余弦退火 + warmup）的原理和作用</title>
       <link href="//2026-04-23-post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/"/>
       <url>//2026-04-23-post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/</url>
@@ -37,7 +95,7 @@
       <link href="//2026-04-19-post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/"/>
       <url>//2026-04-19-post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-Agent-框架与传统开发"><a href="#1-Agent-框架与传统开发" class="headerlink" title="1.Agent 框架与传统开发"></a>1.Agent 框架与传统开发</h2><p><strong>个人认为，发展到现在，code已经不那么重要了，传统开发逐渐被取代或者转化为更高层次的全栈或者系统优化了。低级的开发程序员基本上已经被替代了，如果有比较好的商业Idea，即使没有编程经验的人，也可以通过Agent实现可以变现的商业化产品。</strong><br><img src="/img/posts/28/1.png"></p><h2 id="2-Context是根本"><a href="#2-Context是根本" class="headerlink" title="2.Context是根本"></a>2.Context是根本</h2><p><img src="/img/posts/28/2.png"></p><p><img src="/img/posts/28/3.png"></p><h2 id="3-Agent-的发展Trick"><a href="#3-Agent-的发展Trick" class="headerlink" title="3.Agent 的发展Trick"></a>3.Agent 的发展Trick</h2><p><img src="/img/posts/28/4.png"></p><h2 id="4-Tools的开发"><a href="#4-Tools的开发" class="headerlink" title="4.Tools的开发"></a>4.Tools的开发</h2><p><img src="/img/posts/28/5.png"></p><h2 id="5-大模型Memory"><a href="#5-大模型Memory" class="headerlink" title="5.大模型Memory"></a>5.大模型Memory</h2><p><strong>Memory是我认为比较有前景的方向，但是还是存在很多落地的问题，不同方案的解决方案，评估指标都天差地</strong><br><img src="/img/posts/28/6.png"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-Agent-框架与传统开发"><a href="#1-Agent-框架与传统开发" class="headerlink" title="1.Agent 框架与传统开发"></a>1.Agent 框架与传统开发</h2><p><strong>个人认为,发展到现在,code已经不那么重要了,传统开发逐渐被取代,最后应该是转化为更高层次的全栈或者系统优化了。低级的开发程序员基本上已经被替代了,如果有比较好的商业Idea,即使没有编程经验的人,也可以通过Agent实现可以变现的商业化产品。</strong><br><img src="/img/posts/28/1.png"></p><h2 id="2-Context是根本"><a href="#2-Context是根本" class="headerlink" title="2.Context是根本"></a>2.Context是根本</h2><p><img src="/img/posts/28/2.png"></p><p><img src="/img/posts/28/3.png"></p><h2 id="3-Agent-的发展Trick"><a href="#3-Agent-的发展Trick" class="headerlink" title="3.Agent 的发展Trick"></a>3.Agent 的发展Trick</h2><p><img src="/img/posts/28/4.png"></p><h2 id="4-Tools的开发"><a href="#4-Tools的开发" class="headerlink" title="4.Tools的开发"></a>4.Tools的开发</h2><p><img src="/img/posts/28/5.png"></p><h2 id="5-大模型Memory"><a href="#5-大模型Memory" class="headerlink" title="5.大模型Memory"></a>5.大模型Memory</h2><p><strong>Memory是我认为比较有前景的方向,但是还是存在很多落地的问题,不同的解决方案,评估数据集都天差地别</strong><br><img src="/img/posts/28/6.png"></p>]]></content>
       
       
       <categories>
