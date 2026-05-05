@@ -186,9 +186,9 @@ r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t \m
 <h3 id="完整损失函数"><a href="#完整损失函数" class="headerlink" title="完整损失函数"></a>完整损失函数</h3><script type="math/tex; mode=display">
 L(\theta, \phi) = -L^{\mathrm{CLIP}}(\theta) + c_1 L^{\mathrm{VF}}(\phi) - c_2 H(\pi_\theta)</script><p>三项各自负责：</p>
 <ol>
-<li><strong>(-L^{\mathrm{CLIP}}(\theta))</strong>：策略损失，负号是因为我们要最大化它</li>
-<li><strong>(c_1 L^{\mathrm{VF}}(\phi))</strong>：价值损失，让 Critic 准确估计状态价值</li>
-<li><strong>(-c<em>2 H(\pi</em>{\theta}))</strong>：熵正则，<strong>负号表示我们想最大化熵</strong></li>
+<li><strong>策略损失</strong>：(-L^{\mathrm{CLIP}}(\theta))，负号是因为我们要最大化它</li>
+<li><strong>价值损失</strong>：(c_1 L^{\mathrm{VF}}(\phi))，让 Critic 准确估计状态价值</li>
+<li><strong>熵正则</strong>：(-c<em>2 H(\pi</em>{\theta}))，负号表示我们想最大化熵</li>
 </ol>
 <h2 id="反向传播视角下的梯度流"><a href="#反向传播视角下的梯度流" class="headerlink" title="反向传播视角下的梯度流"></a>反向传播视角下的梯度流</h2><h3 id="Policy-梯度"><a href="#Policy-梯度" class="headerlink" title="Policy 梯度"></a>Policy 梯度</h3><p>Actor 的梯度来自两部分：</p>
 <script type="math/tex; mode=display">
