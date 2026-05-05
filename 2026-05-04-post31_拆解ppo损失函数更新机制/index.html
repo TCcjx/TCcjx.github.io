@@ -185,11 +185,11 @@ r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t \m
 <p>这个设计的巧妙之处在于：当更新方向正确时允许更新，但当更新”过头”时自动刹车。</p>
 <h3 id="完整损失函数"><a href="#完整损失函数" class="headerlink" title="完整损失函数"></a>完整损失函数</h3><script type="math/tex; mode=display">
 L(\theta, \phi) = -L^{\mathrm{CLIP}}(\theta) + c_1 L^{\mathrm{VF}}(\phi) - c_2 H(\pi_\theta)</script><p>三项各自负责：</p>
-<ol>
+<ul>
 <li><strong>策略损失</strong>：(-L^{\mathrm{CLIP}}(\theta))，负号是因为我们要最大化它</li>
 <li><strong>价值损失</strong>：(c_1 L^{\mathrm{VF}}(\phi))，让 Critic 准确估计状态价值</li>
 <li><strong>熵正则</strong>：(-c<em>2 H(\pi</em>{\theta}))，负号表示我们想最大化熵</li>
-</ol>
+</ul>
 <h2 id="反向传播视角下的梯度流"><a href="#反向传播视角下的梯度流" class="headerlink" title="反向传播视角下的梯度流"></a>反向传播视角下的梯度流</h2><h3 id="Policy-梯度"><a href="#Policy-梯度" class="headerlink" title="Policy 梯度"></a>Policy 梯度</h3><p>Actor 的梯度来自两部分：</p>
 <script type="math/tex; mode=display">
 \nabla_\theta L = \nabla_\theta L^{\mathrm{CLIP}} - c_2 \nabla_\theta H(\pi_\theta)</script><p>第一股梯度来自 clip objective，告诉网络哪些动作需要加强或减弱。第二股来自熵项，推动策略保持一定的随机性。</p>
