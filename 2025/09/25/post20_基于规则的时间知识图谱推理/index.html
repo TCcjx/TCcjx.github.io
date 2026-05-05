@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>综述(自用)-基于规则方法的时间知识图谱推理(预测) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="研究背景&nbsp;&nbsp;&nbsp;&nbsp;为什么要引入基于规则的方法来用于时间知识图谱推理呢？知识图谱的表示学习，最初从什么TransE开始，大致思路是将 知识图谱用投影到向量空间中进行表示，然后再设计相应的打分函数，主要利用在数学层面的相似度等计算，而后随着深度学习的发展，大家开始用深度学习的方法来解决知识图谱推理问题，主要是用监督学习的方法，也就是说实际上还是用嵌入空间的向量对实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="综述(自用)-基于规则方法的时间知识图谱推理(预测)">
+<meta property="og:url" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="研究背景&nbsp;&nbsp;&nbsp;&nbsp;为什么要引入基于规则的方法来用于时间知识图谱推理呢？知识图谱的表示学习，最初从什么TransE开始，大致思路是将 知识图谱用投影到向量空间中进行表示，然后再设计相应的打分函数，主要利用在数学层面的相似度等计算，而后随着深度学习的发展，大家开始用深度学习的方法来解决知识图谱推理问题，主要是用监督学习的方法，也就是说实际上还是用嵌入空间的向量对实">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/3.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/4.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/5.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/1.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/6.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/7.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/8.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/9.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/10.png">
+<meta property="og:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/11.png">
+<meta property="article:published_time" content="2025-09-25T14:52:15.000Z">
+<meta property="article:modified_time" content="2026-05-05T08:47:33.300Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="private">
+<meta property="article:tag" content="传统规则学习方法">
+<meta property="article:tag" content="时态知识图谱推理">
+<meta property="article:tag" content="外推">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-post20_基于规则的时间知识图谱推理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2025-09-25T14:52:15.000Z" itemprop="datePublished">2025-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      综述(自用)-基于规则方法的时间知识图谱推理(预测)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;为什么要引入基于规则的方法来用于时间知识图谱推理呢？知识图谱的表示学习，最初从什么TransE开始，大致思路是将 知识图谱用投影到向量空间中进行表示，然后再设计相应的打分函数，主要利用在数学层面的相似度等计算，而后随着深度学习的发展，大家开始用深度学习的方法来解决知识图谱推理问题，主要是用监督学习的方法，也就是说实际上还是用嵌入空间的向量对实体、关系等进行嵌入表示，只不过利用监督学习的方法可以对嵌入表示进行学习，从而实现更好的表示效果，当然进一步在推理性能上也会更好，无论是RNN还是GNN等神经网络，目前的主流方法都是用神经网络的方法来做推理，毕竟效果更好。<strong>不过，回归到问题本质上，无论是知识图谱的内插还是外推，内插是为了让已有的知识图谱变得更完善，将那些本质存在但是缺失的事实补充到知识图谱当中，外推(TKG)是利用已知的事实，去推理未来可能会发生的事实，就是预知未来嘛，但是我们预知未来不能说凭空猜测，那样是没有什么意义的（虽然我觉得大数据时代，本质上这个方向的就没有太大的价值），我们需要在过去的事实中找到推理未来事实的依据，因此用深度学习模型虽然效果好，但是其本身的黑盒属性，导致了推理的可解释性差以及透明度低，在一些场景的应用(医疗、金融、紧急事件预测等)，或者说本质上如果说我们不能找到这件事实可能发生的历史依据，那么即使在测试集上确实能预测正确，我认为意义也不是很大，这背离了这个任务的初衷和本质。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>因此，引入基于规则学习的方法来进行图谱推理任务，是非常有必要的，在实现较好性能的同时，具备良好的可解释性，同时在时间知识图谱上，还具有时间一致性的优点。</strong></p>
+<h2 id="相关研究"><a href="#相关研究" class="headerlink" title="相关研究"></a>相关研究</h2><p>注：本文主要整理时间知识图谱的推理相关文献，有部分静态知识图谱的文献不做涉及。</p>
+<hr>
+<h3 id="1-StreamLearner-2019"><a href="#1-StreamLearner-2019" class="headerlink" title="1.StreamLearner(2019)"></a>1.StreamLearner(2019)</h3><p><strong>论文标题</strong>：Learning Temporal Rules from Knowledge Graph Streams</p>
+<p><strong>内容概要</strong>：该论文应该是第一篇将规则学习方法应用到时间知识图谱(TKG)上做预测的方法，后续的文章也是在这篇文章的思路上进行创新改进的。文章主要思路分为两部分，分别是 规则学习 和 规则应用，将预先学习到的规则用来做推理得到最终的结果。简单来说 也就是先通过rule_learning挖掘出规则库，并对挖掘出的规则进行质量评估打分，将低质量的规则进行过滤，得到最终的规则，然后进行rule_application。</p>
+<h4 id="细节部分"><a href="#细节部分" class="headerlink" title="细节部分"></a>细节部分</h4><p><strong>1.规则学习</strong></p>
+<p><strong>CP_Rules(closed path rules) 闭环规则</strong></p>
+<p><strong>相当于是设立一种规则学习的模板，在规则学习的时候，是按照这个模板来进行学习的。</strong></p>
+<p>cp rules：用规则体 来推导 得到 规则头，规则体成立的情况下，推导规则头也会相应的成立。</p>
+<p>形如如下：</p>
+<script type="math/tex; mode=display">
+P_1(x, z_1, t) \land P_2(z_1, z_2, t) \land \ldots \land P_n(z_{n-1}, y, t)
+\rightarrow P(x, y, t + k).</script><p>但是显而易见，规则体都是在同一时间成立，这也带来了一个问题，规则挖掘的集合相当受限，针对前后关联的时间规则链，无法进行有限的预测，这也大大限制了规则应用的性能，因为本身规则的学习质量就受到了很大的影响。</p>
+<p><strong>2.规则质量评估</strong></p>
+<p><strong>support 时间规则支持度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/2.png" alt="公式"></p>
+<p>在该论文中，对规则质量的评估实际上就是 规则支持度的统计，τ是规则头的时间戳信息，也就是说计算规则体和规则头满足时间条件的成立情况，统计得到的数目就是规则在当前时间的支持度信息。直白的理解，也就是规则体前提成立的同时，规则头也成立的数目，统计得到的数目就是时间规则支持度。</p>
+<p><strong>引入SC 和 HC度量：</strong></p>
+<p>SC：可以理解成准确度，也就是规则支持度 / 规则体的数目。通俗理解也就是 规则体支持规则头也成立的比例。</p>
+<p>HC：可以理解成召回率，也就是规则支持度 / 规则头的数目。通俗理解也就是 规则头能被规则体预测出来的比例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">To normalize support degree, the notions of standard confidence <span class="keyword">and</span> head coverage </span><br><span class="line">have been introduced, which correspond to the standard accuracy <span class="keyword">and</span> recall, respectively  </span><br></pre></td></tr></table></figure>
+<p><strong>standard confidence (SC)   body标准置信度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/3.png" alt="公式"></p>
+<p> <strong>head coverage (HC)  规则头覆盖度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/4.png" alt="公式"></p>
+<p><strong>DSC 和 DHC的引入</strong><br>作者认为该时刻的SC和HC与前面时刻的SC和HC有关，因此引入了DSC和DHC指标衡量当前时刻规则的置信度。<br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/5.png" alt="公式"><br><strong>因为DSC和DHC指标的引入，尽管规则集合是一样的，但是在不同时间点上，相同的规则可能会得到不同的规则置信度。当前时刻的SC和HC收前一时刻的SC和HC指标的影响。</strong></p>
+<p><strong>3.规则应用(做预测)</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/1.png" alt="规则应用"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>StreamLearner是第一篇将规则学习应用于时间知识图谱上的论文，不过在规则定义上存在很多缺陷，比如规则体都是相同时间戳，这就大大限制了规则学习的范围，忽略了一些因果规则推理链的挖掘，在置信度计算上同样也有很大改进空间，通过统计和动态DSC的计算来得到当前时刻预测事件的置信度得分，作为该规则预测evevt的一个得分</strong></p>
+<hr>
+<h3 id="2-TLogic-2022"><a href="#2-TLogic-2022" class="headerlink" title="2.TLogic(2022)"></a>2.TLogic(2022)</h3><p><strong>论文标题</strong>：TLogic: Temporal Logical Rules for Explainable Link Forecasting on Temporal Knowledge Graphs  </p>
+<p><strong>发表会议</strong>：   AAAI-2022</p>
+<p><strong>内容概要</strong>：作者在提出一种时间随机游走算法用来提取时间逻辑规则，通过固定次数采样 规则体和规则头，获得规则支持度，通过这个规则支持度来评估规则的置信度，最后再将采样的规则进行一个抽象成一个通用的逻辑规则，再通过这个逻辑规则去匹配规则体，实现对规则头的预测，在评估最终预测结果时，会将规则体路径的时间与待查询四元组的时间进行相减，时间差异越小，得分也就越高，综合这两部分来实现对预测结果的打分，将得分作为一个排序的依据。</p>
+<h4 id="细节部分-1"><a href="#细节部分-1" class="headerlink" title="细节部分"></a>细节部分</h4><p><strong>1.规则学习及应用</strong></p>
+<p><strong>cyclic temporal logical rule</strong>   </p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/6.png" alt="cyclic temporal logical rule"></p>
+<p>同样是通过规则体 预测 规则头，但是在时间约束上，cyclic temporal logical rule 符合时间一致性的问题，同时也抛弃了都受限于同一时间约束的规则体原语，这样可以学习到更大范围的时间逻辑规则，使得规则推理的性能会更好。</p>
+<p><strong>temporal random walk算法</strong></p>
+<p>针对每一个关系和学习的学习的规则长度，采集第一条边作为规则头，后面依次每条边都是上一条边object实体的邻居边，在邻居边集合中，随机采样出下一条边(均匀随机或者时间指数函数随机)，第二条边的时间必须是严格小于第一条边的时间，同时后续边(&gt;2)的时间必须小于等于前一条边，最后一条边的目标节点必须是第一条的开始节点，这样即形成了一个闭环规则链。需要注意的是除了第一条边可以反向走，后续的边都不允许走反向边。</p>
+<p>采集边规则如下：</p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/7.png" alt="temporal random walk"></p>
+<p><strong>Rule Learning算法</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/8.png" alt="Rule Learning算法"></p>
+<p>Rule Learning算法就是采用时间约束以及随机采样的原则，按照预先设定的闭环时间逻辑规则的模板进行规则实例挖掘，挖掘出来的规则再进行抽象为通用规则，保存头关系、体关系以及重复实体的索引约束信息，并对采集出来的规则进行一个评分，评分规则为 头支持度 / 体支持度，支持度及固定采样次数，在图中采样出来的数量即为支持度。</p>
+<p>采样过程中，针对相邻边的时间差异问题，有两种模式，分别是均匀采样模型 和 指数采样模式，采用指数采样模式会偏向与选择时间更相近的边，作者通过实验证明了，采用指数采样的性能会优于均匀采样模式。</p>
+<p><strong>Rule Application算法</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/9.png" alt="Rule Application算法"></p>
+<p>Rule Learning算法利用先前时间随机游走算法得到的时间逻辑规则，在历史窗口子图中进行 规则体匹配作为预测结果，在预测结果的处理上，针对不同规则路径得到的相同候选实体预测，会进行一个分数聚合操作，在考虑不同预测实体的得分时，通过集合置信度和时间间隔差异两者来衡量预测的可信度，根据这个预测可信度得分来排序作为最终的一个候选实体预测结果。</p>
+<p><strong>2.实验结果</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/10.png" alt="experiments"></p>
+<p><strong>3.细节部分的理解</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;细节部分的理解，在学习完时间规则之后，再进行规则应用，这是很关键的一部，有很多细节上的东西需要进行理解。首先，会针对每一个查询，匹配该查询对应关系的所有学习到的规则，然后再用规则中的规则体，匹配相应的规则实例，匹配出的规则实例，则会作为最终的预测结果(在规则选取上，会依据置信度，从高到低进行选择，先选择置信度高的规则进行预测)，预测出结果后，会将该候选实体及分数进行一个打分，得到一个score，后续如果其他规则也预测出来这个候选实体，会对分数在该候选实体对应的分数列表中进行追加，追加后，针对同一个实体的不同路径多个分数的预测，会进行一个noisy-or分数聚合，最终会一个查询对应一些列候选实体，意味着之后预测的每个候选实体都有一个分数，最终再对这个候选实体预测结果，统计H@n和MRR，得到最终的预测结果评估。</p>
+<p>个人改进点：原代码针对同一规则游走出的不同walk，但是得到相同的候选实体情况，会进行一个选取最大开始时间戳来计算机score，我认为相同规则，可以通过不同事件来预测出同一个候选实体，应当基于更高的分数表现，因此应该在候选体分数列表中进行追加，最后再进行一个分数聚合。</p>
+<p><strong>4.跨域通用性实验</strong></p>
+<p>作者设计了两个实验，通过在一个数据集上学习时间逻辑规则，再另一个数据集上应用时间规则的方式，来证明了在具有通用词表的数据集上，性能不会发生较大损失，证明TLogic的跨域通用性相较于之前的AnyBURL更好。</p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/11.png" alt="跨域experiments"></p>
+<hr>
+<h3 id="3-TempValid-2024"><a href="#3-TempValid-2024" class="headerlink" title="3.TempValid(2024)"></a>3.TempValid(2024)</h3><p>待更新</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" data-id="cmosdyclj000vp63f5llw1hup" data-title="综述(自用)-基于规则方法的时间知识图谱推理(预测)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%96%E6%8E%A8/" rel="tag">外推</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/10/09/post21_ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8ALinux%E5%B0%8F%E5%B8%B8%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ssh连接远程服务器及Linux小常识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/08/24/post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Poetry基本用法教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Attention/" rel="tag">Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bert/" rel="tag">Bert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Claude-code/" rel="tag">Claude code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CyGNet/" rel="tag">CyGNet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DQN%E7%AE%97%E6%B3%95/" rel="tag">DQN算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hit-1-3-5-10/" rel="tag">Hit@1\3\5\10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVCache/" rel="tag">KVCache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLMs/" rel="tag">LLMs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MRR/" rel="tag">MRR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NER/" rel="tag">NER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPO/" rel="tag">PPO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Poetry/" rel="tag">Poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pretrain/" rel="tag">Pretrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm-Vscode/" rel="tag">PyCharm&amp;Vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Q-learning/" rel="tag">Q-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qwen2/" rel="tag">Qwen2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RL/" rel="tag">RL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RLHF/" rel="tag">RLHF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Self-Attention/" rel="tag">Self-Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TKGs/" rel="tag">TKGs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contrastive-learning/" rel="tag">contrastive learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glue-code/" rel="tag">glue code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poetry/" rel="tag">poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyenv/" rel="tag">pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" rel="tag">python环境管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomer/" rel="tag">transfomer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomers/" rel="tag">transfomers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vibe-coding/" rel="tag">vibe coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" rel="tag">图结构信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" rel="tag">图谱推理任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%96%E6%8E%A8/" rel="tag">外推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">实习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" rel="tag">心路历程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" rel="tag">技术报告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">时态知识图谱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" rel="tag">时态知识图谱补全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" rel="tag">注意力机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" rel="tag">清华源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" rel="tag">温度参数τ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" rel="tag">编程日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" rel="tag">胶水代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" rel="tag">补全推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="tag">论文阅读笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Agent/" style="font-size: 14px;">Agent</a> <a href="/tags/Attention/" style="font-size: 12px;">Attention</a> <a href="/tags/Bert/" style="font-size: 12px;">Bert</a> <a href="/tags/Claude-code/" style="font-size: 10px;">Claude code</a> <a href="/tags/CyGNet/" style="font-size: 10px;">CyGNet</a> <a href="/tags/DQN%E7%AE%97%E6%B3%95/" style="font-size: 10px;">DQN算法</a> <a href="/tags/Hit-1-3-5-10/" style="font-size: 10px;">Hit@1\3\5\10</a> <a href="/tags/KVCache/" style="font-size: 10px;">KVCache</a> <a href="/tags/LLM/" style="font-size: 14px;">LLM</a> <a href="/tags/LLMs/" style="font-size: 10px;">LLMs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MRR/" style="font-size: 10px;">MRR</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/NER/" style="font-size: 10px;">NER</a> <a href="/tags/PPO/" style="font-size: 10px;">PPO</a> <a href="/tags/Poetry/" style="font-size: 10px;">Poetry</a> <a href="/tags/Pretrain/" style="font-size: 10px;">Pretrain</a> <a href="/tags/PyCharm-Vscode/" style="font-size: 10px;">PyCharm&Vscode</a> <a href="/tags/Q-learning/" style="font-size: 10px;">Q-learning</a> <a href="/tags/Qwen2/" style="font-size: 10px;">Qwen2</a> <a href="/tags/RL/" style="font-size: 10px;">RL</a> <a href="/tags/RLHF/" style="font-size: 10px;">RLHF</a> <a href="/tags/Self-Attention/" style="font-size: 10px;">Self-Attention</a> <a href="/tags/TKGs/" style="font-size: 12px;">TKGs</a> <a href="/tags/Transformer/" style="font-size: 14px;">Transformer</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/contrastive-learning/" style="font-size: 10px;">contrastive learning</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/glue-code/" style="font-size: 10px;">glue code</a> <a href="/tags/pip/" style="font-size: 14px;">pip</a> <a href="/tags/poetry/" style="font-size: 10px;">poetry</a> <a href="/tags/private/" style="font-size: 20px;">private</a> <a href="/tags/pyenv/" style="font-size: 10px;">pyenv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" style="font-size: 10px;">python环境管理</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/transfomer/" style="font-size: 10px;">transfomer</a> <a href="/tags/transfomers/" style="font-size: 10px;">transfomers</a> <a href="/tags/vibe-coding/" style="font-size: 12px;">vibe coding</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" style="font-size: 14px;">传统规则学习方法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">图结构信息</a> <a href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">图谱推理任务</a> <a href="/tags/%E5%A4%96%E6%8E%A8/" style="font-size: 10px;">外推</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 18px;">大模型</a> <a href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" style="font-size: 10px;">实习总结</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">对比学习</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">强化学习</a> <a href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" style="font-size: 10px;">心路历程</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" style="font-size: 10px;">技术报告</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 10px;">文献阅读</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 10px;">时态知识图谱</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" style="font-size: 12px;">时态知识图谱推理</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" style="font-size: 10px;">时态知识图谱补全</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" style="font-size: 12px;">注意力机制</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">深度学习</a> <a href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" style="font-size: 12px;">清华源</a> <a href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" style="font-size: 10px;">温度参数τ</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" style="font-size: 14px;">编程日记</a> <a href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">胶水代码</a> <a href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" style="font-size: 12px;">补全推理</a> <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="font-size: 12px;">论文阅读笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/">从反向传播角度理解 PPO 损失函数</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/">理解学习率调度（余弦退火 + warmup）的原理和作用</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/">Agent 一线实战：落地经验与 Know-How 分享</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/">CLAUDE.md 文件推荐约束提示词</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

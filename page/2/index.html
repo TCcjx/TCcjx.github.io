@@ -1,362 +1,978 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>思想是一个锐化的过程 - 硬性的标准其实限制不了无限可能的我们.</title><meta name="author" content="TCcjx"><meta name="copyright" content="TCcjx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生活给我出难题，我说ok小问题">
-<meta property="og:type" content="website">
-<meta property="og:title" content="思想是一个锐化的过程">
-<meta property="og:url" content="https://tccjx.github.io/page/2/index.html">
-<meta property="og:site_name" content="思想是一个锐化的过程">
-<meta property="og:description" content="生活给我出难题，我说ok小问题">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tccjx.github.io/img/avatar.jpg">
-<meta property="article:author" content="TCcjx">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tccjx.github.io/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://tccjx.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
   
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":9},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '思想是一个锐化的过程',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: 'home'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-book"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-cloud"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">思想是一个锐化的过程</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-book"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-cloud"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">思想是一个锐化的过程</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-10-12-post22_pyenv+poetry%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%89%88%E6%9C%ACpython%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" title="pyenv + poetry 进行多版本python项目管理方案">pyenv + poetry 进行多版本python项目管理方案</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-12T12:41:05.000Z" title="发表于 2025-10-12 20:41:05">2025-10-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div><div class="content">摘要 1、pyenv 管理不同版本的python 2、poetry根据不同的pyenv创建的python版本进行项目环境.venv的创建  1.使用pyenv管理不同版本的python对于pyenv的安装，pyenv官方github提供详细的教程，本文不再涉及，windows系统需要安装的话，可以使用pyenv-win，在github上也有仓库提供。  1 查看可安装的python版本及已经安装的python版本12pyenv versions                 # 显示已经安装的所有 Python 版本pyenv install --list           # 显示所有可安装的 Python 版本 2.安装卸载python版本12pyenv install &lt;version&gt;        # 安装指定版本的 Python，例如 pyenv install 3.10.7pyenv uninstall &lt;version&gt;      # 卸载指定版本的 Python 3.设置python版本123pyenv global &lt;vers...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-10-09-post21_ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8ALinux%E5%B0%8F%E5%B8%B8%E8%AF%86/" title="ssh连接远程服务器及Linux小常识">ssh连接远程服务器及Linux小常识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-09T06:30:34.000Z" title="发表于 2025-10-09 14:30:34">2025-10-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-09-25-post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" title="综述(自用)-基于规则方法的时间知识图谱推理(预测)">综述(自用)-基于规则方法的时间知识图谱推理(预测)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-25T06:52:15.000Z" title="发表于 2025-09-25 14:52:15">2025-09-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-08-24-post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Poetry基本用法教程">Poetry基本用法教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-24T12:29:20.000Z" title="发表于 2025-08-24 20:29:20">2025-08-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div><div class="content">1.背景&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近在复现一个项目的时候，发现项目的环境安装是使用Poetry，一脸懵逼，不知道Poetry是什么东西，以前也从来没有接触过。于是开始学习Poetry，一番了解下来，决定专门学习掌握一下Poetry这个包依赖管理工具。 1.1 Poetry是什么？Poetry官网如此写到：1Poetry is a tool for dependency management and packaging in Python. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you. Poetry offers a lockfile to ensure repeatable installs, and can build your project for distribution.简而言之，就是一个python依赖管理工具，具有虚拟环境管理、Package...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-08-16-post18_LCGE-%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E5%92%8C%E5%B8%B8%E8%AF%86%E7%9A%84%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E8%A1%A5%E5%85%A8%E6%A8%A1%E5%9E%8B/" title="论文阅读笔记---LCGE-基于逻辑和常识来实现时态知识图谱补全的方法">论文阅读笔记---LCGE-基于逻辑和常识来实现时态知识图谱补全的方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-16T09:44:05.000Z" title="发表于 2025-08-16 17:44:05">2025-08-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-08-11-post17_GenTKG-%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E6%96%B9%E6%B3%95%E7%BB%93%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" title="论文阅读笔记---LLM结合规则学习方法提出一种新的时态知识图谱推理框架">论文阅读笔记---LLM结合规则学习方法提出一种新的时态知识图谱推理框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-11T02:50:51.000Z" title="发表于 2025-08-11 10:50:51">2025-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-07-15-post16_%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" title="损失函数中的温度参数τ">损失函数中的温度参数τ</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-07-15T06:16:24.000Z" title="发表于 2025-07-15 14:16:24">2025-07-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">在对比学习的损失函数（如InfoNCE、NT-Xent等）中，温度参数（Temperature，通常用τ表示） 是一个核心超参数，其核心作用是调节模型对样本间相似度差异的敏感程度，通过缩放相似度分数来控制损失函数中正负例的区分强度。 1. 温度参数的数学位置以最常用的InfoNCE损失为例，其公式可简化为：   \mathcal{L} = -\log\left( \frac{\exp(\text{sim}(z_i, z_+)/\tau)}{\sum_{k \in \text{neg} \cup \{+\}} \exp(\text{sim}(z_i, z_k)/\tau)} \right)其中：    $zi$ 是锚点样本的特征向量，$z+$ 是正例样本的特征向量，$z_k$ 是负例样本的特征向量；   $\text{sim}(\cdot, \cdot)$ 是相似度函数（如内积、余弦相似度)，一般都是余弦相似度； $\tau$ 即为温度参数，位于指数函数的分母，作为softmax的缩放因子。    2. 温度参数的直观含义温度参数的核心作用是调节相似度分布的“尖锐度”，控制模型对正...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-07-09-post15_glue_code/" title="什么是glue code？">什么是glue code？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-07-09T08:22:34.000Z" title="发表于 2025-07-09 16:22:34">2025-07-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div><div class="content">科普向：什么是胶水代码？为什么胶水代码不需要修改实质性逻辑？Glue code（胶水代码）是指用于把不同的软件组件、库、系统或模块“粘合”在一起，使它们能够协同工作的代码。它通常本身不是实现业务逻辑的核心部分，而是负责不同部分之间的对接、适配和调用。 主要特点 桥梁作用：连接两个或多个原本不兼容或相互独立的系统、库或模块。 适配/转换：可能包括参数格式转换、接口适配、协议兼容等。 非核心逻辑：不直接实现业务目标，而是保证各部分能正常协同。 常见于集成开发：如将第三方库集成到自己的项目、跨语言模块通信等场景。  示例 API包装器比如，用 Python 写一段代码，把 C 语言的库通过 ctypes/cffi 调用起来，这部分代码就是 glue code。  数据转换在前端和后端之间传递数据时，把后端的 JSON 数据转成前端可用的对象，这个转换代码也可以视作 glue code。  中间件在微服务架构中，不同服务通过中间件（如消息队列、API 网关）交互，中间件的适配代码也可称为 glue code。   作用 降低不同技术栈、语言、平台之间的集成难度。 提高现有组件复用，减少重...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-06-21-post14/" title="时态知识图谱外推任务指标计算中过滤策略选择问题">时态知识图谱外推任务指标计算中过滤策略选择问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-06-21T14:31:34.000Z" title="发表于 2025-06-21 22:31:34">2025-06-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></span></div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">TCcjx</div><div class="author-info-description">生活给我出难题，我说ok小问题</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/tccjx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎志同道合的朋友，一起交流</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-05-04-post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/" title="从反向传播角度理解 PPO 损失函数">从反向传播角度理解 PPO 损失函数</a><time datetime="2026-05-04T12:16:10.000Z" title="发表于 2026-05-04 20:16:10">2026-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-05-02-post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/" title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a><time datetime="2026-05-02T12:16:10.000Z" title="发表于 2026-05-02 20:16:10">2026-05-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-04-23-post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/" title="理解学习率调度（余弦退火 + warmup）的原理和作用">理解学习率调度（余弦退火 + warmup）的原理和作用</a><time datetime="2026-04-23T02:57:18.000Z" title="发表于 2026-04-23 10:57:18">2026-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-04-19-post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/" title="Agent 一线实战：落地经验与 Know-How 分享">Agent 一线实战：落地经验与 Know-How 分享</a><time datetime="2026-04-19T02:53:29.000Z" title="发表于 2026-04-19 10:53:29">2026-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-03-10-post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/" title="CLAUDE.md 文件推荐约束提示词">CLAUDE.md 文件推荐约束提示词</a><time datetime="2026-03-10T14:23:59.000Z" title="发表于 2026-03-10 22:23:59">2026-03-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-          </div>
-          <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/"><span class="card-category-list-name">编程日记</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">论文阅读笔记</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">2</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Ubuntu/" style="font-size: 1.1em; color: #999">Ubuntu</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" style="font-size: 1.26em; color: #999fa8">编程日记</a> <a href="/tags/LLM/" style="font-size: 1.26em; color: #999fa8">LLM</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 1.1em; color: #999">文件传输</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">强化学习</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" style="font-size: 1.1em; color: #999">技术报告</a> <a href="/tags/NER/" style="font-size: 1.1em; color: #999">NER</a> <a href="/tags/TKGs/" style="font-size: 1.18em; color: #999ca1">TKGs</a> <a href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" style="font-size: 1.1em; color: #999">胶水代码</a> <a href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" style="font-size: 1.18em; color: #999ca1">补全推理</a> <a href="/tags/MRR/" style="font-size: 1.1em; color: #999">MRR</a> <a href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" style="font-size: 1.18em; color: #999ca1">清华源</a> <a href="/tags/vibe-coding/" style="font-size: 1.18em; color: #999ca1">vibe coding</a> <a href="/tags/Attention/" style="font-size: 1.18em; color: #999ca1">Attention</a> <a href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" style="font-size: 1.1em; color: #999">图谱推理任务</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" style="font-size: 1.18em; color: #999ca1">注意力机制</a> <a href="/tags/Agent/" style="font-size: 1.26em; color: #999fa8">Agent</a> <a href="/tags/RL/" style="font-size: 1.1em; color: #999">RL</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 1.1em; color: #999">时态知识图谱</a> <a href="/tags/poetry/" style="font-size: 1.1em; color: #999">poetry</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.34em; color: #99a3b0">深度学习</a> <a href="/tags/CyGNet/" style="font-size: 1.1em; color: #999">CyGNet</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 1.1em; color: #999">文献阅读</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" style="font-size: 1.18em; color: #999ca1">时态知识图谱推理</a> <a href="/tags/transfomers/" style="font-size: 1.1em; color: #999">transfomers</a> <a href="/tags/LLMs/" style="font-size: 1.1em; color: #999">LLMs</a> <a href="/tags/Memory/" style="font-size: 1.1em; color: #999">Memory</a> <a href="/tags/PPO/" style="font-size: 1.1em; color: #999">PPO</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.1em; color: #999">服务器</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">对比学习</a> <a href="/tags/Poetry/" style="font-size: 1.1em; color: #999">Poetry</a> <a href="/tags/RLHF/" style="font-size: 1.1em; color: #999">RLHF</a> <a href="/tags/Q-learning/" style="font-size: 1.1em; color: #999">Q-learning</a> <a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/Bert/" style="font-size: 1.18em; color: #999ca1">Bert</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.42em; color: #99a6b7">大模型</a> <a href="/tags/Claude-code/" style="font-size: 1.1em; color: #999">Claude code</a> <a href="/tags/private/" style="font-size: 1.5em; color: #99a9bf">private</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" style="font-size: 1.1em; color: #999">时态知识图谱补全</a> <a href="/tags/contrastive-learning/" style="font-size: 1.1em; color: #999">contrastive learning</a></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
-      <a class="card-more-btn" href="/archives/"
-            title="查看更多">
-            <i class="fas fa-angle-right"></i>
-          </a>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
     </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
   
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/05/">
-            <span class="card-archive-list-date">
-              五月 2026
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/04/">
-            <span class="card-archive-list-date">
-              四月 2026
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/03/">
-            <span class="card-archive-list-date">
-              三月 2026
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/12/">
-            <span class="card-archive-list-date">
-              十二月 2025
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/11/">
-            <span class="card-archive-list-date">
-              十一月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/10/">
-            <span class="card-archive-list-date">
-              十月 2025
-            </span>
-            <span class="card-archive-list-count">3</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/09/">
-            <span class="card-archive-list-date">
-              九月 2025
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/08/">
-            <span class="card-archive-list-date">
-              八月 2025
-            </span>
-            <span class="card-archive-list-count">3</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/07/">
-            <span class="card-archive-list-date">
-              七月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">23.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-04T15:37:33.848Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/foot.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By TCcjx</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: str => {
-    window.typed = new Typed('#subtitle', Object.assign({
-      strings: str,
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50,
-    }, null))
-  },
-  run: subtitleType => {
-    if (true) {
-      if (typeof Typed === 'function') {
-        subtitleType()
-      } else {
-        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
-      }
-    } else {
-      subtitleType()
-    }
-  },
-  processSubtitle: (content, extraContents = []) => {
-    if (true) {
-      const sub = ["让你痛苦的事情，总有一天会让你笑着讲出来","俯仰无愧天地，褒贬自有春秋"].slice()
+    <article id="post-post21_ssh连接远程服务器及Linux小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/09/post21_ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8ALinux%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2025-10-09T14:30:34.000Z" itemprop="datePublished">2025-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
+  </div>
 
-      if (extraContents.length > 0) {
-        sub.unshift(...extraContents)
-      }
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/09/post21_ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8ALinux%E5%B0%8F%E5%B8%B8%E8%AF%86/">ssh连接远程服务器及Linux小常识</a>
+    </h1>
+  
 
-      if (typeof content === 'string') {
-        sub.unshift(content)
-      } else if (Array.isArray(content)) {
-        sub.unshift(...content)
-      }
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+<li>1.PyCharm连接服远程务器教程</li>
+<li>2.Vscode连接远程服务器教程</li>
+<li>3.Linux的一些小常识</li>
+</ul>
+<h2 id="一-PyCharm远程连接服务器教程（仅专业版支持）"><a href="#一-PyCharm远程连接服务器教程（仅专业版支持）" class="headerlink" title="一.PyCharm远程连接服务器教程（仅专业版支持）"></a>一.PyCharm远程连接服务器教程（仅专业版支持）</h2><h3 id="1-配置远程服务器连接"><a href="#1-配置远程服务器连接" class="headerlink" title="1.配置远程服务器连接"></a>1.配置远程服务器连接</h3><h4 id="1-1-添加一个SFTP的远程连接"><a href="#1-1-添加一个SFTP的远程连接" class="headerlink" title="1.1 添加一个SFTP的远程连接"></a>1.1 添加一个SFTP的远程连接</h4><p><strong>Tools —&gt; Deployment —&gt; Configuration</strong></p>
+<p>这里命名的话主要是为了自己区分是哪个远程连接，根据自己的情况命名即可。</p>
+<p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/1.png" alt=""></p>
+<hr>
+<h4 id="1-2-SSH-Configurations"><a href="#1-2-SSH-Configurations" class="headerlink" title="1.2 SSH Configurations"></a>1.2 SSH Configurations</h4><p><strong>Host：服务器的地址（虚拟机中输入ifconfig可以查看）</strong></p>
+<p><strong>Port:  22</strong>（默认情况）</p>
+<p><strong>Username：虚拟机的用户名</strong></p>
+<p><strong>Authentication type：password</strong> </p>
+<p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/2.png" alt=""></p>
+<hr>
+<h4 id="1-3-测试连接是否成功"><a href="#1-3-测试连接是否成功" class="headerlink" title="1.3 测试连接是否成功"></a>1.3 测试连接是否成功</h4><p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/3.png" alt=""></p>
+<hr>
+<h4 id="1-4-配置本地文件-和-远程服务器文件的映射地址"><a href="#1-4-配置本地文件-和-远程服务器文件的映射地址" class="headerlink" title="1.4 配置本地文件 和 远程服务器文件的映射地址"></a>1.4 配置本地文件 和 远程服务器文件的映射地址</h4><p><strong>Local Path: 本地文件路径</strong></p>
+<p><strong>Deployment Path: 远程服务器文件同步路径</strong></p>
+<p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/4.png" alt=""></p>
+<hr>
+<h4 id="1-5-打开SSH终端查看是否可以打开远程终端"><a href="#1-5-打开SSH终端查看是否可以打开远程终端" class="headerlink" title="1.5 打开SSH终端查看是否可以打开远程终端"></a>1.5 打开SSH终端查看是否可以打开远程终端</h4><p><strong>Tools —&gt;  Start SSH Session</strong> </p>
+<p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/5.png" alt=""></p>
+<hr>
+<h4 id="1-6-同步本地文件到远程服务器"><a href="#1-6-同步本地文件到远程服务器" class="headerlink" title="1.6 同步本地文件到远程服务器"></a>1.6 同步本地文件到远程服务器</h4><p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/6.png" alt=""></p>
+<hr>
+<h3 id="2-配置Python解释器"><a href="#2-配置Python解释器" class="headerlink" title="2.配置Python解释器"></a>2.配置Python解释器</h3><p>PyCharm右下角Interpreter setting添加SSH解释器，加载远程服务器的Conda环境(推荐)</p>
+<p>最后可以在终端尝试一下是否成功加载远程的conda环境。</p>
+<hr>
+<h2 id="二-Vscode连接远程服务器"><a href="#二-Vscode连接远程服务器" class="headerlink" title="二.Vscode连接远程服务器"></a>二.Vscode连接远程服务器</h2><h3 id="2-1-安装Remote-SSH插件"><a href="#2-1-安装Remote-SSH插件" class="headerlink" title="2.1 安装Remote - SSH插件"></a>2.1 安装Remote - SSH插件</h3><p><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/7.png" alt=""><br>安装完成之后会在左侧新增一个选项卡Remote Explorer，如下图所示：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/8.png" alt=""></p>
+<hr>
+<h3 id="2-2-添加服务器连接配置"><a href="#2-2-添加服务器连接配置" class="headerlink" title="2.2 添加服务器连接配置"></a>2.2 添加服务器连接配置</h3><p>点击该选项卡，会进入SSH TARGETS的添加，如下图所示：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/9.png" alt=""><br>然后输入远程服务器的IP地址和端口号进行ssh 连接：eg格式：ssh -p 端口号 用户名@主机IP地址<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/10.png" alt=""><br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/11.png" alt=""><br>保存配置信息后，也可以在这里进行手动修改： 例如 登录用户名，密码等<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/12.png" alt=""><br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/13.png" alt=""></p>
+<hr>
+<h3 id="2-3-连接服务器"><a href="#2-3-连接服务器" class="headerlink" title="2.3 连接服务器"></a>2.3 连接服务器</h3><p>右键选择远程服务器，点击Connect to Host in Current Window:<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/14.png" alt=""><br>如果远程服务器能够连接成功，此时会需要你输入密码：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/15.png" alt=""></p>
+<hr>
+<h3 id="2-4-连接后的基本操作"><a href="#2-4-连接后的基本操作" class="headerlink" title="2.4 连接后的基本操作"></a>2.4 连接后的基本操作</h3><p>操作远程服务器端的文件<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/16.png" alt=""><br>例如我点击Open Folder，这里就会让你选择打开的文件目录：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/17.png" alt=""><br>之后需要再一次输入密码进行确认。  </p>
+<p>如果以上步骤都成功了，那么就会在文件选项卡中看到远程服务器目录下的所有文件了：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/18.png" alt=""><br>此时，你就可以像操作本地文件一样进行文件的增删改查等操作了。<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/19.png" alt=""></p>
+<hr>
+<h2 id="三、Linux用户权限"><a href="#三、Linux用户权限" class="headerlink" title="三、Linux用户权限"></a>三、Linux用户权限</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在ubuntu(其他类unix系统)中，root用户(管理员)可以有权访问管理其他普通用户下的所有文件。切换进root账户后，就可以访问其他用户下的文件，但是如果都作为普通账户是不能访问其他普通用户下的文件内容的，但是奇怪的我莫名可以切到另一个普通用户的目录下查看文件。<br>用户文件夹信息如下：<br><img src="2025-10-09-post21_ssh连接远程服务器及Linux小常识/20.png" alt=""><br>文件夹的信息解读如下：</p>
+<ul>
+<li>第一列：权限（如 drwxr-xr-x）</li>
+<li>第二列：硬链接数</li>
+<li>第三列：拥有者（owner），即这个文件/文件夹属于哪个用户</li>
+<li>第四列：所属组（group），即这个文件/文件夹属于哪个用户组</li>
+<li>后面：大小、日期、文件名</li>
+</ul>
+<p>在 Linux（Ubuntu）系统中，文件或目录的权限通常用一串类似 <code>drwxr-xr-x</code> 这样的字符串表示，每一位都有特定含义。下面详细介绍：</p>
+<hr>
+<h4 id="1-权限字符串结构"><a href="#1-权限字符串结构" class="headerlink" title="1. 权限字符串结构"></a>1. 权限字符串结构</h4><p>比如：<code>drwxr-xr-x</code></p>
+<ul>
+<li><p><strong>第1位</strong>：文件类型  </p>
+<ul>
+<li><code>d</code> 表示目录（directory）</li>
+<li><code>-</code> 表示普通文件</li>
+<li><code>l</code> 表示链接（link）</li>
+</ul>
+</li>
+<li><p><strong>第2-4位</strong>：<strong>所有者（owner）</strong> 的权限  </p>
+</li>
+<li><strong>第5-7位</strong>：<strong>所属组（group）</strong> 的权限  </li>
+<li><strong>第8-10位</strong>：<strong>其他用户（others）</strong> 的权限  </li>
+</ul>
+<hr>
+<h4 id="2-权限位含义"><a href="#2-权限位含义" class="headerlink" title="2. 权限位含义"></a>2. 权限位含义</h4><p>每组有3位，分别是：</p>
+<ul>
+<li><code>r</code>：可读（read）</li>
+<li><code>w</code>：可写（write）</li>
+<li><code>x</code>：可执行（execute）</li>
+</ul>
+<p>比如：</p>
+<ul>
+<li><code>rwx</code>：可读、可写、可执行</li>
+<li><code>r-x</code>：可读、不可写、可执行</li>
+<li><code>rw-</code>：可读、可写、不可执行</li>
+</ul>
+<hr>
+<h4 id="3-具体举例说明"><a href="#3-具体举例说明" class="headerlink" title="3. 具体举例说明"></a>3. 具体举例说明</h4><p>例如：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>d</strong>：这是目录</li>
+<li><strong>rwx</strong>：拥有者（owner）有读、写、执行权限</li>
+<li><strong>r-x</strong>：同组用户有读、执行权限，没有写权限</li>
+<li><strong>r-x</strong>：其他用户有读、执行权限，没有写权限</li>
+</ul>
+<p>再如：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>-</strong>：这是普通文件</li>
+<li><strong>rw-</strong>：拥有者可读可写</li>
+<li><strong>r—</strong>：同组用户只可读</li>
+<li><strong>r—</strong>：其他用户只可读</li>
+</ul>
+<hr>
+<h4 id="4-权限数字表示（补充）"><a href="#4-权限数字表示（补充）" class="headerlink" title="4. 权限数字表示（补充）"></a>4. 权限数字表示（补充）</h4><ul>
+<li><code>r</code> = 4</li>
+<li><code>w</code> = 2</li>
+<li><code>x</code> = 1</li>
+<li>三位合起来如 <code>rwx</code> = 7，<code>rw-</code> = 6，<code>r-x</code> = 5</li>
+</ul>
+<hr>
+<h4 id="5-列表每列意义"><a href="#5-列表每列意义" class="headerlink" title="5. 列表每列意义"></a>5. 列表每列意义</h4><p>例如：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  14 root root  4.0K 10月  9 13:11 .</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>第一列（<code>drwxr-xr-x</code>）：权限和类型</li>
+<li>第二列（<code>14</code>）：硬链接数</li>
+<li>第三列（<code>root</code>）：所有者（owner）</li>
+<li>第四列（<code>root</code>）：所属组（group）</li>
+<li>后面依次是大小、日期、文件名</li>
+</ul>
+<hr>
+<h4 id="6-修改目录或者文件操作权限命令"><a href="#6-修改目录或者文件操作权限命令" class="headerlink" title="6.修改目录或者文件操作权限命令"></a>6.修改目录或者文件操作权限命令</h4><h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 目录路径  </span><br><span class="line"># 777 表示给目录所有者，所在组，其他用户都基于读写执行的权限</span><br></pre></td></tr></table></figure></h2><p><strong>总结：</strong></p>
+<ul>
+<li>权限字符串分为三组，分别表示文件/目录的拥有者、所属组、其他用户的访问权限。</li>
+<li><p><code>rwx</code> 是三种权限的组合，位置不同代表对不同用户（owner/group/others）的权限。</p>
+</li>
+<li><p><strong>答案也就明了了，是因为该普通用户的权限设置有问题，其他用户也被赋予了查看和执行文件的权限，所以才会出现上述情况。</strong></p>
+</li>
+</ul>
 
-      sub.length > 0 && typedJSFn.init(sub)
-    } else {
-      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
-        (Array.isArray(content) && content.length > 0 ? content[0] : '')
-    }
-  }
-}
-btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
-</script><script>function subtitleType () {
-  typedJSFn.processSubtitle(["让你痛苦的事情，总有一天会让你笑着讲出来","俯仰无愧天地，褒贬自有春秋"])
-}
-typedJSFn.run(subtitleType)</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
-  const destroyAplayer = () => {
-    if (window.aplayers) {
-      for (let i = 0; i < window.aplayers.length; i++) {
-        if (!window.aplayers[i].options.fixed) {
-          window.aplayers[i].destroy()
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/09/post21_ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8ALinux%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cmosdyclm0018p63fcuf65ewp" data-title="ssh连接远程服务器及Linux小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyCharm-Vscode/" rel="tag">PyCharm&amp;Vscode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post20_基于规则的时间知识图谱推理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2025-09-25T14:52:15.000Z" itemprop="datePublished">2025-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/">综述(自用)-基于规则方法的时间知识图谱推理(预测)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;为什么要引入基于规则的方法来用于时间知识图谱推理呢？知识图谱的表示学习，最初从什么TransE开始，大致思路是将 知识图谱用投影到向量空间中进行表示，然后再设计相应的打分函数，主要利用在数学层面的相似度等计算，而后随着深度学习的发展，大家开始用深度学习的方法来解决知识图谱推理问题，主要是用监督学习的方法，也就是说实际上还是用嵌入空间的向量对实体、关系等进行嵌入表示，只不过利用监督学习的方法可以对嵌入表示进行学习，从而实现更好的表示效果，当然进一步在推理性能上也会更好，无论是RNN还是GNN等神经网络，目前的主流方法都是用神经网络的方法来做推理，毕竟效果更好。<strong>不过，回归到问题本质上，无论是知识图谱的内插还是外推，内插是为了让已有的知识图谱变得更完善，将那些本质存在但是缺失的事实补充到知识图谱当中，外推(TKG)是利用已知的事实，去推理未来可能会发生的事实，就是预知未来嘛，但是我们预知未来不能说凭空猜测，那样是没有什么意义的（虽然我觉得大数据时代，本质上这个方向的就没有太大的价值），我们需要在过去的事实中找到推理未来事实的依据，因此用深度学习模型虽然效果好，但是其本身的黑盒属性，导致了推理的可解释性差以及透明度低，在一些场景的应用(医疗、金融、紧急事件预测等)，或者说本质上如果说我们不能找到这件事实可能发生的历史依据，那么即使在测试集上确实能预测正确，我认为意义也不是很大，这背离了这个任务的初衷和本质。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>因此，引入基于规则学习的方法来进行图谱推理任务，是非常有必要的，在实现较好性能的同时，具备良好的可解释性，同时在时间知识图谱上，还具有时间一致性的优点。</strong></p>
+<h2 id="相关研究"><a href="#相关研究" class="headerlink" title="相关研究"></a>相关研究</h2><p>注：本文主要整理时间知识图谱的推理相关文献，有部分静态知识图谱的文献不做涉及。</p>
+<hr>
+<h3 id="1-StreamLearner-2019"><a href="#1-StreamLearner-2019" class="headerlink" title="1.StreamLearner(2019)"></a>1.StreamLearner(2019)</h3><p><strong>论文标题</strong>：Learning Temporal Rules from Knowledge Graph Streams</p>
+<p><strong>内容概要</strong>：该论文应该是第一篇将规则学习方法应用到时间知识图谱(TKG)上做预测的方法，后续的文章也是在这篇文章的思路上进行创新改进的。文章主要思路分为两部分，分别是 规则学习 和 规则应用，将预先学习到的规则用来做推理得到最终的结果。简单来说 也就是先通过rule_learning挖掘出规则库，并对挖掘出的规则进行质量评估打分，将低质量的规则进行过滤，得到最终的规则，然后进行rule_application。</p>
+<h4 id="细节部分"><a href="#细节部分" class="headerlink" title="细节部分"></a>细节部分</h4><p><strong>1.规则学习</strong></p>
+<p><strong>CP_Rules(closed path rules) 闭环规则</strong></p>
+<p><strong>相当于是设立一种规则学习的模板，在规则学习的时候，是按照这个模板来进行学习的。</strong></p>
+<p>cp rules：用规则体 来推导 得到 规则头，规则体成立的情况下，推导规则头也会相应的成立。</p>
+<p>形如如下：</p>
+<script type="math/tex; mode=display">
+P_1(x, z_1, t) \land P_2(z_1, z_2, t) \land \ldots \land P_n(z_{n-1}, y, t)
+\rightarrow P(x, y, t + k).</script><p>但是显而易见，规则体都是在同一时间成立，这也带来了一个问题，规则挖掘的集合相当受限，针对前后关联的时间规则链，无法进行有限的预测，这也大大限制了规则应用的性能，因为本身规则的学习质量就受到了很大的影响。</p>
+<p><strong>2.规则质量评估</strong></p>
+<p><strong>support 时间规则支持度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/2.png" alt="公式"></p>
+<p>在该论文中，对规则质量的评估实际上就是 规则支持度的统计，τ是规则头的时间戳信息，也就是说计算规则体和规则头满足时间条件的成立情况，统计得到的数目就是规则在当前时间的支持度信息。直白的理解，也就是规则体前提成立的同时，规则头也成立的数目，统计得到的数目就是时间规则支持度。</p>
+<p><strong>引入SC 和 HC度量：</strong></p>
+<p>SC：可以理解成准确度，也就是规则支持度 / 规则体的数目。通俗理解也就是 规则体支持规则头也成立的比例。</p>
+<p>HC：可以理解成召回率，也就是规则支持度 / 规则头的数目。通俗理解也就是 规则头能被规则体预测出来的比例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">To normalize support degree, the notions of standard confidence <span class="keyword">and</span> head coverage </span><br><span class="line">have been introduced, which correspond to the standard accuracy <span class="keyword">and</span> recall, respectively  </span><br></pre></td></tr></table></figure>
+<p><strong>standard confidence (SC)   body标准置信度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/3.png" alt="公式"></p>
+<p> <strong>head coverage (HC)  规则头覆盖度计算</strong><br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/4.png" alt="公式"></p>
+<p><strong>DSC 和 DHC的引入</strong><br>作者认为该时刻的SC和HC与前面时刻的SC和HC有关，因此引入了DSC和DHC指标衡量当前时刻规则的置信度。<br><img src="2025-09-25-post20_基于规则的时间知识图谱推理/5.png" alt="公式"><br><strong>因为DSC和DHC指标的引入，尽管规则集合是一样的，但是在不同时间点上，相同的规则可能会得到不同的规则置信度。当前时刻的SC和HC收前一时刻的SC和HC指标的影响。</strong></p>
+<p><strong>3.规则应用(做预测)</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/1.png" alt="规则应用"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>StreamLearner是第一篇将规则学习应用于时间知识图谱上的论文，不过在规则定义上存在很多缺陷，比如规则体都是相同时间戳，这就大大限制了规则学习的范围，忽略了一些因果规则推理链的挖掘，在置信度计算上同样也有很大改进空间，通过统计和动态DSC的计算来得到当前时刻预测事件的置信度得分，作为该规则预测evevt的一个得分</strong></p>
+<hr>
+<h3 id="2-TLogic-2022"><a href="#2-TLogic-2022" class="headerlink" title="2.TLogic(2022)"></a>2.TLogic(2022)</h3><p><strong>论文标题</strong>：TLogic: Temporal Logical Rules for Explainable Link Forecasting on Temporal Knowledge Graphs  </p>
+<p><strong>发表会议</strong>：   AAAI-2022</p>
+<p><strong>内容概要</strong>：作者在提出一种时间随机游走算法用来提取时间逻辑规则，通过固定次数采样 规则体和规则头，获得规则支持度，通过这个规则支持度来评估规则的置信度，最后再将采样的规则进行一个抽象成一个通用的逻辑规则，再通过这个逻辑规则去匹配规则体，实现对规则头的预测，在评估最终预测结果时，会将规则体路径的时间与待查询四元组的时间进行相减，时间差异越小，得分也就越高，综合这两部分来实现对预测结果的打分，将得分作为一个排序的依据。</p>
+<h4 id="细节部分-1"><a href="#细节部分-1" class="headerlink" title="细节部分"></a>细节部分</h4><p><strong>1.规则学习及应用</strong></p>
+<p><strong>cyclic temporal logical rule</strong>   </p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/6.png" alt="cyclic temporal logical rule"></p>
+<p>同样是通过规则体 预测 规则头，但是在时间约束上，cyclic temporal logical rule 符合时间一致性的问题，同时也抛弃了都受限于同一时间约束的规则体原语，这样可以学习到更大范围的时间逻辑规则，使得规则推理的性能会更好。</p>
+<p><strong>temporal random walk算法</strong></p>
+<p>针对每一个关系和学习的学习的规则长度，采集第一条边作为规则头，后面依次每条边都是上一条边object实体的邻居边，在邻居边集合中，随机采样出下一条边(均匀随机或者时间指数函数随机)，第二条边的时间必须是严格小于第一条边的时间，同时后续边(&gt;2)的时间必须小于等于前一条边，最后一条边的目标节点必须是第一条的开始节点，这样即形成了一个闭环规则链。需要注意的是除了第一条边可以反向走，后续的边都不允许走反向边。</p>
+<p>采集边规则如下：</p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/7.png" alt="temporal random walk"></p>
+<p><strong>Rule Learning算法</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/8.png" alt="Rule Learning算法"></p>
+<p>Rule Learning算法就是采用时间约束以及随机采样的原则，按照预先设定的闭环时间逻辑规则的模板进行规则实例挖掘，挖掘出来的规则再进行抽象为通用规则，保存头关系、体关系以及重复实体的索引约束信息，并对采集出来的规则进行一个评分，评分规则为 头支持度 / 体支持度，支持度及固定采样次数，在图中采样出来的数量即为支持度。</p>
+<p>采样过程中，针对相邻边的时间差异问题，有两种模式，分别是均匀采样模型 和 指数采样模式，采用指数采样模式会偏向与选择时间更相近的边，作者通过实验证明了，采用指数采样的性能会优于均匀采样模式。</p>
+<p><strong>Rule Application算法</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/9.png" alt="Rule Application算法"></p>
+<p>Rule Learning算法利用先前时间随机游走算法得到的时间逻辑规则，在历史窗口子图中进行 规则体匹配作为预测结果，在预测结果的处理上，针对不同规则路径得到的相同候选实体预测，会进行一个分数聚合操作，在考虑不同预测实体的得分时，通过集合置信度和时间间隔差异两者来衡量预测的可信度，根据这个预测可信度得分来排序作为最终的一个候选实体预测结果。</p>
+<p><strong>2.实验结果</strong></p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/10.png" alt="experiments"></p>
+<p><strong>3.细节部分的理解</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;细节部分的理解，在学习完时间规则之后，再进行规则应用，这是很关键的一部，有很多细节上的东西需要进行理解。首先，会针对每一个查询，匹配该查询对应关系的所有学习到的规则，然后再用规则中的规则体，匹配相应的规则实例，匹配出的规则实例，则会作为最终的预测结果(在规则选取上，会依据置信度，从高到低进行选择，先选择置信度高的规则进行预测)，预测出结果后，会将该候选实体及分数进行一个打分，得到一个score，后续如果其他规则也预测出来这个候选实体，会对分数在该候选实体对应的分数列表中进行追加，追加后，针对同一个实体的不同路径多个分数的预测，会进行一个noisy-or分数聚合，最终会一个查询对应一些列候选实体，意味着之后预测的每个候选实体都有一个分数，最终再对这个候选实体预测结果，统计H@n和MRR，得到最终的预测结果评估。</p>
+<p>个人改进点：原代码针对同一规则游走出的不同walk，但是得到相同的候选实体情况，会进行一个选取最大开始时间戳来计算机score，我认为相同规则，可以通过不同事件来预测出同一个候选实体，应当基于更高的分数表现，因此应该在候选体分数列表中进行追加，最后再进行一个分数聚合。</p>
+<p><strong>4.跨域通用性实验</strong></p>
+<p>作者设计了两个实验，通过在一个数据集上学习时间逻辑规则，再另一个数据集上应用时间规则的方式，来证明了在具有通用词表的数据集上，性能不会发生较大损失，证明TLogic的跨域通用性相较于之前的AnyBURL更好。</p>
+<p><img src="2025-09-25-post20_基于规则的时间知识图谱推理/11.png" alt="跨域experiments"></p>
+<hr>
+<h3 id="3-TempValid-2024"><a href="#3-TempValid-2024" class="headerlink" title="3.TempValid(2024)"></a>3.TempValid(2024)</h3><p>待更新</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/25/post20_%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%97%B6%E9%97%B4%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" data-id="cmosdyclj000vp63f5llw1hup" data-title="综述(自用)-基于规则方法的时间知识图谱推理(预测)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%96%E6%8E%A8/" rel="tag">外推</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post19_Poetry基础教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/24/post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-08-24T20:29:20.000Z" itemprop="datePublished">2025-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/08/24/post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">Poetry基本用法教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1.背景"></a>1.背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近在复现一个项目的时候，发现项目的环境安装是使用Poetry，一脸懵逼，不知道Poetry是什么东西，以前也从来没有接触过。于是开始学习Poetry，一番了解下来，决定专门学习掌握一下Poetry这个包依赖管理工具。</p>
+<h3 id="1-1-Poetry是什么？"><a href="#1-1-Poetry是什么？" class="headerlink" title="1.1 Poetry是什么？"></a>1.1 Poetry是什么？</h3><p>Poetry官网如此写到：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poetry is a tool for dependency management and packaging in Python. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you. Poetry offers a lockfile to ensure repeatable installs, and can build your project for distribution.</span><br></pre></td></tr></table></figure><br>简而言之，就是一个python依赖管理工具，具有虚拟环境管理、Package依赖性管理、Package的打包与分布的功能。</p>
+<h3 id="1-2-为什么要使用Poetry？相比pip、conda等工具他有什么优势呢？"><a href="#1-2-为什么要使用Poetry？相比pip、conda等工具他有什么优势呢？" class="headerlink" title="1.2 为什么要使用Poetry？相比pip、conda等工具他有什么优势呢？"></a>1.2 为什么要使用Poetry？相比pip、conda等工具他有什么优势呢？</h3><p>答：相比pip和conda等虚拟环境包管理工具，Poetry的优点就是其可以管理包之间的依赖的关系，比如我们安装一个包，可能这个包的使用，还需要依赖好几个其他包。pip在安装包的时候，可以将依赖的包一并进行安装，但是当我们安装完之后，我们不需要这个包的时候，我们用pip工具进行uninstall这个包的时候，由于pip无法处理依赖管理，只会uninstall指定的那个包，那么其他的依赖包就需要我们手动进行卸载，但是问题来了，如果其中某些包是好几个其他包共同依赖的包的话，这样就很容易出现依赖问题，处理起来非常棘手。<strong>Poetry的目标，就是解决pip在依赖性管理上的不足。</strong></p>
+<p>总结: 在我们个人小项目的开发上，如果包比较少，管理起来比较方便的话，pip其实可以满足我们的需求，但是如果是大型项目，管理起来依赖就非常麻烦，如果有一些不必要的包保留下来，还会影响我们部署，浪费资源，因此使用Poetry来进行包管理工具是一件很有必要的事情。</p>
+<h2 id="2-Poetry的安装"><a href="#2-Poetry的安装" class="headerlink" title="2.Poetry的安装"></a>2.Poetry的安装</h2><p>建议大家还是主要参考官网的教程<a target="_blank" rel="noopener" href="https://python-poetry.org/">Poetry官网</a>、<br>我在ubuntu上安装的时候使用的官网推荐的official installer安装方式，并非使用pipx的安装方式，因为中科大镜像源最新版本就是2.1.3的原因，因此我安装了2.1.3,可根据自身情况指定版本号。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 - --version 2.1.3</span><br></pre></td></tr></table></figure><br>安装完成后执行：(需要先设置环境变量)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poetry --version</span><br></pre></td></tr></table></figure><br>返回版本号之后就说明安装成功。</p>
+<h3 id="2-1-设定PATH环境变量"><a href="#2-1-设定PATH环境变量" class="headerlink" title="2.1 设定PATH环境变量"></a>2.1 设定PATH环境变量</h3><p>在linux上，设置PATH相对简单，在.bashrc 或 .zshrc后边追加：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc </span><br></pre></td></tr></table></figure><br>windows上同样也需要设置环境变量，可以参考官网教程。</p>
+<h2 id="3-使用Poetry生成虚拟环境"><a href="#3-使用Poetry生成虚拟环境" class="headerlink" title="3.使用Poetry生成虚拟环境"></a>3.使用Poetry生成虚拟环境</h2><h3 id="3-1-从0开始创建项目"><a href="#3-1-从0开始创建项目" class="headerlink" title="3.1 从0开始创建项目"></a>3.1 从0开始创建项目</h3><h4 id="3-1-1-初始化项目"><a href="#3-1-1-初始化项目" class="headerlink" title="3.1.1.初始化项目"></a>3.1.1.初始化项目</h4><p><strong>已创建项目使用poetry：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry init <span class="comment">#生成poetry.toml文件 </span></span><br></pre></td></tr></table></figure><br><strong>poetry初始化新建项目：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry new demo-name <span class="comment"># 创建一个完整的Poetry管理的包结构</span></span><br></pre></td></tr></table></figure><br><strong>修改config .建立项目内.venv虚拟环境</strong><br>查看poetry的配 置类型<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config --list</span><br></pre></td></tr></table></figure><br><strong>修改为项目内建立的虚拟环境，将环境建立到当前项目中</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project true</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1-2-建立项目虚拟环境并使用"><a href="#3-1-2-建立项目虚拟环境并使用" class="headerlink" title="3.1.2.建立项目虚拟环境并使用"></a>3.1.2.建立项目虚拟环境并使用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry env use python <span class="comment"># 创建虚拟环境并指定python版本，但是不会生成lock文件</span></span><br></pre></td></tr></table></figure>
+<p>注： 该命令建立的虚拟环境所使用的python版本，取决于python指令在PATH中的连接的版本。</p>
+<h4 id="3-1-3-激活poetry环境"><a href="#3-1-3-激活poetry环境" class="headerlink" title="3.1.3.激活poetry环境"></a>3.1.3.激活poetry环境</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry shell 进入虚拟环境</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-4-添加包"><a href="#3-1-4-添加包" class="headerlink" title="3.1.4.添加包"></a>3.1.4.添加包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">poetry add package-name </span><br><span class="line">-D参数指定开发环境</span><br><span class="line"># 或</span><br><span class="line">poetry add package-name --dev</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-5-删除包"><a href="#3-1-5-删除包" class="headerlink" title="3.1.5.删除包"></a>3.1.5.删除包</h4><h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">poetry remove package-name</span><br><span class="line">-D参数指定开发环境</span><br><span class="line"></span><br><span class="line"># 删除虚拟环境命令</span><br><span class="line">poetry env remove python</span><br></pre></td></tr></table></figure></h2><h4 id="3-1-5-更新包"><a href="#3-1-5-更新包" class="headerlink" title="3.1.5 更新包"></a>3.1.5 更新包</h4><p>更新全部可以更新的包,根据poetry.toml文件中的版本限制，poetry会自动选择合适的版本进行安装，并且会更新poetry.lock文件,并且当项目没有激活或者创建虚拟环境的时候，会自动创建对应的虚拟环境。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetrty update</span><br></pre></td></tr></table></figure><br>更新指定包<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry update package-name</span><br></pre></td></tr></table></figure></p>
+<h4 id="Note-Important☆"><a href="#Note-Important☆" class="headerlink" title="Note(Important☆)"></a>Note(Important☆)</h4><p><strong>如果手动修改了Poetry.toml文件，需要执行以下命令，使修改生效。</strong></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poetry lock # 将toml文件改动同步到lock文件中</span><br><span class="line">poetry install # 根据lock文件改动，拉取相关依赖到环境中</span><br></pre></td></tr></table></figure></h2><h3 id="3-2-在其他主机复现Poetry虚拟环境"><a href="#3-2-在其他主机复现Poetry虚拟环境" class="headerlink" title="3.2 在其他主机复现Poetry虚拟环境"></a>3.2 在其他主机复现Poetry虚拟环境</h3><p>1.git clone 项目。<br>2.此时项目中存在Poetry.toml 和 Poetry.lock文件。<br>3.poetry env use python 建立虚拟环境并使用。<br>4.poetry lock 将toml文件改动同步到lock文件中。<br>5.执行poetry install,会根据poetry.lock记录的包版本安装到虚拟环境中。</p>
+<ul>
+<li>poetry env list 查看虚拟环境列表 (多虚拟环境下使用，不常用)</li>
+</ul>
+<h3 id="3-3-如何在原项目基础上重建环境"><a href="#3-3-如何在原项目基础上重建环境" class="headerlink" title="3.3 如何在原项目基础上重建环境"></a>3.3 如何在原项目基础上重建环境</h3><p>删除.venv文件后，直接执行’poetry env use python’,但是这个应该用的会很少</p>
+<h2 id="4-常用命令（使用export插件导出requirement-txt方法）"><a href="#4-常用命令（使用export插件导出requirement-txt方法）" class="headerlink" title="4.常用命令（使用export插件导出requirement.txt方法）"></a>4.常用命令（使用export插件导出requirement.txt方法）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">一、poetry shell插件</span><br><span class="line">from poetry2.0起，shell命令不再是默认安装的了。</span><br><span class="line">poetry shell插件安装查看: https://github.com/python-poetry/poetry-plugin-shell</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">二、基本常用命令作用</span><br><span class="line">1.env activate: Print the command to activate a virtual environment.</span><br><span class="line">2.env info: Displays information about the current environment.</span><br><span class="line">3.env list: Lists all virtualenvs associated with the current project.</span><br><span class="line">4.env remove: Remove virtual environments associated with the project.</span><br><span class="line">5.env use: Activates or creates a new virtualenv for the current project.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1.更新命令 </span><br><span class="line">poetry lock </span><br><span class="line">依据 poetry.toml 来更新 poetry.lock</span><br><span class="line">但是仅仅会更新poetry.lock，而不会安装相关依赖</span><br><span class="line"></span><br><span class="line">2.根据poetry.lock安装相关依赖包</span><br><span class="line">poetry install</span><br><span class="line"></span><br><span class="line">3.Poetry更新套件(一般不使用)</span><br><span class="line">poetry update: 更新全部套件</span><br><span class="line">poetry update requests toml 更新指定的某个套件</span><br><span class="line"></span><br><span class="line">4.poetry show</span><br><span class="line">展示环境包内容，环境不是来自虚拟环境，而是根据poetry.lock文件来展示的。</span><br><span class="line"></span><br><span class="line">5.poetry show --tree(包之间的依赖关系与层次，一目了然)</span><br><span class="line">展示环境依赖树状结构</span><br><span class="line"></span><br><span class="line">6.移除命令</span><br><span class="line">poetry remove package-name</span><br><span class="line"></span><br><span class="line">7.退出poetry环境</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三、export插件导出requirements.txt文件 (导出requirements.txt文件)</span><br><span class="line">**输出requirements.txt(2.0版本以后)**</span><br><span class="line">poetry export -f requirements.txt -o requirements.txt --without-hashes</span><br><span class="line">export插件地址：https://github.com/python-poetry/poetry-plugin-export</span><br><span class="line">使用方法：</span><br><span class="line">在Poetry2.0及以上版本，直接在poetry.toml中声明如下：</span><br><span class="line">[tool.poetry.requires-plugins]</span><br><span class="line">poetry-plugin-export = &quot;&gt;=1.8&quot;</span><br><span class="line"></span><br><span class="line">或者 </span><br><span class="line"></span><br><span class="line">poetry self add poetry-plugin-export(未尝试)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>花了半天时间吧，基本掌握了poetry工具的使用，总体来说还是很方便的，但是学习起来相比pip等工具还是有一定的门槛，不过比起这个，可以解决掉环境包依赖的问题，还是很好，有利于项目的复现！</p>
+<h2 id="使用场景QA"><a href="#使用场景QA" class="headerlink" title="使用场景QA"></a>使用场景QA</h2><h3 id="1、新建项目"><a href="#1、新建项目" class="headerlink" title="1、新建项目"></a>1、新建项目</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>poetry init <span class="comment"># 生成poetry.toml文件及设置相关依赖包</span></span><br><span class="line"><span class="number">2.</span>poetry env use 指定python版本</span><br><span class="line"><span class="number">3.</span>poetry lock &amp; poetry install </span><br><span class="line"><span class="comment"># poetry check # 检查项目依赖关系，如果依赖关系有错误，则会报错</span></span><br><span class="line"><span class="number">4.</span>poetry shell <span class="comment"># 如未执行步骤2，则会自动建立相应的虚拟环境</span></span><br><span class="line"><span class="number">5.</span>poetry add package-name</span><br><span class="line"><span class="number">6.</span>poetry remove package-name</span><br></pre></td></tr></table></figure>
+<h3 id="2、现有项目改用Poetry进行管理"><a href="#2、现有项目改用Poetry进行管理" class="headerlink" title="2、现有项目改用Poetry进行管理"></a>2、现有项目改用Poetry进行管理</h3><p>最好的办法还是重新使用poetry进行管理，避免不必要的麻烦</p>
+<h3 id="3、在其他开发环境上复现-Poetry虚拟环境"><a href="#3、在其他开发环境上复现-Poetry虚拟环境" class="headerlink" title="3、在其他开发环境上复现 Poetry虚拟环境"></a>3、在其他开发环境上复现 Poetry虚拟环境</h3><p>1.git clone 项目<br>2.项目中存在Poetry.toml 和 Poetry.lock文件<br>3.poetry env use python 建立虚拟环境并使用。 # 该命令仅仅是为当前项目选择或创建虚拟环境<br>4.执行poetry install,会根据poetry.lock记录的包版本安装到虚拟环境中</p>
+<h3 id="4、在原项目基础上重建环境"><a href="#4、在原项目基础上重建环境" class="headerlink" title="4、在原项目基础上重建环境"></a>4、在原项目基础上重建环境</h3><p>删除.venv文件后，直接执行’poetry env use python’或’poetry shell’建立一个新的即可。</p>
+<h3 id="5、Poetry设置国内源"><a href="#5、Poetry设置国内源" class="headerlink" title="5、Poetry设置国内源"></a>5、Poetry设置国内源</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加镜像源，默认就是主要源，注意该方式只对当前项目有效</span></span><br><span class="line"><span class="comment"># 命令格式：poetry source add [选项] [--] &lt;name&gt; [&lt;url&gt;]，name：源仓库的名称，url：源仓库的 URL</span></span><br><span class="line">$ poetry source add tsinghua https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">Adding source <span class="keyword">with</span> name tsinghua.</span><br><span class="line"></span><br><span class="line"><span class="comment"># --priority=PRIORITY设置此源的优先级。可以是以下值之一：default（默认）、primary（主要）、supplemental（备用）、explicit（显式源，只有当包明确声明使用该源时才会被使用）。默认为 primary。</span></span><br><span class="line">$ poetry source add  --priority=supplemental aliyun http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看镜像源信息</span></span><br><span class="line">$ poetry source show</span><br><span class="line"> name      : tsinghua</span><br><span class="line"> url       : https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"> priority  : primary</span><br><span class="line"></span><br><span class="line"> name      : aliyun</span><br><span class="line"> url       : http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line"> priority  : supplemental</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时查看 pyproject.toml 文件可以看到镜像源信息</span></span><br><span class="line">[[tool.poetry.source]]</span><br><span class="line">name = <span class="string">&quot;tsinghua&quot;</span></span><br><span class="line">url = <span class="string">&quot;https://pypi.tuna.tsinghua.edu.cn/simple&quot;</span></span><br><span class="line">priority = <span class="string">&quot;primary&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[[tool.poetry.source]]</span><br><span class="line">name = <span class="string">&quot;aliyun&quot;</span></span><br><span class="line">url = <span class="string">&quot;http://mirrors.aliyun.com/pypi/simple/&quot;</span></span><br><span class="line">priority = <span class="string">&quot;supplemental&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像源</span></span><br><span class="line">$ poetry source remove aliyun <span class="comment"># 指定镜像源名称</span></span><br><span class="line">Removing source <span class="keyword">with</span> name aliyun.</span><br></pre></td></tr></table></figure>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><a target="_blank" rel="noopener" href="https://blog.hanqunfeng.com/2024/11/22/python_poetry/?highlight=poetry">更详细的参考博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/08/24/post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" data-id="cmosdycli000pp63fc6e0aa7p" data-title="Poetry基本用法教程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Poetry/" rel="tag">Poetry</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" rel="tag">python环境管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post18_LCGE-基于逻辑和常识的时态知识图谱推理补全模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/16/post18_LCGE-%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E5%92%8C%E5%B8%B8%E8%AF%86%E7%9A%84%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E8%A1%A5%E5%85%A8%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-08-16T17:44:05.000Z" itemprop="datePublished">2025-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/08/16/post18_LCGE-%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E5%92%8C%E5%B8%B8%E8%AF%86%E7%9A%84%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E8%A1%A5%E5%85%A8%E6%A8%A1%E5%9E%8B/">论文阅读笔记---LCGE-基于逻辑和常识来实现时态知识图谱补全的方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><ul>
+<li>标题：Logic and Commonsense-Guided Temporal Knowledge Graph Completion</li>
+<li>时间： 2023</li>
+<li>会议： AAAI-23</li>
+<li>结构：北京航空航天大学</li>
+<li>代码：The appendix, source code and datasets of this paper are available at <a target="_blank" rel="noopener" href="https://github.com/ngl567/LCGE">代码</a></li>
+</ul>
+<h2 id="2-概述"><a href="#2-概述" class="headerlink" title="2.概述"></a>2.概述</h2><p>&ensp;&ensp;&ensp;&ensp;现存的时态知识图谱补全方法存在不能表示时间(event)的时间效用性(timeliness)和事件之间因果性的问题，作者提出了一种名为Logic and Commonsense-Guided Embedding model(LCGE)的模型，提出联合学习具有时间效用性和因果性的时间敏感性(time-sensitive)表示 和 常识观点下事件的时间独立性的表示。 具体方法实现上，作者设计了一种时间规则学习算法，以构建规则引导的谓词嵌入正则化策略(RGPR Mechanism)，用于学习事件之间的因果关系，并且通过常识知识去准确计算时间的可能性，</p>
+<h2 id="3-整体框架"><a href="#3-整体框架" class="headerlink" title="3.整体框架"></a>3.整体框架</h2><p><img src="2025-08-16-post18_LCGE-基于逻辑和常识的时态知识图谱推理补全模型/1.png" alt="框架"></p>
+<h3 id="3-1-时间规则学习方法"><a href="#3-1-时间规则学习方法" class="headerlink" title="3.1 时间规则学习方法"></a>3.1 时间规则学习方法</h3><p>首先，将训练集中的四元组信息给抹掉时间信息，转换成三元组，从而获得了global static KG<br>(GSKG)，然后从GSKG中挖掘静态规则，然后再转为时态规则，作者精心设计了五种时间规则模式。通过现在的规则学习算法 和 提出的五种时间规则模式，从现存的GSKG中挖掘出静态规则后，再将静态规则 扩展成相应的 候选时间规则。</p>
+<h2 id="4-实验-and-讨论"><a href="#4-实验-and-讨论" class="headerlink" title="4.实验 and 讨论"></a>4.实验 and 讨论</h2><h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p><strong>问题引入：</strong></p>
+<p>（1）先前的模型分析了event知识会随时间发生有效性变化的问题，但是忽略了一些常识问题的长期有效性的性质。基于演化的模型很难推理那些具有较弱联系的事件模型，而TKGE模型却无法探索事件之间的因果性。</p>
+<p>（2）先前的TKGC（Temporal Knowledge graph completion）都是数据驱动的模型，没有可解释性。</p>
+<p>（3） StreamLearner是当时唯一已知的可以从时间知识图谱中挖掘时间规则的方法，但是仅仅探索了规则体中，所有原子同时受限制的单一时序模式，却忽略了事件之间多样的时间规则模式。</p>
+<p>基于以上发现的问题，作者提出了LCGE（Logic and Commonsense-Guided Embedding）模型，通过设计时间规则指导的谓词嵌入正则化来学习事件的因果关系，同时，提出基于事件和常识的知识图谱嵌入策略来学习时间敏感性嵌入表示来 评分时间的可能性。</p>
+<h3 id="4-1-数据集统计信息"><a href="#4-1-数据集统计信息" class="headerlink" title="4.1 数据集统计信息"></a>4.1 数据集统计信息</h3><p><img src="2025-08-16-post18_LCGE-基于逻辑和常识的时态知识图谱推理补全模型/2.png" alt="数据集"></p>
+<h3 id="4-2-实验结果"><a href="#4-2-实验结果" class="headerlink" title="4.2 实验结果"></a>4.2 实验结果</h3><p><img src="2025-08-16-post18_LCGE-基于逻辑和常识的时态知识图谱推理补全模型/3.png" alt="实验对比数据"></p>
+<h3 id="4-3-消融实验"><a href="#4-3-消融实验" class="headerlink" title="4.3 消融实验"></a>4.3 消融实验</h3><p><img src="2025-08-16-post18_LCGE-基于逻辑和常识的时态知识图谱推理补全模型/4.png" alt="消融实验"></p>
+<p><strong>讨论</strong>：实验结果显示相比 传统静态嵌入模型 和 时态嵌入模型的效果都要好，但是为什么要和这两类模型比，可能是因为作者提出的是基于主要规则的嵌入模型，这样一看也是合理的了，如果和GNN一些方法相比，性能肯定不如GNN的效果，但是基于规则的方法好处是 可以通过 推理结果的可解释性，而神经网络的方法是黑盒模型，没有推理的可解释性。</p>
+<h2 id="5-个人总结"><a href="#5-个人总结" class="headerlink" title="5.个人总结"></a>5.个人总结</h2><p>&ensp;&ensp;&ensp;&ensp;最重要是的就是提出问题部分吧，这篇文章的脉络思路非常清晰，先是提出了问题，然后再提出自己的方法来解决以上问题，文章大概方法是通过挖掘规则 和 基于常识知识的设计来学习实体和谓词的嵌入表示，具体细节上的实现还需要更多的研读代码，文章解决了上面这些方法的问题，同时相比起神经网络的方法其可以提供可解释性的支撑。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/08/16/post18_LCGE-%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E5%92%8C%E5%B8%B8%E8%AF%86%E7%9A%84%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E8%A1%A5%E5%85%A8%E6%A8%A1%E5%9E%8B/" data-id="cmosdyclh000kp63fbmka54mb" data-title="论文阅读笔记---LCGE-基于逻辑和常识来实现时态知识图谱补全的方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" rel="tag">时态知识图谱补全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post17_GenTKG-传统规则方法结合大模型的知识图谱推理框架" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/11/post17_GenTKG-%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E6%96%B9%E6%B3%95%E7%BB%93%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time class="dt-published" datetime="2025-08-11T10:50:51.000Z" itemprop="datePublished">2025-08-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/08/11/post17_GenTKG-%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E6%96%B9%E6%B3%95%E7%BB%93%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/">论文阅读笔记---LLM结合规则学习方法提出一种新的时态知识图谱推理框架</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><ul>
+<li>标题：GenTKG: Generative Forecasting on Temporal Knowledge Graph with Large Language Models</li>
+<li>时间： 2023</li>
+<li>会议：  Findings of NAACL 2024</li>
+<li>结构：慕尼黑大学、慕尼黑工业大学、西门子公司</li>
+</ul>
+<h2 id="2-概述"><a href="#2-概述" class="headerlink" title="2.概述"></a>2.概述</h2><p>&ensp;&ensp;&ensp;&ensp;文章提出了一种名为GenTKG的两阶段时间知识图谱推理生成框架，由两部分组成分别是TLR(规则学习方法) + FIT(少样本参数指导微调-Lora)，TLR主要通过规则学习，检索到相关事实，然后将相关事实填入提示词模板中，再通过大模型进行时间知识图谱外推任务，获得最终的推理结果，实现将传统的时间知识图谱推理任务转化为 大模型生成任务，并取得不错的结果。</p>
+<h2 id="3-整体框架"><a href="#3-整体框架" class="headerlink" title="3.整体框架"></a>3.整体框架</h2><p><img src="2025-08-11-post17_GenTKG-传统规则方法结合大模型的知识图谱推理框架/1.png" alt="框架"></p>
+<h2 id="4-实验-and-讨论"><a href="#4-实验-and-讨论" class="headerlink" title="4.实验 and 讨论"></a>4.实验 and 讨论</h2><p><img src="2025-08-11-post17_GenTKG-传统规则方法结合大模型的知识图谱推理框架/2.png" alt="实验对比数据"></p>
+<p><strong>讨论</strong>：实验结果相比传统的嵌入方法和基于规则的方法以及ICL上下文学习方法效果都更好，因此证明了将大模型生成预测任务应用于时间知识图谱推理任务是一个新的前沿方向。</p>
+<h3 id="4-1-消融实验"><a href="#4-1-消融实验" class="headerlink" title="4.1 消融实验"></a>4.1 消融实验</h3><p><img src="2025-08-11-post17_GenTKG-传统规则方法结合大模型的知识图谱推理框架/3.png" alt="消融实验"></p>
+<p><strong>讨论</strong>：通过消融实验证明了 GenTKG框架不同组件的有效性，同时说明了FIT(Few-shot tuning)的有效性，越多指导训练样本，FIT的的效果会更好。</p>
+<h2 id="5-个人总结"><a href="#5-个人总结" class="headerlink" title="5.个人总结"></a>5.个人总结</h2><p>&ensp;&ensp;&ensp;&ensp;作者在文章开篇提出了两个问题，<strong>1.时间知识图谱的结构化数据是否可以被大模型理解(大模型容易理解的是自然语言)，最终证明GenTKG框架可以理解；2.训练大模型庞大的计算量和时间成本问题，作者通过FIT的方式解决。</strong> GenTKG框架主要有两部分组成分别是TLR + FIT，实现时态知识图谱的推理任务。(We propose a retrieval-augmented generative framework GenTKG that can efficiently align LLM with temporal relational forecasting task through two stages: temporal logical rule-based retrieval (TLR) and few-shot parameter-efficient fine-tuning (FIT).)<strong>过去的时间知识图谱推理任务主要是以数据为中心进行学习，因此数据集的划分等，都会对结果造成比较大的影响，但是作者提出的GenTKG框架在这方面具有较强的抗干扰性，不会因为数据集的部分缺失而造成比较大的性能损失，将以数据为中心的学习方式转化为以任务为中心的学习方式，这是一种比较新颖的思路。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/08/11/post17_GenTKG-%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E6%96%B9%E6%B3%95%E7%BB%93%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" data-id="cmosdyclk000xp63fdlwcablr" data-title="论文阅读笔记---LLM结合规则学习方法提出一种新的时态知识图谱推理框架" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post16_损失函数中的温度参数τ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/15/post16_%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" class="article-date">
+  <time class="dt-published" datetime="2025-07-15T14:16:24.000Z" itemprop="datePublished">2025-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI/">AI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/15/post16_%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/">损失函数中的温度参数τ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在对比学习的损失函数（如InfoNCE、NT-Xent等）中，<strong>温度参数（Temperature，通常用τ表示）</strong> 是一个核心超参数，其核心作用是<strong>调节模型对样本间相似度差异的敏感程度</strong>，通过缩放相似度分数来控制损失函数中正负例的区分强度。</p>
+<h3 id="1-温度参数的数学位置"><a href="#1-温度参数的数学位置" class="headerlink" title="1. 温度参数的数学位置"></a>1. 温度参数的数学位置</h3><p>以最常用的InfoNCE损失为例，其公式可简化为：  </p>
+<script type="math/tex; mode=display">\mathcal{L} = -\log\left( \frac{\exp(\text{sim}(z_i, z_+)/\tau)}{\sum_{k \in \text{neg} \cup \{+\}} \exp(\text{sim}(z_i, z_k)/\tau)} \right)</script><p>其中：  </p>
+<ul>
+<li>$z<em>i$ 是锚点样本的特征向量，$z</em>+$ 是正例样本的特征向量，$z_k$ 是负例样本的特征向量；  </li>
+<li>$\text{sim}(\cdot, \cdot)$ 是相似度函数（如内积、余弦相似度)，一般都是余弦相似度；</li>
+<li>$\tau$ 即为温度参数，位于指数函数的分母，作为softmax的缩放因子。  </li>
+</ul>
+<h3 id="2-温度参数的直观含义"><a href="#2-温度参数的直观含义" class="headerlink" title="2. 温度参数的直观含义"></a>2. 温度参数的直观含义</h3><p>温度参数的核心作用是<strong>调节相似度分布的“尖锐度”</strong>，控制模型对正负例相似度差异的敏感程度，具体表现为：  </p>
+<h4 id="（1）低温（τ-→-0）：强化差异敏感性"><a href="#（1）低温（τ-→-0）：强化差异敏感性" class="headerlink" title="（1）低温（τ → 0）：强化差异敏感性"></a>（1）低温（τ → 0）：强化差异敏感性</h4><p>当τ很小时，$\exp(\text{sim}/\tau)$ 对相似度的微小差异会极其敏感：  </p>
+<ul>
+<li>若正例与锚点的相似度（$\text{sim}(z<em>i, z</em>+)$）显著高于所有负例，分子会远大于分母中的负例项，softmax输出趋近于1，损失趋近于0（模型“轻松”区分）；  </li>
+<li>若存在负例与锚点的相似度接近正例（即“难负例”），分子与分母的差距会被放大，softmax输出趋近于0，损失会急剧增大（模型被强制“重视”并修正这种模糊性）。  </li>
+</ul>
+<p>此时，模型会被强制学习<strong>更陡峭的决策边界</strong>，对正负例的区分要求极严格，但可能因过度关注细节而导致过拟合。  </p>
+<h4 id="（2）高温（τ-→-∞）：弱化差异敏感性"><a href="#（2）高温（τ-→-∞）：弱化差异敏感性" class="headerlink" title="（2）高温（τ → ∞）：弱化差异敏感性"></a>（2）高温（τ → ∞）：弱化差异敏感性</h4><p>当τ很大时，$\exp(\text{sim}/\tau)$ 对相似度的差异不敏感，所有项的指数值接近1，softmax分布会更“平缓”：  </p>
+<ul>
+<li>正例与负例的相似度差异被缩小，模型对“难负例”的惩罚减轻；  </li>
+<li>损失函数的梯度更平缓，模型学习更“保守”，可能导致特征区分度不足。  </li>
+</ul>
+<p>此时，模型更关注<strong>全局分布的一致性</strong>，但可能因区分度过低而学习效果下降。  </p>
+<h4 id="（3）总结：温度的“调节”作用"><a href="#（3）总结：温度的“调节”作用" class="headerlink" title="（3）总结：温度的“调节”作用"></a>（3）总结：温度的“调节”作用</h4><p>温度参数本质是<strong>平衡正负例的区分强度与模型鲁棒性</strong>的旋钮：  </p>
+<ul>
+<li>较小的τ增强对差异的敏感度，适合需要精细区分的任务（如细粒度分类）；  </li>
+<li>较大的τ降低敏感度，适合噪声较多或负例质量参差不齐的场景（如大规模无标注数据）。  </li>
+</ul>
+<h3 id="3-实际应用中的特点"><a href="#3-实际应用中的特点" class="headerlink" title="3. 实际应用中的特点"></a>3. 实际应用中的特点</h3><ul>
+<li><strong>超参数属性</strong>：温度参数通常需要通过网格搜索或经验调参确定（如视觉领域常用τ=0.07，NLP领域可能因任务不同调整）；  </li>
+<li><strong>与任务强相关</strong>：最优τ值依赖于数据集规模、正负例质量、相似度函数等，无统一标准；  </li>
+<li><strong>类比来源</strong>：命名借鉴了统计力学中的“温度”概念——低温下粒子运动更集中（分布尖锐），高温下更分散（分布平缓）。  </li>
+</ul>
+<p>综上，温度参数是对比学习中控制特征区分度与鲁棒性的关键超参数，通过调节相似度分布的尖锐度，直接影响模型对正负例差异的学习强度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/15/post16_%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" data-id="cmosdyclg000ip63fd56yc8bb" data-title="损失函数中的温度参数τ" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/contrastive-learning/" rel="tag">contrastive learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" rel="tag">温度参数τ</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post15_glue_code" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/09/post15_glue_code/" class="article-date">
+  <time class="dt-published" datetime="2025-07-09T16:22:34.000Z" itemprop="datePublished">2025-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/09/post15_glue_code/">什么是glue code？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="科普向：什么是胶水代码？为什么胶水代码不需要修改实质性逻辑？"><a href="#科普向：什么是胶水代码？为什么胶水代码不需要修改实质性逻辑？" class="headerlink" title="科普向：什么是胶水代码？为什么胶水代码不需要修改实质性逻辑？"></a>科普向：什么是胶水代码？为什么胶水代码不需要修改实质性逻辑？</h2><p><strong>Glue code</strong>（胶水代码）是指用于把不同的软件组件、库、系统或模块“粘合”在一起，使它们能够协同工作的代码。它通常本身不是实现业务逻辑的核心部分，而是负责不同部分之间的对接、适配和调用。</p>
+<h3 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h3><ul>
+<li><strong>桥梁作用</strong>：连接两个或多个原本不兼容或相互独立的系统、库或模块。</li>
+<li><strong>适配/转换</strong>：可能包括参数格式转换、接口适配、协议兼容等。</li>
+<li><strong>非核心逻辑</strong>：不直接实现业务目标，而是保证各部分能正常协同。</li>
+<li><strong>常见于集成开发</strong>：如将第三方库集成到自己的项目、跨语言模块通信等场景。</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
+<li><p><strong>API包装器</strong><br>比如，用 Python 写一段代码，把 C 语言的库通过 ctypes/cffi 调用起来，这部分代码就是 glue code。</p>
+</li>
+<li><p><strong>数据转换</strong><br>在前端和后端之间传递数据时，把后端的 JSON 数据转成前端可用的对象，这个转换代码也可以视作 glue code。</p>
+</li>
+<li><p><strong>中间件</strong><br>在微服务架构中，不同服务通过中间件（如消息队列、API 网关）交互，中间件的适配代码也可称为 glue code。</p>
+</li>
+</ol>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>降低不同技术栈、语言、平台之间的集成难度。</li>
+<li>提高现有组件复用，减少重复造轮子。</li>
+<li>能让各部分独立开发、演进。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>可能增加系统复杂度，难以维护。</li>
+<li>过多的 glue code 可能掩盖架构问题。</li>
+</ul>
+<p><strong>总结：</strong><br>Glue code 就像软件世界的“接口适配器”或“管道工”，能让各自工作的部分顺利衔接起来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/09/post15_glue_code/" data-id="cmosdycle000dp63faopzggwv" data-title="什么是glue code？" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glue-code/" rel="tag">glue code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" rel="tag">胶水代码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/21/post14/" class="article-date">
+  <time class="dt-published" datetime="2025-06-21T22:31:34.000Z" itemprop="datePublished">2025-06-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/21/post14/">时态知识图谱外推任务指标计算中过滤策略选择问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-背景："><a href="#1-背景：" class="headerlink" title="1. 背景："></a>1. 背景：</h2><p>&ensp;&ensp;&ensp;&ensp;最初是在看论文的过程中，发现不同论文使用相同方法在相同数据集的相同评估指标竟然不一样，一开始觉得还在想是不是实验数据造假呢，后面无意在知乎上看到一篇博文(<em>参考资料[2]</em>)解答了我心中的困惑,也算是自己从一开始进入这个方向后，逐步学习成长的过程，很多理解也加深了。</p>
+<h2 id="2-问题引入："><a href="#2-问题引入：" class="headerlink" title="2.问题引入："></a>2.问题引入：</h2><p>&ensp;&ensp;&ensp;&ensp;首先先介绍一下知识图谱外推任务的评估指标，常用的评估指标有MRR、Hit@1、Hit@3、Hit@5、Hit@10,MRR是外推默认预测正确实体排名的倒数和的均值，MRR的值范围在0-1之间,越接近1说明模型的外推性能越好，Hit@1\3\5\10是指模型的命中率，例如Hit@3,如果预测的正确实体位于top3的位置，则说明预测正确，反之，则预测错误，Hit指标的范围也是0-1之间，越高则说明预测的效果越好。<br>&ensp;&ensp;&ensp;&ensp;介绍完知识图谱外推任务后，我们来讲讲为什么采用过滤策略？不采用过滤策略会怎样？不采用过滤策略，则直接用模型的原始输出结果，来计算评估指标，不做任何其他处理，也就是<strong>Raw Metric</strong>度量，但是，后面有研究人员发现不合理，因为对待同一个查询(s,r,?),假如存在(s,r,A) 和 (s,r,B)两个事实存在，对于该查询，假如该数据样本的正确标签是(s,r,A)，那么预测出来的B，我们也不能说是错误预测，因为(s,r,B)也是正确预测的，但是由于B的存在，会影响最终模型评估指标的计算，从而影响我们合理的估计模型的外推能力，因此<strong>静态过滤策略</strong>在计算性能指标的时候，会将除了待预测实体之外的其他存在正确实体给移除。<em>（Static filter: To avoid counting higher ranks from other valid predictions as errors and thus having flaws in the metrics, Bordes et al. [19] propose to remove all triples (except the triple of interest) that appear in the train, valid, and test set from the list of corrupted triples.）</em><br>&ensp;&ensp;&ensp;&ensp;随着时态知识图谱外推任务的发展，越来越多的文章在该领域做工作。但是评估指标五花八门，也就造成了同样模型在相同数据集上结果在不同论文上却不一样，这也就为该领域发展造成了困扰，无法对比模型指标，评估模型的能力。<br>&ensp;&ensp;&ensp;&ensp;<strong>这样做也有一个好处，可以防止模型记住事实，从而真正去评估模型对事实的推理补全能力。</strong></p>
+<h2 id="3-时间过滤策略是如何计算的？为什么更合理？"><a href="#3-时间过滤策略是如何计算的？为什么更合理？" class="headerlink" title="3. 时间过滤策略是如何计算的？为什么更合理？"></a>3. 时间过滤策略是如何计算的？为什么更合理？</h2><p>&ensp;&ensp;&ensp;&ensp;研究人员发现直接将在时态知识图谱上应用外推任务是不合理的，因为他直接将候选排名中的其他“正确”预测事实(只考虑事实本身，不考虑时间属性)进行排除，忽略了时间事实的有效性，就比如如果查询是(Barack Obama, visit, India, 2015-01-25),假设训练集中存在(Barack Obama, visit, Germany, 2013-01-18)，那么将这一事实过滤就是不合理的，为什么呢？因为2015-01-25这个时间点Barack Obama, visit, Germany就是一个错误的事实，因此我们不应该将这样的事实进行过滤，在<strong>时间过滤策略（time filter metric）</strong>中，过滤需要将时间戳也和查询事实的时间戳一致才会进行过滤。</p>
+<p>&ensp;&ensp;&ensp;&ensp;<strong>细细一想是不是采用时间过滤策略就相当于不用进行处理了，因为验证集和测试集的时间是大于训练集的时间的，总不可能同一时间点，发生一模一样的事情吧，如果存在的话，那也说明在知识图谱构建过程中有问题，存在信息冗余。</strong></p>
+<h2 id="4-常规时间过滤策略应该如何处理？"><a href="#4-常规时间过滤策略应该如何处理？" class="headerlink" title="4. 常规时间过滤策略应该如何处理？"></a>4. 常规时间过滤策略应该如何处理？</h2><p>&ensp;&ensp;&ensp;&ensp;在实际的评估中，应该采用的过滤策略是怎样的？仔细分析，什么样的实体是我们应该从候选实体列表中进行过滤的呢？假设第四天我同时找了A和B玩，<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=232794076&amp;content_type=Article&amp;match_order=2&amp;q=知识图谱&amp;zhida_source=entity">知识图谱</a>中肯定同时包含这两个<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=232794076&amp;content_type=Article&amp;match_order=1&amp;q=四元组&amp;zhida_source=entity">四元组</a>（我，一起玩，A，第四天），（我，一起玩，B，第四天），那对这两个<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=232794076&amp;content_type=Article&amp;match_order=1&amp;q=三元组&amp;zhida_source=entity">三元组</a>的预测都是针对查询（我，一起玩，？，第四天）的预测，但是答案分别时A和B。这样就可能出现一种情况，我在预测答案为A的四元组时B的分数更高，当然这在实际看来也是正确的，但是与答案A不匹配会被模型认为是错误的，所以我们需要采取过滤方式来避免这样的情况发生。因此我们对多个正确答案中的非目标答案进行过滤，这才是正确的在时间知识图谱推理补全任务中，应该采用的时间过滤策略。<em>（Time-aware filter: Han et al. [20] note that the static filter setting is inappropriate for temporal link prediction because it filters out all triples that have ever appeared from the list of corrupted triples,ignoring the time validity of facts. As a consequence, it does not consider predictions of such triplesas erroneous. For example, if there is a test query (Barack Obama, visit, India, 2015-01-25) and if the train set contains (Barack Obama, visit, Germany, 2013-01-18), the triple (Barack Obama, visit,Germany) is filtered out for the test query according to the static filter setting, even though it is not true for 2015-01-25 [2]. For this reason numerous works [2, 11, 8, 3, 9, 10] apply the time-awarefilter setting which only filters out quadruples with the same timestamp as the test query. In the above example, (Barack Obama, visit, Germany, t) would only be filtered out for the given test query, if it had the timestamp t = 2015-01-25, and otherwise stay in the list of corrupted triples.）</em></p>
+<p><strong>参考资料</strong>：</p>
+<p>(1)参考论文：</p>
+<p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=J_SNklR-KR">时态知识图谱过滤策略论文</a></p>
+<p>(2)参考知乎博文：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/650990917">时态知识图谱过滤方法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/21/post14/" data-id="cmosdyclc000ap63fbaxcayf1" data-title="时态知识图谱外推任务指标计算中过滤策略选择问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hit-1-3-5-10/" rel="tag">Hit@1\3\5\10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MRR/" rel="tag">MRR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" rel="tag">图谱推理任务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">时态知识图谱</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post13_python脚本传入参数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/19/post13_python%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2025-06-19T15:42:55.000Z" itemprop="datePublished">2025-06-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/19/post13_python%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0/">python脚本传入参数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>&ensp;&ensp;&ensp;&ensp;在日常使用一些数据处理脚本以及训练模型的时候，使用传递参数很常见，因此对使用python进行参数传递的方式进行了整理</p>
+<h3 id="1-使用sys-argv的数组进行传参"><a href="#1-使用sys-argv的数组进行传参" class="headerlink" title="1.使用sys.argv的数组进行传参"></a>1.使用sys.argv的数组进行传参</h3><p>使用sys.argv必须按照先后的顺序传入对应的参数；sys.argv则封装了传入的参数数据，作为数组的方式进行传入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;传入参数：&#x27;</span>, sys.argv)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;传入参数的总长度为：&quot;</span>, <span class="built_in">len</span>(sys.argv))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;type:&quot;</span>, <span class="built_in">type</span>(sys.argv))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;function name:&quot;</span>, sys.argv[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第一个传入的参数为:&quot;</span>, sys.argv[<span class="number">1</span>])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第二个传入的参数为:&quot;</span>, sys.argv[<span class="number">2</span>])</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Input Error:&quot;</span>, e)</span><br></pre></td></tr></table></figure>
+<p><strong>运行的output:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">传入参数： [<span class="string">&#x27;py_test.py&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>]</span><br><span class="line">传入参数的总长度为： <span class="number">3</span></span><br><span class="line"><span class="built_in">type</span>: &lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line">function name: py_test.py</span><br><span class="line">第一个传入的参数为: one</span><br><span class="line">第二个传入的参数为: two</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-使用argparse包传入"><a href="#2-使用argparse包传入" class="headerlink" title="2.使用argparse包传入"></a>2.使用argparse包传入</h3><p>args.add_argument的方法的type参数理论上可以是任何合法的类型，而且传入的顺序没有要求，这点来说比较方便，因此在现在脚本的编写上，使用argparse包越来越常见。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line">args = argparse.ArgumentParser(description=<span class="string">&#x27;argparse testing&#x27;</span>)</span><br><span class="line">args.add_argument(<span class="string">&#x27;--name&#x27;</span>,<span class="string">&#x27;-n&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>, default = <span class="string">&quot;bk&quot;</span>,required=<span class="literal">True</span>,<span class="built_in">help</span>=<span class="string">&quot;a programmer&#x27;s name&quot;</span>)</span><br><span class="line">args.add_argument(<span class="string">&#x27;--age&#x27;</span>,<span class="string">&#x27;-a&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">35</span>,<span class="built_in">help</span>=<span class="string">&#x27;age of the programmer&#x27;</span>)</span><br><span class="line">args.add_argument(<span class="string">&#x27;--sex&#x27;</span>,<span class="string">&#x27;-s&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&#x27;male&#x27;</span>)</span><br><span class="line">args.add_argument(<span class="string">&#x27;--favorite&#x27;</span>,<span class="string">&#x27;-f&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>, nargs=<span class="string">&quot;+&quot;</span>,required=<span class="literal">False</span>,<span class="built_in">help</span>=<span class="string">&quot;favorite of the programmer&quot;</span>)</span><br><span class="line">args = args.parse_args() <span class="comment"># !解析命令行参数并将参数保存在args中</span></span><br><span class="line"><span class="built_in">print</span>(args.name)</span><br><span class="line"><span class="built_in">print</span>(args.age)</span><br><span class="line"><span class="built_in">print</span>(args.sex)</span><br><span class="line"><span class="built_in">print</span>(args.favorite)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注： nargs参数的作用是指定需要接收的参数数量</span></span><br><span class="line"><span class="literal">None</span>：表示只接收一个参数</span><br><span class="line">N(整数)： 表示必须接收正好N个值</span><br><span class="line"><span class="string">&#x27;?&#x27;</span>： 表示可选一个值，如果没有值则使用默认参数</span><br><span class="line"><span class="string">&#x27;*&#x27;</span>： 表示可以接收零个或多个值，所有值被收集成一个列表</span><br><span class="line"><span class="string">&#x27;+&#x27;</span>: 表示必须有一个或多个值，至少有一个，结果为列表</span><br></pre></td></tr></table></figure>
+<h3 id="3-通过shell脚本的形式进行传参"><a href="#3-通过shell脚本的形式进行传参" class="headerlink" title="3.通过shell脚本的形式进行传参"></a>3.通过shell脚本的形式进行传参</h3><h4 id="3-1-使用shell脚本向python脚本进行传参"><a href="#3-1-使用shell脚本向python脚本进行传参" class="headerlink" title="3.1 使用shell脚本向python脚本进行传参"></a>3.1 使用shell脚本向python脚本进行传参</h4><p>python 脚本依旧使用sys.argv的数组方式进行传入。</p>
+<p>python文件:py_test.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;传入参数的总长度为：&quot;</span>, <span class="built_in">len</span>(sys.argv))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;type:&quot;</span>, <span class="built_in">type</span>(sys.argv))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;function name:&quot;</span>, sys.argv[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第一个传入的参数为:&quot;</span>, sys.argv[<span class="number">1</span>])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第二个传入的参数为:&quot;</span>, sys.argv[<span class="number">2</span>])</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Input Error:&quot;</span>, e)</span><br></pre></td></tr></table></figure></p>
+<p>shell脚本文件：py_test_shell.sh<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">定义变量</span></span><br><span class="line">para1=$</span><br><span class="line">1para2=$2</span><br><span class="line">python python_test.py $para1 $para2</span><br></pre></td></tr></table></figure><br>终端执行命令：sh py_test_shell.sh test01 test02<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">传入参数的总长度为： <span class="number">3</span></span><br><span class="line"><span class="built_in">type</span>: &lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line">function name: py_test.py</span><br><span class="line">第一个传入的参数为: test01</span><br><span class="line">第二个传入的参数为: test02</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-使用shell脚本向python脚本内的方法传递参数"><a href="#3-2-使用shell脚本向python脚本内的方法传递参数" class="headerlink" title="3.2 使用shell脚本向python脚本内的方法传递参数"></a>3.2 使用shell脚本向python脚本内的方法传递参数</h4><p>python脚本如下：(py_test.py)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fun1</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;无参数方法fun1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun2</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;有参数方法fun2且传入的参数为<span class="subst">&#123;x&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="3-2-1-1-无参数调用："><a href="#3-2-1-1-无参数调用：" class="headerlink" title="3.2.1 (1)无参数调用："></a>3.2.1 (1)无参数调用：</h5><p>文件名：py_test_shell.sh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#定义变量</span><br><span class="line">python -c &#x27;import python_test;print(python_test.fun1())&#x27;</span><br></pre></td></tr></table></figure><br>sh py_test_shell.sh<br>输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无参数方法fun1</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-2-2-2-有参数调用："><a href="#3-2-2-2-有参数调用：" class="headerlink" title="3.2.2 (2)有参数调用："></a>3.2.2 (2)有参数调用：</h5><p>文件名：py_test_shell.sh<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment">#定义变量</span></span><br><span class="line">para=$<span class="number">1</span></span><br><span class="line">python -c <span class="string">&quot;import python_test;print(python_test.fun2(&#x27;$&#123;para&#125;&#x27;))&quot;</span></span><br></pre></td></tr></table></figure><br>执行命令：sh py_test_shell.sh hello</p>
+<p>输出：有参数方法fun2且传入的参数为hello</p>
+<h4 id="3-2-3-3-一次调用所有方法，放入一个集合中，再调用切割方法获取相应的值"><a href="#3-2-3-3-一次调用所有方法，放入一个集合中，再调用切割方法获取相应的值" class="headerlink" title="3.2.3 (3)一次调用所有方法，放入一个集合中，再调用切割方法获取相应的值"></a>3.2.3 (3)一次调用所有方法，放入一个集合中，再调用切割方法获取相应的值</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">定义变量</span></span><br><span class="line">para=$1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将结果保存为一个变量ALL_RESULTS内</span></span><br><span class="line">ALL_RESULTS=$(python -c &quot;import python_test;print(python_test.fun1(),python_test.fun2(&#x27;$&#123;para&#125;&#x27;))&quot;)</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">分别打印第一个方法的返回与第二个方法的返回</span></span><br><span class="line">RESULTS_fun1=$(echo $ALL_RESULTS | cut -d&#x27; &#x27; -f1)</span><br><span class="line">RESULTS_fun2=$(echo $ALL_RESULTS | cut -d&#x27; &#x27; -f2)</span><br><span class="line">echo fun1方法的返回结果为：$RESULTS_fun1</span><br><span class="line">echo fun2方法的返回结果为：$RESULTS_fun2</span><br></pre></td></tr></table></figure>
+<p><strong>输出：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fun1方法的返回结果为：无参数方法fun1</span><br><span class="line">fun2方法的返回结果为：有参数方法fun2且传入的参数为helloworld</span><br></pre></td></tr></table></figure></p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mrwhite2020/p/16812198.html">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/19/post13_python%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0/" data-id="cmosdyclb0009p63f8515d19m" data-title="python脚本传入参数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post12_大模型+图结构信息融合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/15/post12_%E5%A4%A7%E6%A8%A1%E5%9E%8B+%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88/" class="article-date">
+  <time class="dt-published" datetime="2025-06-15T10:58:29.000Z" itemprop="datePublished">2025-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/15/post12_%E5%A4%A7%E6%A8%A1%E5%9E%8B+%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88/">论文阅读笔记---LLM + 图结构信息编码未知实体和关系进行TKGs补全任务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><ul>
+<li>标题：Dynamic link prediction: Using language models and graph structures for<br>temporal knowledge graph completion with emerging entities and relations</li>
+<li>时间：2025</li>
+<li>期刊: Dynamic link prediction: Using language models and graph structures for<br>temporal knowledge graph completion with emerging entities and relations(中科院一区TOP，CCF-C，JCRQ1)</li>
+<li>机构：伦敦大学学院，香港科技大学</li>
+<li>关键词： 时序知识图谱、补全任务、大模型、图结构表示学习</li>
+</ul>
+<h2 id="2-概述"><a href="#2-概述" class="headerlink" title="2.概述"></a>2.概述</h2><p>&ensp;&ensp;&ensp;&ensp;记录这篇文章的主要目的是学习文章思路和想法，该文章截止目前(2025年6月15日11:01:46)没有开源任何数据集和代码，因此对于复现工作是不利的。<br>&ensp;&ensp;&ensp;&ensp;文章主要 思路是 因为之前提出的很多时态知识图谱补全方法，是在一个固定的实体和关系集合中进行表示学习，由于时态知识图谱是不断发展的，会涌现出很多新的知识，但是传统的时态知识图谱补全方法无法对没有学习过的实体和关系进行补全任务，因此作者提出了用大模型+图结构信息对实体和关系进行表示，从而实现对未曾见过的实体和关系也可以进行表示学习，并进行补全。<br>文章中，作者使用的大模型是RoBERTa，在基准模型上使用的是LLama V2，作为一个基准结果。</p>
+<h2 id="3-实验部分"><a href="#3-实验部分" class="headerlink" title="3.实验部分"></a>3.实验部分</h2><p>&ensp;&ensp;&ensp;&ensp;在进行实体表示时，作者采用RoBERTa模型对Relation进行编码，在对实体进行编码的时候，不仅使用RoBERTa进行编码还附加了关系文本嵌入信息，以及邻居关系(1-hot relation)的嵌入信息，对三者进行融合，得到最终的实体嵌入信息。如下图所示:<br><img src="2025-06-15-post12_大模型+图结构信息融合/1.png" alt="编码方法图"><br>&ensp;&ensp;&ensp;&ensp;在数据集设置上，一共选用了三个数据集，两个通用领域数据集，分别是<strong>LKGE-Hybrid</strong>(2023)、<strong>FB-MBE</strong>(2022)，一个特定领域的数据集<strong>TKGQA</strong>(2023)；值得主义的是这些数据集都和之前接触到的TKG数据集不一样，大多数TKG数据集都是通过在static KG上添加时间属性字段，形成类似(head entity, relation, tail entity, timestamp)这样的四元组，而该文章所使用的四元组，是通过不同的snapshot来反应时间变化的过程。</p>
+<p>数据集的统计信息如下：<br><img src="/img/posts/12/2.png" alt="数据集统计信息"><br><img src="2025-06-15-post12_大模型+图结构信息融合/3.png" alt="数据集统计信息"></p>
+<h3 id="3-1-Results-amp-discussions"><a href="#3-1-Results-amp-discussions" class="headerlink" title="3.1 Results &amp; discussions"></a>3.1 Results &amp; discussions</h3><p>实验在三个数据集上进行了实验，比较了LM 和 LM + GS的效果差别，从而得出稀疏链接的图结构信息回引入噪声从而影响实验结果，同时还对比了LM + GS 在 FB-MBE数据集上和original Results的结果对比，从而得出LM + GS的效果更好，同时针对不同图结构信息的引入对结果的影响差异，还引入了entity connect分析，作者认为稀疏的entity connect会引入噪声信息，较为密集的connect对于结果是有益的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;作者通过减少无关链接，来分析是否对Relation的predict有帮助，最后发现减少无关的connect对于Relation的结果有不少提升，无关的connect会引入噪声。<br>实验结果如下：<br><img src="2025-06-15-post12_大模型+图结构信息融合/4.png" alt="实验结果"></p>
+<h2 id="4-个人总结"><a href="#4-个人总结" class="headerlink" title="4.个人总结"></a>4.个人总结</h2><p>&ensp;&ensp;&ensp;&ensp;这篇文章没有开源代码和数据，不利于复现实验结果。但是整体思路还是挺有意思的一篇文章，对于unseen entity and relation的补全，并且使用的几个数据集也是比较新的数据集，但是个人感觉就那么几个snapshot,肯定是不能学习到演化规律的，并且在entity connect的解释上也比较牵强，真的就一定是entity connect造成的吗，又不是只有这一个变量，显然在这点上，其实就是一个故事会。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/15/post12_%E5%A4%A7%E6%A8%A1%E5%9E%8B+%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88/" data-id="cmosdycla0007p63ffkf23zzl" data-title="论文阅读笔记---LLM + 图结构信息编码未知实体和关系进行TKGs补全任务" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TKGs/" rel="tag">TKGs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" rel="tag">图结构信息</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" rel="tag">补全推理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="tag">论文阅读笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Attention/" rel="tag">Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bert/" rel="tag">Bert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Claude-code/" rel="tag">Claude code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CyGNet/" rel="tag">CyGNet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DQN%E7%AE%97%E6%B3%95/" rel="tag">DQN算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hit-1-3-5-10/" rel="tag">Hit@1\3\5\10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVCache/" rel="tag">KVCache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLMs/" rel="tag">LLMs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MRR/" rel="tag">MRR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NER/" rel="tag">NER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPO/" rel="tag">PPO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Poetry/" rel="tag">Poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pretrain/" rel="tag">Pretrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm-Vscode/" rel="tag">PyCharm&amp;Vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Q-learning/" rel="tag">Q-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qwen2/" rel="tag">Qwen2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RL/" rel="tag">RL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RLHF/" rel="tag">RLHF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Self-Attention/" rel="tag">Self-Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TKGs/" rel="tag">TKGs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contrastive-learning/" rel="tag">contrastive learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glue-code/" rel="tag">glue code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poetry/" rel="tag">poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyenv/" rel="tag">pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" rel="tag">python环境管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomer/" rel="tag">transfomer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomers/" rel="tag">transfomers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vibe-coding/" rel="tag">vibe coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" rel="tag">图结构信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" rel="tag">图谱推理任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%96%E6%8E%A8/" rel="tag">外推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">实习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" rel="tag">心路历程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" rel="tag">技术报告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">时态知识图谱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" rel="tag">时态知识图谱补全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" rel="tag">注意力机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" rel="tag">清华源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" rel="tag">温度参数τ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" rel="tag">编程日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" rel="tag">胶水代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" rel="tag">补全推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="tag">论文阅读笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Agent/" style="font-size: 14px;">Agent</a> <a href="/tags/Attention/" style="font-size: 12px;">Attention</a> <a href="/tags/Bert/" style="font-size: 12px;">Bert</a> <a href="/tags/Claude-code/" style="font-size: 10px;">Claude code</a> <a href="/tags/CyGNet/" style="font-size: 10px;">CyGNet</a> <a href="/tags/DQN%E7%AE%97%E6%B3%95/" style="font-size: 10px;">DQN算法</a> <a href="/tags/Hit-1-3-5-10/" style="font-size: 10px;">Hit@1\3\5\10</a> <a href="/tags/KVCache/" style="font-size: 10px;">KVCache</a> <a href="/tags/LLM/" style="font-size: 14px;">LLM</a> <a href="/tags/LLMs/" style="font-size: 10px;">LLMs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MRR/" style="font-size: 10px;">MRR</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/NER/" style="font-size: 10px;">NER</a> <a href="/tags/PPO/" style="font-size: 10px;">PPO</a> <a href="/tags/Poetry/" style="font-size: 10px;">Poetry</a> <a href="/tags/Pretrain/" style="font-size: 10px;">Pretrain</a> <a href="/tags/PyCharm-Vscode/" style="font-size: 10px;">PyCharm&Vscode</a> <a href="/tags/Q-learning/" style="font-size: 10px;">Q-learning</a> <a href="/tags/Qwen2/" style="font-size: 10px;">Qwen2</a> <a href="/tags/RL/" style="font-size: 10px;">RL</a> <a href="/tags/RLHF/" style="font-size: 10px;">RLHF</a> <a href="/tags/Self-Attention/" style="font-size: 10px;">Self-Attention</a> <a href="/tags/TKGs/" style="font-size: 12px;">TKGs</a> <a href="/tags/Transformer/" style="font-size: 14px;">Transformer</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/contrastive-learning/" style="font-size: 10px;">contrastive learning</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/glue-code/" style="font-size: 10px;">glue code</a> <a href="/tags/pip/" style="font-size: 14px;">pip</a> <a href="/tags/poetry/" style="font-size: 10px;">poetry</a> <a href="/tags/private/" style="font-size: 20px;">private</a> <a href="/tags/pyenv/" style="font-size: 10px;">pyenv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" style="font-size: 10px;">python环境管理</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/transfomer/" style="font-size: 10px;">transfomer</a> <a href="/tags/transfomers/" style="font-size: 10px;">transfomers</a> <a href="/tags/vibe-coding/" style="font-size: 12px;">vibe coding</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" style="font-size: 14px;">传统规则学习方法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">图结构信息</a> <a href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">图谱推理任务</a> <a href="/tags/%E5%A4%96%E6%8E%A8/" style="font-size: 10px;">外推</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 18px;">大模型</a> <a href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" style="font-size: 10px;">实习总结</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">对比学习</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">强化学习</a> <a href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" style="font-size: 10px;">心路历程</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" style="font-size: 10px;">技术报告</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 10px;">文献阅读</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 10px;">时态知识图谱</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" style="font-size: 12px;">时态知识图谱推理</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" style="font-size: 10px;">时态知识图谱补全</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" style="font-size: 12px;">注意力机制</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">深度学习</a> <a href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" style="font-size: 12px;">清华源</a> <a href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" style="font-size: 10px;">温度参数τ</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" style="font-size: 14px;">编程日记</a> <a href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">胶水代码</a> <a href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" style="font-size: 12px;">补全推理</a> <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="font-size: 12px;">论文阅读笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/">从反向传播角度理解 PPO 损失函数</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/">理解学习率调度（余弦退火 + warmup）的原理和作用</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/">Agent 一线实战：落地经验与 Know-How 分享</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/">CLAUDE.md 文件推荐约束提示词</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
         }
-      }
-    }
-  }
-
-  const runMetingJS = () => {
-    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-  }
-
-  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
-  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
-})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: false,
-    scrollRestoration: false
-  })
-
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
-
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
-
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
-
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
-
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
-
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
-
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      false
-        ? pjax.loadUrl('/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
