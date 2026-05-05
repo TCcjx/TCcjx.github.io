@@ -1,871 +1,371 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>思想是一个锐化的过程 - 硬性的标准其实限制不了无限可能的我们.</title><meta name="author" content="TCcjx"><meta name="copyright" content="TCcjx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生活给我出难题，我说ok小问题">
+<meta property="og:type" content="website">
+<meta property="og:title" content="思想是一个锐化的过程">
+<meta property="og:url" content="https://tccjx.github.io/index.html">
+<meta property="og:site_name" content="思想是一个锐化的过程">
+<meta property="og:description" content="生活给我出难题，我说ok小问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tccjx.github.io/img/avatar.jpg">
+<meta property="article:author" content="TCcjx">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+<meta name="twitter:image" content="https://tccjx.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "思想是一个锐化的过程",
+  "alternateName": [
+    "硬性的标准其实限制不了无限可能的我们.",
+    "tccjx.github.io"
+  ],
+  "url": "https://tccjx.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://tccjx.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-post31_拆解ppo损失函数更新机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time class="dt-published" datetime="2026-05-04T20:16:10.000Z" itemprop="datePublished">2026-05-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/">从反向传播角度理解 PPO 损失函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="从反向传播角度理解-PPO-损失函数"><a href="#从反向传播角度理解-PPO-损失函数" class="headerlink" title="从反向传播角度理解 PPO 损失函数"></a>从反向传播角度理解 PPO 损失函数</h2><p>PPO (Proximal Policy Optimization) 是当前强化学习领域应用最广的算法之一，尤其是在大语言模型的 RLHF 训练中。但很多人看 PPO 论文时，会被那个复杂的损失函数绕晕——为什么有三个部分？为什么要 clip？熵项又是干嘛的？</p>
-<p>如果我们把 PPO 放在反向传播的框架下看，这些设计的意图就会清晰很多。本质上，PPO 的损失函数是在反向传播过程中构建了一个受约束的多目标优化系统，三股梯度流同时作用在 Actor 和 Critic 两个网络上。</p>
-<h2 id="为什么需要-PPO？"><a href="#为什么需要-PPO？" class="headerlink" title="为什么需要 PPO？"></a>为什么需要 PPO？</h2><p>在 PPO 出现之前，策略梯度方法面临一个核心问题：更新步长很难控制。步子太大，策略可能崩掉；步子太小，训练效率太低。TRPO 算法用复杂的 KL 约束来解决这个问题，但计算成本高。</p>
-<p>PPO 的思路更简单：用一个巧妙的损失函数，在反向传播时自动限制更新幅度。</p>
-<h2 id="PPO-损失函数拆解"><a href="#PPO-损失函数拆解" class="headerlink" title="PPO 损失函数拆解"></a>PPO 损失函数拆解</h2><h3 id="核心公式"><a href="#核心公式" class="headerlink" title="核心公式"></a>核心公式</h3><p>先看 PPO 的核心部分——Clipped Surrogate Objective：</p>
-<script type="math/tex; mode=display">
-L^{\mathrm{CLIP}}(\theta) = \mathbb{E}_t[\min(r_t(\theta)\hat{A}_t,\ \mathrm{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t)]</script><p>其中：</p>
-<script type="math/tex; mode=display">
-r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t \mid s_t)}</script><p>$r_t(\theta)$ 是概率比率，表示新策略和旧策略在同一状态下采取同一动作的概率比。如果这个比率是 2，说明新策略对当前动作的信心是旧策略的两倍。</p>
-<p>$\hat{A}_t$ 是优势函数，表示当前动作比平均动作好多少。$\hat{A}_t &gt; 0$ 说明这个动作值得加强，$\hat{A}_t &lt; 0$ 说明应该减弱。</p>
-<h4 id="Clip-是如何工作的？"><a href="#Clip-是如何工作的？" class="headerlink" title="Clip 是如何工作的？"></a>Clip 是如何工作的？</h4><p>假设 $\epsilon = 0.2$，那么 clip 范围是 $[0.8, 1.2]$。</p>
-<p>当 $\hat{A}_t &gt; 0$（动作值得加强）：</p>
-<ul>
-<li>如果 $r_t = 1.1$，在 clip 范围内，正常更新</li>
-<li>如果 $r_t = 1.5$，超过 1.2，clip 后变成 1.2，限制了更新幅度</li>
-</ul>
-<p>当 $\hat{A}_t &lt; 0$（动作需要减弱）：</p>
-<ul>
-<li>如果 $r_t = 0.9$，在 clip 范围内，正常更新</li>
-<li>如果 $r_t = 0.5$，低于 0.8，clip 后变成 0.8，同样限制了幅度</li>
-</ul>
-<p>这个设计的巧妙之处在于：当更新方向正确时允许更新，但当更新”过头”时自动刹车。</p>
-<h3 id="完整损失函数"><a href="#完整损失函数" class="headerlink" title="完整损失函数"></a>完整损失函数</h3><script type="math/tex; mode=display">
-L(\theta, \phi) = -L^{\mathrm{CLIP}}(\theta) + c_1 L^{\mathrm{VF}}(\phi) - c_2 H(\pi_\theta)</script><p>三项各自负责：</p>
-<ol>
-<li><strong>$-L^{\mathrm{CLIP}}(\theta)$</strong>：策略损失，负号是因为我们要最大化它</li>
-<li><strong>$c_1 L^{\mathrm{VF}}(\phi)$</strong>：价值损失，让 Critic 准确估计状态价值</li>
-<li><strong>$-c<em>2 H(\pi</em>{\theta})$</strong>：熵正则，负号表示我们想最大化熵</li>
-</ol>
-<h2 id="反向传播视角下的梯度流"><a href="#反向传播视角下的梯度流" class="headerlink" title="反向传播视角下的梯度流"></a>反向传播视角下的梯度流</h2><h3 id="Policy-梯度"><a href="#Policy-梯度" class="headerlink" title="Policy 梯度"></a>Policy 梯度</h3><p>Actor 的梯度来自两部分：</p>
-<script type="math/tex; mode=display">
-\nabla_\theta L = \nabla_\theta L^{\mathrm{CLIP}} - c_2 \nabla_\theta H(\pi_\theta)</script><p>第一股梯度来自 clip objective，告诉网络哪些动作需要加强或减弱。第二股来自熵项，推动策略保持一定的随机性。</p>
-<p>为什么要保持随机性？如果策略过早收敛成确定性策略（某个动作概率接近 1），就失去了探索能力，可能陷入局部最优。熵正则像是一个”探索税”，防止策略变得太自信。</p>
-<h3 id="Value-梯度"><a href="#Value-梯度" class="headerlink" title="Value 梯度"></a>Value 梯度</h3><p>Critic 的梯度比较直接：</p>
-<script type="math/tex; mode=display">
-\nabla_\phi L = c_1 \nabla_\phi L^{\mathrm{VF}}</script><p>其中：</p>
-<script type="math/tex; mode=display">\mathbb{E}_t[(V_{\phi}(s_t) - R_t)^2]</script><script type="math/tex; mode=display">
-\nabla_\phi L^{\mathrm{VF}} = 2 (V_\phi(s_t) - R_t)\nabla_\phi V_\phi(s_t)</script><p>这就是一个标准的回归损失，让价值函数的预测逼近实际回报。Critic 准确了，Actor 才能依赖优势函数做出正确的更新决策。</p>
-<h2 id="训练过程中的动态变化"><a href="#训练过程中的动态变化" class="headerlink" title="训练过程中的动态变化"></a>训练过程中的动态变化</h2><p>PPO 的训练不是静态的，三个损失项的权重关系会随时间变化：</p>
-<p><strong>初期阶段</strong>：策略接近随机，Value Loss 主导。Critic 需要快速学习状态价值，为后续的策略更新提供可靠的信号。</p>
-<p><strong>中期阶段</strong>：策略开始优化，clip 机制频繁触发。这是 PPO 发挥作用的关键时期，通过限制更新幅度避免策略崩掉。</p>
-<p><strong>后期阶段</strong>：策略与熵达到平衡。此时策略已经相对稳定，熵正则确保仍有一定的探索空间，避免过拟合到特定策略。</p>
-<h2 id="PPO-稳定性的四个来源"><a href="#PPO-稳定性的四个来源" class="headerlink" title="PPO 稳定性的四个来源"></a>PPO 稳定性的四个来源</h2><ol>
-<li><strong>Clipping 限制更新幅度</strong>：当策略变化过大时自动截断梯度</li>
-<li><strong>Actor-Critic 解耦</strong>：策略优化和价值估计分别进行，互相配合</li>
-<li><strong>熵正则维持探索</strong>：防止策略过早收敛</li>
-<li><strong>概率比率提供动态约束</strong>：$r_t(\theta)$ 本身就是一个变化幅度的度量</li>
-</ol>
-<h2 id="实际应用中的调参经验"><a href="#实际应用中的调参经验" class="headerlink" title="实际应用中的调参经验"></a>实际应用中的调参经验</h2><p>在 RLHF 训练中，PPO 的超参数选择很有讲究：</p>
-<ul>
-<li><strong>$\epsilon$（clip 范围）</strong>：通常取 0.1 或 0.2。太小训练慢，太大容易不稳定</li>
-<li><strong>$c_1$（价值系数）</strong>：一般在 0.5 左右。让 Critic 跟上策略的学习速度</li>
-<li><strong>$c_2$（熵系数）</strong>：0.01 左右。太小策略坍缩，太大探索效率低</li>
-</ul>
-<p>这些值不是固定的，需要根据具体任务和训练阶段调整。有些实现还会让熵系数随训练进程衰减——前期探索为主，后期利用为主。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从反向传播的角度看，PPO 损失函数的设计哲学很清晰：</p>
-<p>不是靠硬性约束或复杂算法，而是通过精心设计的损失函数，在梯度层面实现自适应控制。当更新”合理”时，梯度正常流动；当更新”过头”时，clip 机制自动限制；当策略变得太确定时，熵项推一把。</p>
-<p>这种设计让 PPO 在保持训练稳定的同时，又能获得不错的样本效率。这也是它成为 RLHF 标准算法的原因——简单、稳定、好用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/" data-id="cmosdyclq001vp63f8rfn4kat" data-title="从反向传播角度理解 PPO 损失函数" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PPO/" rel="tag">PPO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RL/" rel="tag">RL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RLHF/" rel="tag">RLHF</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post30_从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time class="dt-published" datetime="2026-05-02T20:16:10.000Z" itemprop="datePublished">2026-05-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="从底层架构到工程实战：深度拆解生产级-AI-Agent-的记忆机制"><a href="#从底层架构到工程实战：深度拆解生产级-AI-Agent-的记忆机制" class="headerlink" title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制"></a>从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</h1><p>在 AI Agent 领域，有一句非常流行的话：“大模型的上下文窗口（Context Window）就是它的内存，而外挂的向量数据库就是它的硬盘。” </p>
-<p>但如果你真的按照这个思路去构建生产环境下的 Agent，你会发现它不仅极其费钱，而且往往表现得像个“健忘症患者”。本文将从 <strong>DeepSeek-V3 的 MLA（多头潜在注意力机制）</strong>底层逻辑出发，结合<strong>生产级 Agent 记忆分层设计</strong>，深度拆解如何构建一个真正聪明、高效的 AI 记忆系统。</p>
-<h2 id="一、-为什么传统的“向量数据库-RAG”还不够？"><a href="#一、-为什么传统的“向量数据库-RAG”还不够？" class="headerlink" title="一、 为什么传统的“向量数据库 + RAG”还不够？"></a>一、 为什么传统的“向量数据库 + RAG”还不够？</h2><p>很多开发者在面试或设计系统时，第一反应是：把对话存进向量数据库，用户提问时用 RAG 捞出来塞进 Prompt。这在真实的工程实践中存在两个致命陷阱：</p>
-<ol>
-<li><strong>模糊匹配 vs. 精确调用的冲突</strong>：向量检索是模糊的。比如系统只需要知道“用户预算”，检索却可能拉出一大堆无关的闲聊，不仅增加了 Token 消耗，更引入了干扰噪声。</li>
-<li><strong>时间盲区与状态失效</strong>：用户昨天说“预算 5 万”，今天改口“预算 8 万”。向量检索往往会同时召回这两条信息，导致模型在两个矛盾的事实面前陷入逻辑混乱。</li>
-</ol>
-<h2 id="二、-极致的瘦身：从-MLA-看底层的-KV-Cache-压缩"><a href="#二、-极致的瘦身：从-MLA-看底层的-KV-Cache-压缩" class="headerlink" title="二、 极致的瘦身：从 MLA 看底层的 KV Cache 压缩"></a>二、 极致的瘦身：从 MLA 看底层的 KV Cache 压缩</h2><p>在解决“存什么”之前，我们先看大模型底层是如何“存”的。DeepSeek 提出的 <strong>MLA（Multi-Head Latent Attention）</strong> 机制为长文本记忆提供了教科书级的示范。<br>传统的注意力机制（MHA）中，KV Cache 会随着对话长度线性飙升，迅速挤爆显存。MLA 的核心思路是：<strong>“信息脱水”</strong>。</p>
-<ul>
-<li><strong>低秩联合压缩</strong>：它不再存储成百上千个头的 $K$ 和 $V$，而是将其压缩成一个极小的“潜在向量”（Latent Vector）。比如在 DeepSeek-V3 中，它将几万维的信息压缩到 512 维，压缩比高达数十倍。</li>
-<li><strong>内容与位置解耦</strong>：它将 RoPE（旋转位置编码）独立出来，只对内容进行压缩。</li>
-<li><strong>工程意义</strong>：这种“带压存取”的能力，让模型在处理超长上下文时，显存带宽压力大幅降低。这告诉我们一个道理：<strong>记忆系统的核心价值不在于存了多少数据，而在于通道是否顺畅。</strong></li>
-</ul>
-<h2 id="三、-生产级-Agent-的四层记忆架构"><a href="#三、-生产级-Agent-的四层记忆架构" class="headerlink" title="三、 生产级 Agent 的四层记忆架构"></a>三、 生产级 Agent 的四层记忆架构</h2><p>参考 OpenAI 的工程实践，一个稳定的记忆系统不应是“一锅烩”，而应是极其克制的分层设计：</p>
-<h3 id="1-会话原数据（Session-Metadata）"><a href="#1-会话原数据（Session-Metadata）" class="headerlink" title="1. 会话原数据（Session Metadata）"></a>1. 会话原数据（Session Metadata）</h3><p>存储当前的环境信息，如时区、设备、语言偏好。这些信息用完即弃，不进入长期记忆，就像出门前看一眼天气预报，决定带伞后就不必背诵它。</p>
-<h3 id="2-用户结构化档案卡（User-Profile）"><a href="#2-用户结构化档案卡（User-Profile）" class="headerlink" title="2. 用户结构化档案卡（User Profile）"></a>2. 用户结构化档案卡（User Profile）</h3><p>这是解决“预算冲突”的关键。对于明确的事实（如职业、喜好、当前状态），使用 <strong>JSON 格式的结构化存储</strong>。</p>
-<ul>
-<li><strong>逻辑</strong>：状态复写。新数据进来，旧数据覆盖，保证 <strong>Single Source of Truth（单一事实来源）</strong>。</li>
-</ul>
-<h3 id="3-近期对话摘要（Summary）"><a href="#3-近期对话摘要（Summary）" class="headerlink" title="3. 近期对话摘要（Summary）"></a>3. 近期对话摘要（Summary）</h3><p>Agent 不会傻乎乎地存每一句废话。它会在后台异步地将对话主题压缩成一个轻量级的清单。这就好比美剧开头的“前情提要”，让 Agent 能够迅速把话接上，而不必翻看原始记录。</p>
-<h3 id="4-滑动窗口（Sliding-Window）"><a href="#4-滑动窗口（Sliding-Window）" class="headerlink" title="4. 滑动窗口（Sliding Window）"></a>4. 滑动窗口（Sliding Window）</h3><p>这是模型眼前的原始 Token。一旦聊得太多超过上限，最老的信息会被直接丢弃。</p>
-<h2 id="四、-进阶：如何让-Agent-越用越聪明？"><a href="#四、-进阶：如何让-Agent-越用越聪明？" class="headerlink" title="四、 进阶：如何让 Agent 越用越聪明？"></a>四、 进阶：如何让 Agent 越用越聪明？</h2><p>除了“存”和“读”，真正的智能体还需要具备<strong>主动思考（System 2）</strong>的能力。</p>
-<h3 id="1-建立慢思考回路"><a href="#1-建立慢思考回路" class="headerlink" title="1. 建立慢思考回路"></a>1. 建立慢思考回路</h3><p>AI 本质上是一个直觉系统。在处理复杂任务时，我们需要给它装一个“外置机械臂”：当遇到复杂问题，AI 会停下来触发一个决策逻辑——先去资料库翻看用户底细，拿到证据后再决定回复。</p>
-<h3 id="2-双实态时间戳（Bi-temporal-Logic）"><a href="#2-双实态时间戳（Bi-temporal-Logic）" class="headerlink" title="2. 双实态时间戳（Bi-temporal Logic）"></a>2. 双实态时间戳（Bi-temporal Logic）</h3><p>为了处理历史变迁（如“张三去年在 A 公司，今年跳槽到了 B 公司”），每条记忆都要打上两个时间戳：</p>
-<ul>
-<li><strong>现实生效时间</strong>：该事实在物理世界发生的时间。</li>
-<li><strong>系统录入时间</strong>：该信息存入数据库的时间。<br>通过时间切片约束，防止 AI 产生时序幻觉。</li>
-</ul>
-<h3 id="3-程序性记忆（Procedural-Memory）"><a href="#3-程序性记忆（Procedural-Memory）" class="headerlink" title="3. 程序性记忆（Procedural Memory）"></a>3. 程序性记忆（Procedural Memory）</h3><p>这决定了 Agent 是个“数呆子”还是“老练工”。</p>
-<ul>
-<li>如果 Agent 尝试了三次才修好一个 Bug，系统应过滤掉失败的尝试，将成功的操作路径压缩成一个可执行的 <strong>Skill（技能）</strong>。下次遇到类似问题，直接调用“一键执行”指令，这就是 Agent 的进化。</li>
-</ul>
-<h2 id="五、-总结"><a href="#五、-总结" class="headerlink" title="五、 总结"></a>五、 总结</h2><p>构建一个生产级的 Agent 记忆系统，绝对不是买个向量数据库再拼凑几句 Prompt 那么简单。它是一套精密的系统工程：</p>
-<ul>
-<li>在<strong>底层</strong>，我们要像 MLA 一样追求存储与计算的极致压缩；</li>
-<li>在<strong>应用层</strong>，我们要通过分层治理、状态复写和时间约束，确保逻辑的绝对严密。<br>只有让历史数据顺滑地转化为当前的决策，AI 才能真正从“聊天机器人”进化为“独立工作的智能体”。</li>
-</ul>
-<hr>
-<p><em>欢迎在评论区分享你对 Agent 记忆架构的看法，我们一起探讨 AI 落地的更多可能！</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/" data-id="cmosdyclp001rp63f43yyg0xg" data-title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/" rel="tag">Memory</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post29_warmup和学习率余弦退火的黄金组合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/" class="article-date">
-  <time class="dt-published" datetime="2026-04-23T10:57:18.000Z" itemprop="datePublished">2026-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/">理解学习率调度（余弦退火 + warmup）的原理和作用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-学习率设置对模型训练的影响"><a href="#1-学习率设置对模型训练的影响" class="headerlink" title="1.学习率设置对模型训练的影响"></a>1.学习率设置对模型训练的影响</h2><ul>
-<li>学习率设置过大，会导致训练loss振荡，模型训练不稳定</li>
-<li>学习率设置过小，会导致模型训练缓慢</li>
-<li>同时，需要注意的是，在模型初期和后期对于学习率的设置是不一样的</li>
-</ul>
-<h2 id="2-Warmup阶段"><a href="#2-Warmup阶段" class="headerlink" title="2.Warmup阶段"></a>2.Warmup阶段</h2><p>在模型刚刚训练的时候，模型的参数都是随机初始化的，如果使用较大的学习率设置，很容易导致模型跑飞。<br>Warmup的思想就是一开始从一个min_learning_rate进行线性增长，增长到目标值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> step &lt; warmup_steps:</span><br><span class="line">    lr = max_lr * (step / warmup_steps)</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-余弦退火阶段"><a href="#3-余弦退火阶段" class="headerlink" title="3.余弦退火阶段"></a>3.余弦退火阶段</h2><p>Warmup 之后，学习率按余弦函数逐渐衰减：</p>
-<p>Warmup 之后，学习率按余弦函数逐渐衰减：</p>
-<script type="math/tex; mode=display">
-\eta_t = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})\left(1 + \cos\left(\frac{t - t_w}{T - t_w} \pi\right)\right)</script><p>其中：</p>
-<ul>
-<li>$\eta_{\max}$：最大学习率</li>
-<li>$\eta_{\min}$：最小学习率</li>
-<li>$t_w$：warmup 步数</li>
-<li>$T$：总训练步数</li>
-</ul>
-<p><strong>使用余弦退火，在训练初期学习率缓慢下降，训练后期快速下降至最小学习率，帮助模型后期精细化收敛.</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_lr</span>(<span class="params">current_step, warmup_steps, max_steps, max_lr, min_lr</span>):</span><br><span class="line">    <span class="keyword">if</span> current_step &lt; warmup_steps: <span class="comment"># Warmup阶段</span></span><br><span class="line">        <span class="keyword">return</span> max_lr * current_step / warmup_steps</span><br><span class="line">    <span class="keyword">if</span> current_step &gt; max_steps: <span class="comment"># 后期保持最小学习率</span></span><br><span class="line">        <span class="keyword">return</span> min_lr</span><br><span class="line">    decay_ratio = (current_step - warmup_steps) / (max_steps - warmup_steps)</span><br><span class="line">    coeff = <span class="number">0.5</span> * (<span class="number">1.0</span> + math.cos(math.pi * decay_ratio))</span><br><span class="line">    <span class="keyword">return</span> min_lr + coeff * (max_lr - min_lr)</span><br></pre></td></tr></table></figure></p>
-<p><img src="/img/posts/29/1.png" alt="学习率变化曲线图"><br>```</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/" data-id="cmosdyclo001lp63f5g5nberf" data-title="理解学习率调度（余弦退火 + warmup）的原理和作用" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pretrain/" rel="tag">Pretrain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post28_Agent 一线实战：落地经验与 Know-How" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/" class="article-date">
-  <time class="dt-published" datetime="2026-04-19T10:53:29.000Z" itemprop="datePublished">2026-04-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/">Agent 一线实战：落地经验与 Know-How 分享</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Agent-框架与传统开发"><a href="#1-Agent-框架与传统开发" class="headerlink" title="1.Agent 框架与传统开发"></a>1.Agent 框架与传统开发</h2><p><strong>个人认为,发展到现在,code已经不那么重要了,传统开发逐渐被取代,最后应该是转化为更高层次的全栈或者系统优化了。低级的开发程序员基本上已经被替代了,如果有比较好的商业Idea,即使没有编程经验的人,也可以通过Agent实现可以变现的商业化产品。</strong><br><img src="/img/posts/28/1.png" alt=""></p>
-<h2 id="2-Context是根本"><a href="#2-Context是根本" class="headerlink" title="2.Context是根本"></a>2.Context是根本</h2><p><img src="/img/posts/28/2.png" alt=""></p>
-<p><img src="/img/posts/28/3.png" alt=""></p>
-<h2 id="3-Agent-的发展Trick"><a href="#3-Agent-的发展Trick" class="headerlink" title="3.Agent 的发展Trick"></a>3.Agent 的发展Trick</h2><p><img src="/img/posts/28/4.png" alt=""></p>
-<h2 id="4-Tools的开发"><a href="#4-Tools的开发" class="headerlink" title="4.Tools的开发"></a>4.Tools的开发</h2><p><img src="/img/posts/28/5.png" alt=""></p>
-<h2 id="5-大模型Memory"><a href="#5-大模型Memory" class="headerlink" title="5.大模型Memory"></a>5.大模型Memory</h2><p><strong>Memory是我认为比较有前景的方向,但是还是存在很多落地的问题,不同的解决方案,评估数据集都天差地别</strong><br><img src="/img/posts/28/6.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/" data-id="cmosdyclp001op63fceed3k7h" data-title="Agent 一线实战：落地经验与 Know-How 分享" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vibe-coding/" rel="tag">vibe coding</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post27_CLAUDE.md 文件推荐约束提示词 ​ - 副本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/" class="article-date">
-  <time class="dt-published" datetime="2026-03-10T22:23:59.000Z" itemprop="datePublished">2026-03-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/">CLAUDE.md 文件推荐约束提示词</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="CLAUDE-md-文件推荐约束提示词"><a href="#CLAUDE-md-文件推荐约束提示词" class="headerlink" title="CLAUDE.md 文件推荐约束提示词"></a>CLAUDE.md 文件推荐约束提示词</h2><p><strong>1.有时候还是要提醒cc，让她多看看 CLAUDE.md</strong><br><strong>2.其中的文件的行数可以稍微改大一点 200-400 行区间</strong><br><strong>3.可以把以下文字复制到 CLAUDE.md 文件中，作为约束提示词</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section"># 任何项目都务必遵守的规则（极其重要！！！）</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Communication</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 永远使用简体中文进行思考和对话</span><br><span class="line"></span><br><span class="line"><span class="section">## Documentation</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 编写 .md 文档时，也要用中文</span><br><span class="line"><span class="bullet">-</span> 正式文档写到项目的 docs/ 目录下</span><br><span class="line"><span class="bullet">-</span> 用于讨论和评审的计划、方案等文档，写到项目的 discuss/ 目录下</span><br><span class="line"></span><br><span class="line"><span class="section">## Code Architecture</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 编写代码的硬性指标，包括以下原则：</span><br><span class="line"> （1）对于 Python、JavaScript、TypeScript 等动态语言，尽可能确保每个代码文件不要超过 300 行</span><br><span class="line"> （2）对于 Java、Go、Rust 等静态语言，尽可能确保每个代码文件不要超过 400 行</span><br><span class="line"> （3）每层文件夹中的文件，尽可能不超过 8 个。如有超过，需要规划为多层子文件夹</span><br><span class="line"><span class="bullet">-</span> 除了硬性指标以外，还需要时刻关注优雅的架构设计，避免出现以下可能侵蚀我们代码质量的「坏味道」：</span><br><span class="line"> （1）僵化 (Rigidity): 系统难以变更，任何微小的改动都会引发一连串的连锁修改。</span><br><span class="line"> （2）冗余 (Redundancy): 同样的代码逻辑在多处重复出现，导致维护困难且容易产生不一致。</span><br><span class="line"> （3）循环依赖 (Circular Dependency): 两个或多个模块互相纠缠，形成无法解耦的“死结”，导致难以测试与复用。</span><br><span class="line"> （4）脆弱性 (Fragility): 对代码一处的修改，导致了系统中其他看似无关部分功能的意外损坏。</span><br><span class="line"> （5）晦涩性 (Obscurity): 代码意图不明，结构混乱，导致阅读者难以理解其功能和设计。</span><br><span class="line"> （6）数据泥团 (Data Clump): 多个数据项总是一起出现在不同方法的参数中，暗示着它们应该被组合成一个独立的对象。</span><br><span class="line"> （7）不必要的复杂性 (Needless Complexity): 用“杀牛刀”去解决“杀鸡”的问题，过度设计使系统变得臃肿且难以理解。</span><br><span class="line"><span class="bullet">-</span> 【非常重要！！】无论是你自己编写代码，还是阅读或审核他人代码时，都要严格遵守上述硬性指标，以及时刻关注优雅的架构设计。</span><br><span class="line"><span class="bullet">-</span> 【非常重要！！】无论何时，一旦你识别出那些可能侵蚀我们代码质量的「坏味道」，都应当立即询问用户是否需要优化，并给出合理的优化建议。</span><br><span class="line"></span><br><span class="line"><span class="section">## Run &amp; Debug</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 必须首先在项目的 scripts/ 目录下，维护好 Run &amp; Debug 需要用到的全部 .sh 脚本</span><br><span class="line"><span class="bullet">-</span> 对于所有 Run &amp; Debug 操作，一律使用 scripts/ 目录下的 .sh 脚本进行启停。永远不要直接使用 npm、pnpm、uv、python 等等命令</span><br><span class="line"><span class="bullet">-</span> 如果 .sh 脚本执行失败，无论是 .sh 本身的问题还是其他代码问题，需要先紧急修复。然后仍然坚持用 .sh 脚本进行启停</span><br><span class="line"><span class="bullet">-</span> Run &amp; Debug 之前，为所有项目配置 Logger with File Output，并统一输出到 logs/ 目录下</span><br><span class="line"></span><br><span class="line"><span class="section">## Python</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 数据结构尽可能全部定义成强类型。如果个别场景不得不使用未经结构化定义的 dict，需要先停下来征求用户的同意</span><br><span class="line"><span class="bullet">-</span> Python 虚拟环境永远使用 .venv 作为目录名</span><br><span class="line"><span class="bullet">-</span> 必须使用 uv，而不是 pip、poetry、conda、python3、python。包括依赖管理、构建、调试启动等所有环节</span><br><span class="line"><span class="bullet">-</span> 项目的根目录必须保持简洁，只保留必须存在的文件</span><br><span class="line"><span class="bullet">-</span> main.py 内容也要简洁。只保留必须存在的代码</span><br><span class="line"></span><br><span class="line"><span class="section">## React / Next.js / TypeScript / JavaScript</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Next.js 强制使用 v15.4 版本，不要再用 v15.3 或 v14 或以下版本</span><br><span class="line"><span class="bullet">-</span> React 强制使用 v19 版本，不要再用 v18 或以下版本</span><br><span class="line"><span class="bullet">-</span> Tailwind CSS 强制使用 Tailwind CSS v4。不要再用 v3 或以下版本</span><br><span class="line"><span class="bullet">-</span> 严禁使用 commonjs 模块系统</span><br><span class="line"><span class="bullet">-</span> 尽可能使用 TypeScript。只有在构建工具完全不支持 TypeScript 的时候，才使用 JavaScript（如微信小程序的主工程）</span><br><span class="line"><span class="bullet">-</span> 数据结构尽可能全部定义成强类型。如果个别场景不得不使用 any 或未经结构化定义的 json，需要先停下来征求用户的同意，这样才能避免数据类型转换问题</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/" data-id="cmosdyclo001hp63fgzpi09qw" data-title="CLAUDE.md 文件推荐约束提示词" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Claude-code/" rel="tag">Claude code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vibe-coding/" rel="tag">vibe coding</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post26_Qwen2 Technical report" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/12/03/post26_Qwen2%20Technical%20report/" class="article-date">
-  <time class="dt-published" datetime="2025-12-03T22:37:04.000Z" itemprop="datePublished">2025-12-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/12/03/post26_Qwen2%20Technical%20report/">Qwen2技术报告</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Qwen2的技术报告我大概花了一上午读完了，但是后面评测介绍评测性能的实验分析相关内容并没有细看，只是大致的给过了一眼，重点关注了前面模型架构以及训练部分的创新。</p>
-<h2 id="1-主要内容"><a href="#1-主要内容" class="headerlink" title="1.主要内容"></a>1.主要内容</h2><p>Qwen2系列开源模型，主要包括<strong>Base Model</strong>(只是预训练，没有进行人类偏好对齐的基础模型) 和 针对对话和agent进行单轮和多轮指令微调的<strong>指令微调模型</strong>，这次发布的稠密模型，主要包括有四个尺寸的模型，分别是<strong>0.5B、7B、14B、72B</strong>的模型，还有一个<strong>57-14B</strong>的<strong>MOE混合专家模型</strong>。Qwen2相比前一代模型在数据集质量和规模上都有较大提升，后训练阶段是采用了 <strong>监督微调</strong>和<strong>DPO直接偏好对齐</strong>。</p>
-<h2 id="2-细节部分"><a href="#2-细节部分" class="headerlink" title="2.细节部分"></a>2.细节部分</h2><h3 id="分词："><a href="#分词：" class="headerlink" title="分词："></a><strong>分词：</strong></h3><p>bpe分词，该分词器展现出高编码效率，因为bpe分词方法的压缩率更好，所有模型的词表大小都是151646，其中151643是regular token，另外3个token是control token，在实际训练中，因为考虑分布式训练，因此嵌入的有效大小实际上更大。</p>
-<h3 id="模型架构："><a href="#模型架构：" class="headerlink" title="模型架构："></a>模型架构：</h3><p>Qwen2密集模型的架构包括多个Transformer层，每层都配备了因果注意力机制和前馈神经网络（FFN）。与Qwen的主要区别如下：</p>
-<ul>
-<li><strong>分组查询注意力</strong>：我们采用了分组查询注意力（Grouped Query Attention，<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=245747683&amp;content_type=Article&amp;match_order=1&amp;q=GQA&amp;zhida_source=entity">GQA</a>，Ainslie等人，2023）而不是传统的多头注意力（multi-head attention，MHA）。GQA在推理期间优化了KV缓存的使用，显著提高了吞吐量。不同模型大小的详细KV头配置在第2.2.3节报告。</li>
-<li><strong>双块注意力与<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=245747683&amp;content_type=Article&amp;match_order=1&amp;q=YARN&amp;zhida_source=entity">YARN</a></strong>：为了扩大Qwen2的上下文窗口，我们实现了双块注意力（Dual Chunk Attention，<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=245747683&amp;content_type=Article&amp;match_order=1&amp;q=DCA&amp;zhida_source=entity">DCA</a>，An等人，2024），它将长序列分割成可管理的长度块。如果输入可以在一个块中处理，DCA产生与原始注意力相同的结果。否则，DCA有助于在块内和跨块之间有效地捕获相对位置信息，从而提高长上下文性能。此外，我们还采用了<strong>YARN</strong>（Peng等人，2023）来重新调整注意力权重，以实现更好的长度外推。</li>
-</ul>
-<p>我们还沿用了Qwen的使用，包括<strong>SwiGLU</strong>（Dauphin等人，2017）作为激活函数，旋转位置嵌入（<strong><a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=245747683&amp;content_type=Article&amp;match_order=1&amp;q=RoPE&amp;zhida_source=entity">RoPE</a></strong>，Su等人，2024）作为位置嵌入，<strong>QKV偏置</strong>（Su，2023）用于注意力，<strong><a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=245747683&amp;content_type=Article&amp;match_order=1&amp;q=RMSNorm&amp;zhida_source=entity">RMSNorm</a></strong>（Jiang等人，2023b）和预归一化用于训练稳定性。</p>
-<h3 id="MOE混合专家模型"><a href="#MOE混合专家模型" class="headerlink" title="MOE混合专家模型"></a>MOE混合专家模型</h3><p>在qwen2中，采用了更多尺寸更小的单个专家，一次性激活的专家数量更多，从而可以提供更多的专家类型，并且将<strong>共享专家和特定路由专家</strong>整合到<strong>MoE层内促进了在各种任务中应用共享专家，又保留了其他专家在特定路由场景中选择性使用。引入共享和专门的专家为开发MoE路由机制提供了一种更适应性和有效的方法。</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/03/post26_Qwen2%20Technical%20report/" data-id="cmosdycln001ep63f7mg463bp" data-title="Qwen2技术报告" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qwen2/" rel="tag">Qwen2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" rel="tag">技术报告</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post25_Q-learning及DQN算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/11/25/post25_Q-learning%E5%8F%8ADQN%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2025-11-25T15:28:36.000Z" itemprop="datePublished">2025-11-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/11/25/post25_Q-learning%E5%8F%8ADQN%E7%AE%97%E6%B3%95/">Q-learning及DQN算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Q-learning-算法"><a href="#1-Q-learning-算法" class="headerlink" title="1.Q-learning 算法"></a>1.Q-learning 算法</h2><p><strong>核心公式：</strong></p>
-<p><img src="2025-11-25-post25_Q-learning及DQN算法/4.png" alt=""></p>
-<p>Q-learning算法是一种免模型的算法，核心思想就是基于价值，实际上就是在填一张状态-价值表，初始化都是为0，基于当前状态，计算出所有动作的reward分数，在$\epsilon$的概率下会选择随机的动作，1-$\epsilon$的概率下会选择最高分数的工作，$\epsilon$会随着学习的过程逐步衰减，这个学习过程也被称为”先探索再稳定”，实际上整个学习过程，就是在不断的去填这张状态-动作价值表，这张表相当于策略，在后面的决策动作时，会依据这张表来采取相应的动作(action).</p>
-<p>当时Q-learning主要存在以下缺陷：</p>
-<ul>
-<li>1、存在维度灾难问题</li>
-<li>2、只能处理离散状态的决策问题，不能处理连续状态的决策问题</li>
-<li>3、训练不稳定</li>
-</ul>
-<p><strong>因此，DQN的提出，用深度学习模型来近似动作价值函数的方法，解决了Q-learning维度灾难的问题、只能处理离散状态的问题，并且改善了训练的稳定性。</strong></p>
-<h2 id="2-DQN算法"><a href="#2-DQN算法" class="headerlink" title="2.DQN算法"></a>2.DQN算法</h2><p><strong>主要思想：</strong></p>
-<p><img src="2025-11-25-post25_Q-learning及DQN算法/1.png" alt=""></p>
-<p>DQN主要有两个改进点：</p>
-<p><strong>一、经验回放机制</strong></p>
-<p>当产生一条新的数据时，先$ e<em>t = (S_t, A_t, R_t, S</em>{t+1}, \text{Done})$,不会立即用这条数据来进行训练，而是先把这条数据存放到Repaly Buffer中（大小为N的参数），如果存满了，则会按照先进先出的原则，丢弃掉最早进入Buffer的数据，训练时，会随机从Buffer中取出一条数据来进行训练。</p>
-<p><strong>解决的问题：</strong></p>
-<ul>
-<li><strong>1、打破数据的时间相关性：</strong> 原本的序列数据，存在相关性，通过经验回放机制，可以打破时间相关性，学习到的规律更通用。</li>
-<li><strong>2、样本可以复用</strong>：原本可以复用，解决之前数据用一次就丢掉的问题，一条数据可能被多次抽中进行训练</li>
-<li><strong>3、提高训练稳定性</strong></li>
-</ul>
-<p><strong>细节：</strong>经验回放机制在取数据的时候，会按照一定概率取随机取数据或取最大的Q值动作，这个过程是为了保证训练过程中，先进行探索再逐步稳定。</p>
-<p><strong>二、使用策略网络和目标网络</strong></p>
-<ul>
-<li>这样可以<strong>提高训练稳定性</strong>，<strong>避免Q值发散</strong>，在实际中，先更新策略网络，把目标值进行固定，达到设定的步数c时，才会将策略网络复制更新到目标网络中</li>
-</ul>
-<p><strong>解决的问题：</strong></p>
-<p>这样可以提高训练稳定性，避免Q值发散，在实际中，先更新策略网络，把目标值进行固定，达到设定的步数c时，才会将策略网络复制更新到目标网络中。</p>
-<p><strong>为什么要这样做？</strong>答：因为原本的目标网络和策略网路的参数存在相关性，状态的改变对两者的学习都有影响，通过先固定目标网络，可以避免单个样本造成的错误估计，避免Q值发散，使得网络训练更加稳定。</p>
-<h2 id="3-DQN算法实现过程"><a href="#3-DQN算法实现过程" class="headerlink" title="3.DQN算法实现过程"></a>3.DQN算法实现过程</h2><p><strong>1.策略网络和目标网路的网络结构</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import torch.nn as nn</span><br><span class="line">import torch.nn.functional as F</span><br><span class="line">class MLP(nn.Module):</span><br><span class="line">    def __init__(self, n_states,n_actions,hidden_dim=128):</span><br><span class="line">        &quot;&quot;&quot; 初始化q网络，为全连接网络</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        super(MLP, self).__init__()</span><br><span class="line">        self.fc1 = nn.Linear(n_states, hidden_dim) # 输入层</span><br><span class="line">        self.fc2 = nn.Linear(hidden_dim,hidden_dim) # 隐藏层</span><br><span class="line">        self.fc3 = nn.Linear(hidden_dim, n_actions) # 输出层</span><br><span class="line">        </span><br><span class="line">    def forward(self, x):</span><br><span class="line">        # 各层对应的激活函数</span><br><span class="line">        x = F.relu(self.fc1(x)) </span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        return self.fc3(x)</span><br></pre></td></tr></table></figure>
-<p><strong>2.经验回放机制实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque <span class="comment"># 队列</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReplayBuffer</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="variable language_">self</span>.capacity = capacity</span><br><span class="line">        <span class="variable language_">self</span>.buffer = deque(maxlen=<span class="variable language_">self</span>.capacity)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self,transitions</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; 存储transition到经验回放中</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="variable language_">self</span>.buffer.append(transitions)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sample</span>(<span class="params">self, batch_size: <span class="built_in">int</span>, sequential: <span class="built_in">bool</span> = <span class="literal">False</span></span>):</span><br><span class="line">        <span class="keyword">if</span> batch_size &gt; <span class="built_in">len</span>(<span class="variable language_">self</span>.buffer): <span class="comment"># 如果批量大小大于经验回放的容量，则取经验回放的容量</span></span><br><span class="line">            batch_size = <span class="built_in">len</span>(<span class="variable language_">self</span>.buffer)</span><br><span class="line">        <span class="keyword">if</span> sequential: <span class="comment"># 顺序采样</span></span><br><span class="line">            rand = random.randint(<span class="number">0</span>, <span class="built_in">len</span>(<span class="variable language_">self</span>.buffer) - batch_size)</span><br><span class="line">            batch = [<span class="variable language_">self</span>.buffer[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rand, rand + batch_size)]</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">zip</span>(*batch)</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># 随机采样</span></span><br><span class="line">            batch = random.sample(<span class="variable language_">self</span>.buffer, batch_size)</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">zip</span>(*batch)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clear</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; 清空经验回放</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="variable language_">self</span>.buffer.clear()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; 返回当前存储的量</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.buffer)</span><br></pre></td></tr></table></figure>
-<p><strong>3.DQN智能体实现</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.optim as optim</span><br><span class="line">import math</span><br><span class="line">import numpy as np</span><br><span class="line">class DQN:</span><br><span class="line">    def __init__(self,model,memory,cfg): # !初始化超参数、 模型、以及经验回放池</span><br><span class="line">        self.n_actions = cfg[&#x27;n_actions&#x27;]  </span><br><span class="line">        self.device = torch.device(cfg[&#x27;device&#x27;]) </span><br><span class="line">        self.gamma = cfg[&#x27;gamma&#x27;] # 奖励的折扣因子</span><br><span class="line">        # e-greedy策略相关参数</span><br><span class="line">        self.sample_count = 0  # 用于epsilon的衰减计数</span><br><span class="line">        self.epsilon = cfg[&#x27;epsilon_start&#x27;]</span><br><span class="line">        self.sample_count = 0  </span><br><span class="line">        self.epsilon_start = cfg[&#x27;epsilon_start&#x27;]</span><br><span class="line">        self.epsilon_end = cfg[&#x27;epsilon_end&#x27;]</span><br><span class="line">        self.epsilon_decay = cfg[&#x27;epsilon_decay&#x27;]</span><br><span class="line">        self.batch_size = cfg[&#x27;batch_size&#x27;]</span><br><span class="line">        self.policy_net = model.to(self.device)</span><br><span class="line">        self.target_net = model.to(self.device)</span><br><span class="line">        # 复制策略网络参数到目标网络</span><br><span class="line">        for target_param, param in zip(self.target_net.parameters(),self.policy_net.parameters()): </span><br><span class="line">            target_param.data.copy_(param.data)</span><br><span class="line">        self.optimizer = optim.Adam(self.policy_net.parameters(), lr=cfg[&#x27;lr&#x27;]) # 优化器</span><br><span class="line">        self.memory = memory # 经验回放</span><br><span class="line">    def sample_action(self, state):</span><br><span class="line">        &#x27;&#x27;&#x27; 采样动作</span><br><span class="line">        &#x27;&#x27;&#x27;</span><br><span class="line">        self.sample_count += 1</span><br><span class="line">        # epsilon指数衰减</span><br><span class="line">        self.epsilon = self.epsilon_end + (self.epsilon_start - self.epsilon_end) * \</span><br><span class="line">            math.exp(-1. * self.sample_count / self.epsilon_decay) </span><br><span class="line">        if random.random() &gt; self.epsilon: # 取最大Q值</span><br><span class="line">            with torch.no_grad():</span><br><span class="line">                state = torch.tensor(state, device=self.device, dtype=torch.float32).unsqueeze(dim=0)</span><br><span class="line">                q_values = self.policy_net(state)</span><br><span class="line">                action = q_values.max(1)[1].item() # choose action corresponding to the maximum q value 最大Q值的下标</span><br><span class="line">        else: # 随机采样</span><br><span class="line">            action = random.randrange(self.n_actions)</span><br><span class="line">        return action</span><br><span class="line">    @torch.no_grad() # 不计算梯度，该装饰器效果等同于with torch.no_grad()：</span><br><span class="line">    def predict_action(self, state):</span><br><span class="line">        &#x27;&#x27;&#x27; 预测动作</span><br><span class="line">        &#x27;&#x27;&#x27;</span><br><span class="line">        state = torch.tensor(state, device=self.device, dtype=torch.float32).unsqueeze(dim=0)</span><br><span class="line">        q_values = self.policy_net(state)</span><br><span class="line">        action = q_values.max(1)[1].item() # choose action corresponding to the maximum q value</span><br><span class="line">        return action</span><br><span class="line">    def update(self):</span><br><span class="line">        if len(self.memory) &lt; self.batch_size: # !当经验回放中不满足一个批量时，不更新策略</span><br><span class="line">            return</span><br><span class="line">        # 从经验回放中随机采样一个批量的转移(transition)</span><br><span class="line">        state_batch, action_batch, reward_batch, next_state_batch, done_batch = self.memory.sample(</span><br><span class="line">            self.batch_size)</span><br><span class="line">        # 将数据转换为tensor</span><br><span class="line">        state_batch = torch.tensor(np.array(state_batch), device=self.device, dtype=torch.float)</span><br><span class="line">        action_batch = torch.tensor(action_batch, device=self.device).unsqueeze(1)  </span><br><span class="line">        reward_batch = torch.tensor(reward_batch, device=self.device, dtype=torch.float)  </span><br><span class="line">        next_state_batch = torch.tensor(np.array(object=next_state_batch), device=self.device, dtype=torch.float)</span><br><span class="line">        done_batch = torch.tensor(np.float32(done_batch), device=self.device)</span><br><span class="line">        q_values = self.policy_net(state_batch).gather(dim=1, index=action_batch) # 计算当前状态(s_t,a)对应的Q(s_t, a)</span><br><span class="line">        next_q_values = self.target_net(next_state_batch).max(1)[0].detach() # 计算下一时刻的状态(s_t_,a)对应的Q值</span><br><span class="line">        # 计算期望的Q值，对于终止状态，此时done_batch[0]=1, 对应的expected_q_value等于reward</span><br><span class="line">        expected_q_values = reward_batch + self.gamma * next_q_values * (1-done_batch)</span><br><span class="line">        loss = nn.MSELoss()(q_values, expected_q_values.unsqueeze(1))  # 计算均方根损失</span><br><span class="line">        # 优化更新模型</span><br><span class="line">        self.optimizer.zero_grad()  </span><br><span class="line">        loss.backward()</span><br><span class="line">        # clip防止梯度爆炸</span><br><span class="line">        for param in self.policy_net.parameters():  # !进行梯度裁剪</span><br><span class="line">            param.grad.data.clamp_(-1, 1)</span><br><span class="line">        self.optimizer.step()  # 进行梯度更新</span><br></pre></td></tr></table></figure>
-<p><strong>3.训练测试函数</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">cfg, env, agent</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 训练</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;开始训练！&quot;</span>)</span><br><span class="line">    rewards = []  <span class="comment"># 记录所有回合的奖励</span></span><br><span class="line">    steps = []</span><br><span class="line">    <span class="keyword">for</span> i_ep <span class="keyword">in</span> <span class="built_in">range</span>(cfg[<span class="string">&#x27;train_eps&#x27;</span>]):</span><br><span class="line">        ep_reward = <span class="number">0</span>  <span class="comment"># 记录一回合内的奖励</span></span><br><span class="line">        ep_step = <span class="number">0</span></span><br><span class="line">        state = env.reset(seed=cfg[<span class="string">&#x27;seed&#x27;</span>]) <span class="keyword">if</span> cfg[<span class="string">&#x27;seed&#x27;</span>] != <span class="number">0</span> <span class="keyword">else</span> env.reset()  <span class="comment"># 重置环境，返回初始状态</span></span><br><span class="line">        <span class="comment"># 处理新版gym返回的(state, info)元组</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(state, <span class="built_in">tuple</span>):</span><br><span class="line">            state = state[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(cfg[<span class="string">&#x27;ep_max_steps&#x27;</span>]):</span><br><span class="line">            ep_step += <span class="number">1</span></span><br><span class="line">            action = agent.sample_action(state)  <span class="comment"># 选择动作</span></span><br><span class="line">            result = env.step(action)  <span class="comment"># 更新环境，返回transition</span></span><br><span class="line">            <span class="comment"># 处理不同版本的返回值</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(result) == <span class="number">5</span>:</span><br><span class="line">                next_state, reward, terminated, truncated, _ = result</span><br><span class="line">                done = terminated <span class="keyword">or</span> truncated</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                next_state, reward, done, _ = result</span><br><span class="line">            agent.memory.push((state, action, reward, next_state, done))  <span class="comment"># 保存transition</span></span><br><span class="line">            state = next_state  <span class="comment"># 更新下一个状态</span></span><br><span class="line">            agent.update()  <span class="comment"># 更新智能体</span></span><br><span class="line">            ep_reward += reward  <span class="comment"># 累加奖励</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> (i_ep + <span class="number">1</span>) % cfg[<span class="string">&#x27;target_update&#x27;</span>] == <span class="number">0</span>:  <span class="comment"># 智能体目标网络更新</span></span><br><span class="line">            agent.target_net.load_state_dict(agent.policy_net.state_dict())</span><br><span class="line">        steps.append(ep_step)</span><br><span class="line">        rewards.append(ep_reward)</span><br><span class="line">        <span class="keyword">if</span> (i_ep + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;回合：<span class="subst">&#123;i_ep+<span class="number">1</span>&#125;</span>/<span class="subst">&#123;cfg[<span class="string">&#x27;train_eps&#x27;</span>]&#125;</span>，奖励：<span class="subst">&#123;ep_reward:<span class="number">.2</span>f&#125;</span>，Epislon：<span class="subst">&#123;agent.epsilon:<span class="number">.3</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;完成训练！&quot;</span>)</span><br><span class="line">    env.close()</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;rewards&#x27;</span>:rewards&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">cfg, env, agent</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;开始测试！&quot;</span>)</span><br><span class="line">    rewards = []  <span class="comment"># 记录所有回合的奖励</span></span><br><span class="line">    steps = []</span><br><span class="line">    <span class="keyword">for</span> i_ep <span class="keyword">in</span> <span class="built_in">range</span>(cfg[<span class="string">&#x27;test_eps&#x27;</span>]):</span><br><span class="line">        ep_reward = <span class="number">0</span>  <span class="comment"># 记录一回合内的奖励</span></span><br><span class="line">        ep_step = <span class="number">0</span></span><br><span class="line">        state = env.reset()  <span class="comment"># 重置环境，返回初始状态</span></span><br><span class="line">        <span class="comment"># 处理新版gym返回的(state, info)元组</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(state, <span class="built_in">tuple</span>):</span><br><span class="line">            state = state[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(cfg[<span class="string">&#x27;ep_max_steps&#x27;</span>]):</span><br><span class="line">            ep_step+=<span class="number">1</span></span><br><span class="line">            action = agent.predict_action(state)  <span class="comment"># 选择动作</span></span><br><span class="line">            result = env.step(action)  <span class="comment"># 更新环境，返回transition</span></span><br><span class="line">            <span class="comment"># 处理不同版本的返回值</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(result) == <span class="number">5</span>:</span><br><span class="line">                next_state, reward, terminated, truncated, _ = result</span><br><span class="line">                done = terminated <span class="keyword">or</span> truncated</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                next_state, reward, done, _ = result</span><br><span class="line">            state = next_state  <span class="comment"># 更新下一个状态</span></span><br><span class="line">            ep_reward += reward  <span class="comment"># 累加奖励</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        steps.append(ep_step)</span><br><span class="line">        rewards.append(ep_reward)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;回合：<span class="subst">&#123;i_ep+<span class="number">1</span>&#125;</span>/<span class="subst">&#123;cfg[<span class="string">&#x27;test_eps&#x27;</span>]&#125;</span>，奖励：<span class="subst">&#123;ep_reward:<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;完成测试&quot;</span>)</span><br><span class="line">    env.close()</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;rewards&#x27;</span>:rewards&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>4.定义环境</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">all_seed</span>(<span class="params">env,seed = <span class="number">1</span></span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 万能的seed函数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    np.random.seed(seed)</span><br><span class="line">    random.seed(seed)</span><br><span class="line">    torch.manual_seed(seed) <span class="comment"># config for CPU</span></span><br><span class="line">    torch.cuda.manual_seed(seed) <span class="comment"># config for GPU</span></span><br><span class="line">    os.environ[<span class="string">&#x27;PYTHONHASHSEED&#x27;</span>] = <span class="built_in">str</span>(seed) <span class="comment"># config for python scripts</span></span><br><span class="line">    <span class="comment"># config for cudnn</span></span><br><span class="line">    torch.backends.cudnn.deterministic = <span class="literal">True</span></span><br><span class="line">    torch.backends.cudnn.benchmark = <span class="literal">False</span></span><br><span class="line">    torch.backends.cudnn.enabled = <span class="literal">False</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">env_agent_config</span>(<span class="params">cfg</span>):</span><br><span class="line">    env = gym.make(cfg[<span class="string">&#x27;env_name&#x27;</span>]) <span class="comment"># 创建环境</span></span><br><span class="line">    <span class="keyword">if</span> cfg[<span class="string">&#x27;seed&#x27;</span>] !=<span class="number">0</span>:</span><br><span class="line">        all_seed(env,seed=cfg[<span class="string">&#x27;seed&#x27;</span>])</span><br><span class="line">    n_states = env.observation_space.shape[<span class="number">0</span>]</span><br><span class="line">    n_actions = env.action_space.n</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;状态空间维度：<span class="subst">&#123;n_states&#125;</span>，动作空间维度：<span class="subst">&#123;n_actions&#125;</span>&quot;</span>)</span><br><span class="line">    cfg.update(&#123;<span class="string">&quot;n_states&quot;</span>:n_states,<span class="string">&quot;n_actions&quot;</span>:n_actions&#125;) <span class="comment"># 更新n_states和n_actions到cfg参数中</span></span><br><span class="line">    model = MLP(n_states, n_actions, hidden_dim = cfg[<span class="string">&#x27;hidden_dim&#x27;</span>]) <span class="comment"># 创建模型</span></span><br><span class="line">    memory = ReplayBuffer(cfg[<span class="string">&#x27;memory_capacity&#x27;</span>])</span><br><span class="line">    agent = DQN(model,memory,cfg)</span><br><span class="line">    <span class="keyword">return</span> env,agent</span><br></pre></td></tr></table></figure>
-<p><strong>5.参数设置及功能函数实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_args</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot; 超参数</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&quot;hyperparameters&quot;</span>)      </span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--algo_name&#x27;</span>,default=<span class="string">&#x27;DQN&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>,<span class="built_in">help</span>=<span class="string">&quot;name of algorithm&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--env_name&#x27;</span>,default=<span class="string">&#x27;CartPole-v0&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>,<span class="built_in">help</span>=<span class="string">&quot;name of environment&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--train_eps&#x27;</span>,default=<span class="number">200</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;episodes of training&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--test_eps&#x27;</span>,default=<span class="number">20</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;episodes of testing&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--ep_max_steps&#x27;</span>,default = <span class="number">100000</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;steps per episode, much larger value can simulate infinite steps&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--gamma&#x27;</span>,default=<span class="number">0.95</span>,<span class="built_in">type</span>=<span class="built_in">float</span>,<span class="built_in">help</span>=<span class="string">&quot;discounted factor&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--epsilon_start&#x27;</span>,default=<span class="number">0.95</span>,<span class="built_in">type</span>=<span class="built_in">float</span>,<span class="built_in">help</span>=<span class="string">&quot;initial value of epsilon&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--epsilon_end&#x27;</span>,default=<span class="number">0.01</span>,<span class="built_in">type</span>=<span class="built_in">float</span>,<span class="built_in">help</span>=<span class="string">&quot;final value of epsilon&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--epsilon_decay&#x27;</span>,default=<span class="number">500</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;decay rate of epsilon, the higher value, the slower decay&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--lr&#x27;</span>,default=<span class="number">0.0001</span>,<span class="built_in">type</span>=<span class="built_in">float</span>,<span class="built_in">help</span>=<span class="string">&quot;learning rate&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--memory_capacity&#x27;</span>,default=<span class="number">100000</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;memory capacity&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--batch_size&#x27;</span>,default=<span class="number">64</span>,<span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--target_update&#x27;</span>,default=<span class="number">4</span>,<span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--hidden_dim&#x27;</span>,default=<span class="number">256</span>,<span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--device&#x27;</span>,default=<span class="string">&#x27;cpu&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>,<span class="built_in">help</span>=<span class="string">&quot;cpu or cuda&quot;</span>) </span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--seed&#x27;</span>,default=<span class="number">10</span>,<span class="built_in">type</span>=<span class="built_in">int</span>,<span class="built_in">help</span>=<span class="string">&quot;seed&quot;</span>)   </span><br><span class="line">    args = parser.parse_args([])</span><br><span class="line">    args = &#123;**<span class="built_in">vars</span>(args)&#125;  <span class="comment"># 转换成字典类型    </span></span><br><span class="line">    <span class="comment">## 打印超参数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;超参数&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>.join([<span class="string">&#x27;=&#x27;</span>]*<span class="number">80</span>))</span><br><span class="line">    tplt = <span class="string">&quot;&#123;:^20&#125;\t&#123;:^20&#125;\t&#123;:^20&#125;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(tplt.<span class="built_in">format</span>(<span class="string">&quot;Name&quot;</span>, <span class="string">&quot;Value&quot;</span>, <span class="string">&quot;Type&quot;</span>))</span><br><span class="line">    <span class="keyword">for</span> k,v <span class="keyword">in</span> args.items():</span><br><span class="line">        <span class="built_in">print</span>(tplt.<span class="built_in">format</span>(k,v,<span class="built_in">str</span>(<span class="built_in">type</span>(v))))   </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>.join([<span class="string">&#x27;=&#x27;</span>]*<span class="number">80</span>))      </span><br><span class="line">    <span class="keyword">return</span> args</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">smooth</span>(<span class="params">data, weight=<span class="number">0.9</span></span>):  </span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;用于平滑曲线，类似于Tensorboard中的smooth曲线</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    last = data[<span class="number">0</span>] </span><br><span class="line">    smoothed = []</span><br><span class="line">    <span class="keyword">for</span> point <span class="keyword">in</span> data:</span><br><span class="line">        smoothed_val = last * weight + (<span class="number">1</span> - weight) * point  <span class="comment"># 计算平滑值</span></span><br><span class="line">        smoothed.append(smoothed_val)                    </span><br><span class="line">        last = smoothed_val                                </span><br><span class="line">    <span class="keyword">return</span> smoothed</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plot_rewards</span>(<span class="params">rewards,cfg, tag=<span class="string">&#x27;train&#x27;</span></span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 画图</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    sns.<span class="built_in">set</span>()</span><br><span class="line">    plt.figure()  <span class="comment"># 创建一个图形实例，方便同时多画几个图</span></span><br><span class="line">    plt.title(<span class="string">f&quot;<span class="subst">&#123;tag&#125;</span>ing curve on <span class="subst">&#123;cfg[<span class="string">&#x27;device&#x27;</span>]&#125;</span> of <span class="subst">&#123;cfg[<span class="string">&#x27;algo_name&#x27;</span>]&#125;</span> for <span class="subst">&#123;cfg[<span class="string">&#x27;env_name&#x27;</span>]&#125;</span>&quot;</span>)</span><br><span class="line">    plt.xlabel(<span class="string">&#x27;epsiodes&#x27;</span>)</span><br><span class="line">    plt.plot(rewards, label=<span class="string">&#x27;rewards&#x27;</span>)</span><br><span class="line">    plt.plot(smooth(rewards), label=<span class="string">&#x27;smoothed&#x27;</span>)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>6.训练</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 获取参数</span><br><span class="line">cfg = get_args() </span><br><span class="line"># 训练</span><br><span class="line">env, agent = env_agent_config(cfg)</span><br><span class="line">res_dic = train(cfg, env, agent)</span><br><span class="line"> </span><br><span class="line">plot_rewards(res_dic[&#x27;rewards&#x27;], cfg, tag=&quot;train&quot;)  </span><br><span class="line"># 测试</span><br><span class="line">res_dic = test(cfg, env, agent)</span><br><span class="line">plot_rewards(res_dic[&#x27;rewards&#x27;], cfg, tag=&quot;test&quot;)  # 画出结果</span><br></pre></td></tr></table></figure>
-<h2 id="4-训练过程图"><a href="#4-训练过程图" class="headerlink" title="4.训练过程图"></a>4.训练过程图</h2><p><img src="2025-11-25-post25_Q-learning及DQN算法/2.png" alt=""></p>
-<p><img src="2025-11-25-post25_Q-learning及DQN算法/3.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/25/post25_Q-learning%E5%8F%8ADQN%E7%AE%97%E6%B3%95/" data-id="cmosdycln001bp63f4rit15l3" data-title="Q-learning及DQN算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DQN%E7%AE%97%E6%B3%95/" rel="tag">DQN算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-learning/" rel="tag">Q-learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post24_博士屯TalkShow阅读文献总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/11/23/post24_%E5%8D%9A%E5%A3%AB%E5%B1%AFTalkShow%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE%E6%80%BB%E7%BB%93/" class="article-date">
-  <time class="dt-published" datetime="2025-11-23T14:57:00.000Z" itemprop="datePublished">2025-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/11/23/post24_%E5%8D%9A%E5%A3%AB%E5%B1%AFTalkShow%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE%E6%80%BB%E7%BB%93/">博士屯TalkShow阅读文献总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-研究性论文-整体内容结构"><a href="#1-研究性论文-整体内容结构" class="headerlink" title="1.研究性论文-整体内容结构"></a>1.研究性论文-整体内容结构</h2><p>1、Abstract - 了解文章整体核心内容<br>2、Introduction - 问题和贡献<br>3、Related work - 小型综述性介绍<br>4、Method - 框架图<br>5、Experiment - 实验类型</p>
-<h2 id="2-综述性论文"><a href="#2-综述性论文" class="headerlink" title="2.综述性论文"></a>2.综述性论文</h2><p>1、分类<br>2、未来方向</p>
-<h2 id="3-阅读重点"><a href="#3-阅读重点" class="headerlink" title="3.阅读重点"></a>3.阅读重点</h2><p>1、文章解决的问题及方法（或者文章提出的问题）<br>2、可能存在的问题和解决方法<br>3、不必过度关注实验结果<br>4、终点关注方法的框架图<br>5、实验用到的方法和实验内容</p>
-<h2 id="4、学会利用大模型来进行快速阅读总结"><a href="#4、学会利用大模型来进行快速阅读总结" class="headerlink" title="4、学会利用大模型来进行快速阅读总结"></a>4、学会利用大模型来进行快速阅读总结</h2><ul>
-<li>大模型可能会出现一些总结问题，可能有一定误差</li>
-<li>善用提示词</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/23/post24_%E5%8D%9A%E5%A3%AB%E5%B1%AFTalkShow%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE%E6%80%BB%E7%BB%93/" data-id="cmosdycll0015p63f6qen5c9i" data-title="博士屯TalkShow阅读文献总结" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post23_与远端服务器进行文件传输同步的方式总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/14/post23_%E4%B8%8E%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T20:43:11.000Z" itemprop="datePublished">2025-10-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/14/post23_%E4%B8%8E%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/">与远端服务器进行文件传输同步的方式总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
-<li>1、通过git及google网盘直接down到服务器(不推荐)</li>
-<li>2、使用Vscode中SFTP插件与服务器进行文件传输</li>
-<li>3、使用文件传输工具进行可视化的文件传输</li>
-</ul>
-<h2 id="1、通过git及google网盘直接down到服务器-不推荐"><a href="#1、通过git及google网盘直接down到服务器-不推荐" class="headerlink" title="1、通过git及google网盘直接down到服务器(不推荐)"></a>1、通过git及google网盘直接down到服务器(不推荐)</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;一般服务器都是linux的系统，自带git，当文件不是很大的时候，可以通过先将项目文件传输到git仓库，再git clone 到服务器上，当然这也是比较愚笨的办法。如果文件较大，可以通过google网盘，先将项目文件上传到google网盘保存，再通过下载命令下载到服务器上即可，以上方法都是实在没办法的时候 ，才采用的方法。</p>
-<h2 id="2、使用Vscode中SFTP插件与服务器进行文件传输"><a href="#2、使用Vscode中SFTP插件与服务器进行文件传输" class="headerlink" title="2、使用Vscode中SFTP插件与服务器进行文件传输"></a>2、使用Vscode中SFTP插件与服务器进行文件传输</h2><h3 id="2-1-先在Vscode插件市场中，下载sftp插件"><a href="#2-1-先在Vscode插件市场中，下载sftp插件" class="headerlink" title="2.1  先在Vscode插件市场中，下载sftp插件"></a>2.1  先在Vscode插件市场中，下载sftp插件</h3><h3 id="2-2-然后在vscode中打开需要上传的本地文件或者项目"><a href="#2-2-然后在vscode中打开需要上传的本地文件或者项目" class="headerlink" title="2.2  然后在vscode中打开需要上传的本地文件或者项目"></a>2.2  然后在vscode中打开需要上传的本地文件或者项目</h3><h3 id="2-3-安装完成后，使用快捷键-ctrl-shift-p，选择-sftp-config-然后回车，会在当前目录下自动生成-vscode文件夹，并在-vscode文件夹下生成sftp-json。"><a href="#2-3-安装完成后，使用快捷键-ctrl-shift-p，选择-sftp-config-然后回车，会在当前目录下自动生成-vscode文件夹，并在-vscode文件夹下生成sftp-json。" class="headerlink" title="2.3  安装完成后，使用快捷键 ctrl + shift + p，选择 sftp:config,然后回车，会在当前目录下自动生成.vscode文件夹，并在.vscode文件夹下生成sftp.json。"></a>2.3  安装完成后，使用快捷键 <code>ctrl + shift + p</code>，选择 <code>sftp:config</code>,然后回车，会在当前目录下自动生成<code>.vscode</code>文件夹，并在<code>.vscode</code>文件夹下生成<code>sftp.json</code>。</h3><p><img src="2025-10-14-post23_与远端服务器进行文件传输同步的方式总结/1.png" alt=""><br><strong>参数解析：</strong><br>name : 设置远端服务器名称<br>host: 远端服务器IP<br>protocol：协议类型，默认选”sftp”<br>port：端口<br>username：用户名<br>password：密码<br>remotePath：远端同步的路径</p>
-<h3 id="2-4-配置好-sftp-json后，右键文件区点击upload即可上传文件到服务器端。-如果上传某个特定文件就直接在文件上右键，如果想全部上传，就在空白处右键-upload，建议先创建个文件夹，用于存放同步的文件。"><a href="#2-4-配置好-sftp-json后，右键文件区点击upload即可上传文件到服务器端。-如果上传某个特定文件就直接在文件上右键，如果想全部上传，就在空白处右键-upload，建议先创建个文件夹，用于存放同步的文件。" class="headerlink" title="2.4  配置好 sftp.json后，右键文件区点击upload即可上传文件到服务器端。 如果上传某个特定文件就直接在文件上右键，如果想全部上传，就在空白处右键 upload，建议先创建个文件夹，用于存放同步的文件。"></a>2.4  配置好 <code>sftp.json</code>后，右键文件区点击<code>upload</code>即可上传文件到服务器端。 如果上传某个特定文件就直接在文件上右键，如果想全部上传，就在空白处右键 <code>upload</code>，建议先创建个文件夹，用于存放同步的文件。</h3><p><img src="2025-10-14-post23_与远端服务器进行文件传输同步的方式总结/2.png" alt=""></p>
-<h2 id="3、使用文件传输工具进行可视化的文件传输"><a href="#3、使用文件传输工具进行可视化的文件传输" class="headerlink" title="3、使用文件传输工具进行可视化的文件传输"></a>3、使用文件传输工具进行可视化的文件传输</h2><p><strong>例如MobaXterm等可视化终端工具，支持SSH连接，同时也支持文件同步传输等功能。</strong><br><img src="2025-10-14-post23_与远端服务器进行文件传输同步的方式总结/3.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/post23_%E4%B8%8E%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/" data-id="cmosdycll0013p63fabd6gn58" data-title="与远端服务器进行文件传输同步的方式总结" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-post22_pyenv+poetry进行多版本python项目管理方案" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/12/post22_pyenv+poetry%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%89%88%E6%9C%ACpython%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" class="article-date">
-  <time class="dt-published" datetime="2025-10-12T20:41:05.000Z" itemprop="datePublished">2025-10-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/12/post22_pyenv+poetry%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%89%88%E6%9C%ACpython%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/">pyenv + poetry 进行多版本python项目管理方案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
-<li>1、pyenv 管理不同版本的python</li>
-<li>2、poetry根据不同的pyenv创建的python版本进行项目环境.venv的创建</li>
-</ul>
-<h2 id="1-使用pyenv管理不同版本的python"><a href="#1-使用pyenv管理不同版本的python" class="headerlink" title="1.使用pyenv管理不同版本的python"></a>1.使用pyenv管理不同版本的python</h2><p>对于pyenv的安装，pyenv官方github提供详细的教程，本文不再涉及，windows系统需要安装的话，可以使用pyenv-win，在github上也有仓库提供。</p>
-<ul>
-<li>1 查看可安装的python版本及已经安装的python版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions                 # 显示已经安装的所有 Python 版本</span><br><span class="line">pyenv install --list           # 显示所有可安装的 Python 版本</span><br></pre></td></tr></table></figure></li>
-<li>2.安装卸载python版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pyenv install &lt;version&gt;        # 安装指定版本的 Python，例如 pyenv install 3.10.7</span><br><span class="line">pyenv uninstall &lt;version&gt;      # 卸载指定版本的 Python</span><br></pre></td></tr></table></figure></li>
-<li>3.设置python版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv global &lt;version&gt;         # 设置全局（默认）Python 版本</span><br><span class="line">pyenv local &lt;version&gt;          # 设置当前目录下的 Python 版本（写入 .python-version 文件）</span><br><span class="line">pyenv shell &lt;version&gt;          # 仅当前 shell 会话使用指定版本</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上就是基础常见的pyenv命令，pyenv作为python版本管理工具的主要作用就是管理不同版本的python，在不同的项目中，我们可能会用到不同的python版本，但是本地下载多个python版本进行切换管理非常麻烦，当然也可以使用conda进行隔离管理，但是conda比较臃肿，在开发项目中可能不是很方便，同时存在管理不同包版本依赖功能不完善的情况，可见博客<a target="_blank" rel="noopener" href="https://tccjx.github.io/2025-08-24-post19_Poetry%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">Poetry基本用法教程</a>中对此有详细的陈述。</p>
-<h2 id="2-poetry根据不同的pyenv创建的python版本进行项目环境-venv的创建"><a href="#2-poetry根据不同的pyenv创建的python版本进行项目环境-venv的创建" class="headerlink" title="2.poetry根据不同的pyenv创建的python版本进行项目环境.venv的创建"></a>2.poetry根据不同的pyenv创建的python版本进行项目环境.venv的创建</h2><p>在第一步中，我们设置好python版本后，就可以通过poetry来创建相应的venv虚拟环境，这里建议将.venv直接设置在项目内部，建议将virtualenvs.in-project设置成true即可。</p>
-<ul>
-<li>1.根据系统关联的python版本创建venv环境</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poetry env use python版本</span><br><span class="line">或者</span><br><span class="line">poetry shell python版本</span><br></pre></td></tr></table></figure>
-<p>这样就可以成功创建对应python版本的venv环境了。</p>
-<ul>
-<li>2.根据toml文件更新lock文件 并 安装相关配置环境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poetry lock  # then</span><br><span class="line">poetry install </span><br></pre></td></tr></table></figure></li>
-<li>3.激活虚拟环境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poetry env use python版本号 # 切换 Python 版本/解释器</span><br><span class="line">poetry shell (推荐)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>poetry + pyenv 的项目环境管理方式，不仅方便并且管理起来轻松，在实际开发场景中，使用得更多，并且也利用了poetry管理可复现，方便项目迭代的优点。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/12/post22_pyenv+poetry%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%89%88%E6%9C%ACpython%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" data-id="cmosdyclk0010p63ffnwp6ee5" data-title="pyenv + poetry 进行多版本python项目管理方案" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/poetry/" rel="tag">poetry</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pyenv/" rel="tag">pyenv</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/" rel="tag">Agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Attention/" rel="tag">Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bert/" rel="tag">Bert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Claude-code/" rel="tag">Claude code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CyGNet/" rel="tag">CyGNet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DQN%E7%AE%97%E6%B3%95/" rel="tag">DQN算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hit-1-3-5-10/" rel="tag">Hit@1\3\5\10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVCache/" rel="tag">KVCache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLMs/" rel="tag">LLMs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MRR/" rel="tag">MRR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NER/" rel="tag">NER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPO/" rel="tag">PPO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Poetry/" rel="tag">Poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pretrain/" rel="tag">Pretrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm-Vscode/" rel="tag">PyCharm&amp;Vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Q-learning/" rel="tag">Q-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qwen2/" rel="tag">Qwen2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RL/" rel="tag">RL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RLHF/" rel="tag">RLHF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Self-Attention/" rel="tag">Self-Attention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TKGs/" rel="tag">TKGs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contrastive-learning/" rel="tag">contrastive learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glue-code/" rel="tag">glue code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/" rel="tag">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poetry/" rel="tag">poetry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyenv/" rel="tag">pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" rel="tag">python环境管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomer/" rel="tag">transfomer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transfomers/" rel="tag">transfomers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vibe-coding/" rel="tag">vibe coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="tag">传统规则学习方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" rel="tag">图结构信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" rel="tag">图谱推理任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%96%E6%8E%A8/" rel="tag">外推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">实习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" rel="tag">心路历程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" rel="tag">技术报告</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="tag">文件传输</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">时态知识图谱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" rel="tag">时态知识图谱推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" rel="tag">时态知识图谱补全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" rel="tag">注意力机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" rel="tag">清华源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" rel="tag">温度参数τ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" rel="tag">编程日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" rel="tag">胶水代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" rel="tag">补全推理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="tag">论文阅读笔记</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Agent/" style="font-size: 14px;">Agent</a> <a href="/tags/Attention/" style="font-size: 12px;">Attention</a> <a href="/tags/Bert/" style="font-size: 12px;">Bert</a> <a href="/tags/Claude-code/" style="font-size: 10px;">Claude code</a> <a href="/tags/CyGNet/" style="font-size: 10px;">CyGNet</a> <a href="/tags/DQN%E7%AE%97%E6%B3%95/" style="font-size: 10px;">DQN算法</a> <a href="/tags/Hit-1-3-5-10/" style="font-size: 10px;">Hit@1\3\5\10</a> <a href="/tags/KVCache/" style="font-size: 10px;">KVCache</a> <a href="/tags/LLM/" style="font-size: 14px;">LLM</a> <a href="/tags/LLMs/" style="font-size: 10px;">LLMs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MRR/" style="font-size: 10px;">MRR</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/NER/" style="font-size: 10px;">NER</a> <a href="/tags/PPO/" style="font-size: 10px;">PPO</a> <a href="/tags/Poetry/" style="font-size: 10px;">Poetry</a> <a href="/tags/Pretrain/" style="font-size: 10px;">Pretrain</a> <a href="/tags/PyCharm-Vscode/" style="font-size: 10px;">PyCharm&Vscode</a> <a href="/tags/Q-learning/" style="font-size: 10px;">Q-learning</a> <a href="/tags/Qwen2/" style="font-size: 10px;">Qwen2</a> <a href="/tags/RL/" style="font-size: 10px;">RL</a> <a href="/tags/RLHF/" style="font-size: 10px;">RLHF</a> <a href="/tags/Self-Attention/" style="font-size: 10px;">Self-Attention</a> <a href="/tags/TKGs/" style="font-size: 12px;">TKGs</a> <a href="/tags/Transformer/" style="font-size: 14px;">Transformer</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/contrastive-learning/" style="font-size: 10px;">contrastive learning</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/glue-code/" style="font-size: 10px;">glue code</a> <a href="/tags/pip/" style="font-size: 14px;">pip</a> <a href="/tags/poetry/" style="font-size: 10px;">poetry</a> <a href="/tags/private/" style="font-size: 20px;">private</a> <a href="/tags/pyenv/" style="font-size: 10px;">pyenv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" style="font-size: 10px;">python环境管理</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/transfomer/" style="font-size: 10px;">transfomer</a> <a href="/tags/transfomers/" style="font-size: 10px;">transfomers</a> <a href="/tags/vibe-coding/" style="font-size: 12px;">vibe coding</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/%E4%BC%A0%E7%BB%9F%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" style="font-size: 14px;">传统规则学习方法</a> <a href="/tags/%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">图结构信息</a> <a href="/tags/%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">图谱推理任务</a> <a href="/tags/%E5%A4%96%E6%8E%A8/" style="font-size: 10px;">外推</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 18px;">大模型</a> <a href="/tags/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" style="font-size: 10px;">实习总结</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">对比学习</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">强化学习</a> <a href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" style="font-size: 10px;">心路历程</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" style="font-size: 10px;">技术报告</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 10px;">文件传输</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 10px;">文献阅读</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 10px;">时态知识图谱</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" style="font-size: 12px;">时态知识图谱推理</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" style="font-size: 10px;">时态知识图谱补全</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" style="font-size: 12px;">注意力机制</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">深度学习</a> <a href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" style="font-size: 12px;">清华源</a> <a href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" style="font-size: 10px;">温度参数τ</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" style="font-size: 14px;">编程日记</a> <a href="/tags/%E8%83%B6%E6%B0%B4%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">胶水代码</a> <a href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" style="font-size: 12px;">补全推理</a> <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="font-size: 12px;">论文阅读笔记</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/05/04/post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/">从反向传播角度理解 PPO 损失函数</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/02/post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/23/post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/">理解学习率调度（余弦退火 + warmup）的原理和作用</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/19/post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/">Agent 一线实战：落地经验与 Know-How 分享</a>
-          </li>
-        
-          <li>
-            <a href="/2026/03/10/post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/">CLAUDE.md 文件推荐约束提示词</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
         }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
-</html>
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":9},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '思想是一个锐化的过程',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-book"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-cloud"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">思想是一个锐化的过程</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-book"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-cloud"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">思想是一个锐化的过程</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026-05-04-post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/" title="从反向传播角度理解 PPO 损失函数">从反向传播角度理解 PPO 损失函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-04T20:16:10.000Z" title="发表于 2026-05-04 20:16:10">2026-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">从反向传播角度理解 PPO 损失函数PPO (Proximal Policy Optimization) 是当前强化学习领域应用最广的算法之一，尤其是在大语言模型的 RLHF 训练中。但很多人看 PPO 论文时，会被那个复杂的损失函数绕晕——为什么有三个部分？为什么要 clip？熵项又是干嘛的？ 如果我们把 PPO 放在反向传播的框架下看，这些设计的意图就会清晰很多。本质上，PPO 的损失函数是在反向传播过程中构建了一个受约束的多目标优化系统，三股梯度流同时作用在 Actor 和 Critic 两个网络上。 为什么需要 PPO？在 PPO 出现之前，策略梯度方法面临一个核心问题：更新步长很难控制。步子太大，策略可能崩掉；步子太小，训练效率太低。TRPO 算法用复杂的 KL 约束来解决这个问题，但计算成本高。 PPO 的思路更简单：用一个巧妙的损失函数，在反向传播时自动限制更新幅度。 PPO 损失函数拆解核心公式先看 PPO 的核心部分——Clipped Surrogate Objective：  L^{\mathrm{CLIP}}(\theta) = \mathbb{E}_t[\...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026-05-02-post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/" title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-02T20:16:10.000Z" title="发表于 2026-05-02 20:16:10">2026-05-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制在 AI Agent 领域，有一句非常流行的话：“大模型的上下文窗口（Context Window）就是它的内存，而外挂的向量数据库就是它的硬盘。”  但如果你真的按照这个思路去构建生产环境下的 Agent，你会发现它不仅极其费钱，而且往往表现得像个“健忘症患者”。本文将从 DeepSeek-V3 的 MLA（多头潜在注意力机制）底层逻辑出发，结合生产级 Agent 记忆分层设计，深度拆解如何构建一个真正聪明、高效的 AI 记忆系统。 一、 为什么传统的“向量数据库 + RAG”还不够？很多开发者在面试或设计系统时，第一反应是：把对话存进向量数据库，用户提问时用 RAG 捞出来塞进 Prompt。这在真实的工程实践中存在两个致命陷阱：  模糊匹配 vs. 精确调用的冲突：向量检索是模糊的。比如系统只需要知道“用户预算”，检索却可能拉出一大堆无关的闲聊，不仅增加了 Token 消耗，更引入了干扰噪声。 时间盲区与状态失效：用户昨天说“预算 5 万”，今天改口“预算 8 万”。向量检索往往会同时召回这两条信息，导致模型...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026-04-23-post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/" title="理解学习率调度（余弦退火 + warmup）的原理和作用">理解学习率调度（余弦退火 + warmup）的原理和作用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-23T10:57:18.000Z" title="发表于 2026-04-23 10:57:18">2026-04-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">1.学习率设置对模型训练的影响 学习率设置过大，会导致训练loss振荡，模型训练不稳定 学习率设置过小，会导致模型训练缓慢 同时，需要注意的是，在模型初期和后期对于学习率的设置是不一样的  2.Warmup阶段在模型刚刚训练的时候，模型的参数都是随机初始化的，如果使用较大的学习率设置，很容易导致模型跑飞。Warmup的思想就是一开始从一个min_learning_rate进行线性增长，增长到目标值。12if step &lt; warmup_steps:    lr = max_lr * (step / warmup_steps) 3.余弦退火阶段Warmup 之后，学习率按余弦函数逐渐衰减： Warmup 之后，学习率按余弦函数逐渐衰减：  \eta_t = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})\left(1 + \cos\left(\frac{t - t_w}{T - t_w} \pi\right)\right)其中：  $\eta_{\max}$：最大学习率 $\eta_{\min}$：最小学习率 $t_w...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026-04-19-post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/" title="Agent 一线实战：落地经验与 Know-How 分享">Agent 一线实战：落地经验与 Know-How 分享</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-19T10:53:29.000Z" title="发表于 2026-04-19 10:53:29">2026-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">1.Agent 框架与传统开发个人认为,发展到现在,code已经不那么重要了,传统开发逐渐被取代,最后应该是转化为更高层次的全栈或者系统优化了。低级的开发程序员基本上已经被替代了,如果有比较好的商业Idea,即使没有编程经验的人,也可以通过Agent实现可以变现的商业化产品。 2.Context是根本  3.Agent 的发展Trick 4.Tools的开发 5.大模型MemoryMemory是我认为比较有前景的方向,但是还是存在很多落地的问题,不同的解决方案,评估数据集都天差地别 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026-03-10-post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/" title="CLAUDE.md 文件推荐约束提示词">CLAUDE.md 文件推荐约束提示词</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-10T22:23:59.000Z" title="发表于 2026-03-10 22:23:59">2026-03-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div><div class="content">CLAUDE.md 文件推荐约束提示词1.有时候还是要提醒cc，让她多看看 CLAUDE.md2.其中的文件的行数可以稍微改大一点 200-400 行区间3.可以把以下文字复制到 CLAUDE.md 文件中，作为约束提示词 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253# 任何项目都务必遵守的规则（极其重要！！！）## Communication- 永远使用简体中文进行思考和对话## Documentation- 编写 .md 文档时，也要用中文- 正式文档写到项目的 docs/ 目录下- 用于讨论和评审的计划、方案等文档，写到项目的 discuss/ 目录下## Code Architecture- 编写代码的硬性指标，包括以下原则： （1）对于 Python、JavaScript、TypeScript 等动态语言，尽可能确保每个代码文件不要超过 300 行 （2）对于 Java、Go、Rust 等静态语言，尽可能确保每个代码文件不...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-12-03-post26_Qwen2%20Technical%20report/" title="Qwen2技术报告">Qwen2技术报告</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-12-03T22:37:04.000Z" title="发表于 2025-12-03 22:37:04">2025-12-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">前言Qwen2的技术报告我大概花了一上午读完了，但是后面评测介绍评测性能的实验分析相关内容并没有细看，只是大致的给过了一眼，重点关注了前面模型架构以及训练部分的创新。 1.主要内容Qwen2系列开源模型，主要包括Base Model(只是预训练，没有进行人类偏好对齐的基础模型) 和 针对对话和agent进行单轮和多轮指令微调的指令微调模型，这次发布的稠密模型，主要包括有四个尺寸的模型，分别是0.5B、7B、14B、72B的模型，还有一个57-14B的MOE混合专家模型。Qwen2相比前一代模型在数据集质量和规模上都有较大提升，后训练阶段是采用了 监督微调和DPO直接偏好对齐。 2.细节部分分词：bpe分词，该分词器展现出高编码效率，因为bpe分词方法的压缩率更好，所有模型的词表大小都是151646，其中151643是regular token，另外3个token是control token，在实际训练中，因为考虑分布式训练，因此嵌入的有效大小实际上更大。 模型架构：Qwen2密集模型的架构包括多个Transformer层，每层都配备了因果注意力机制和前馈神经网络（FFN）。与Qw...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-11-25-post25_Q-learning%E5%8F%8ADQN%E7%AE%97%E6%B3%95/" title="Q-learning及DQN算法">Q-learning及DQN算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-25T15:28:36.000Z" title="发表于 2025-11-25 15:28:36">2025-11-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">1.Q-learning 算法核心公式：  Q-learning算法是一种免模型的算法，核心思想就是基于价值，实际上就是在填一张状态-价值表，初始化都是为0，基于当前状态，计算出所有动作的reward分数，在$\epsilon$的概率下会选择随机的动作，1-$\epsilon$的概率下会选择最高分数的工作，$\epsilon$会随着学习的过程逐步衰减，这个学习过程也被称为”先探索再稳定”，实际上整个学习过程，就是在不断的去填这张状态-动作价值表，这张表相当于策略，在后面的决策动作时，会依据这张表来采取相应的动作(action). 当时Q-learning主要存在以下缺陷：  1、存在维度灾难问题 2、只能处理离散状态的决策问题，不能处理连续状态的决策问题 3、训练不稳定  因此，DQN的提出，用深度学习模型来近似动作价值函数的方法，解决了Q-learning维度灾难的问题、只能处理离散状态的问题，并且改善了训练的稳定性。 2.DQN算法主要思想：  DQN主要有两个改进点： 一、经验回放机制 当产生一条新的数据时，先$ et = (S_t, A_t, R_t, S{t+1}, \...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-11-23-post24_%E5%8D%9A%E5%A3%AB%E5%B1%AFTalkShow%E9%98%85%E8%AF%BB%E6%96%87%E7%8C%AE%E6%80%BB%E7%BB%93/" title="博士屯TalkShow阅读文献总结">博士屯TalkShow阅读文献总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-23T14:57:00.000Z" title="发表于 2025-11-23 14:57:00">2025-11-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">1.研究性论文-整体内容结构1、Abstract - 了解文章整体核心内容2、Introduction - 问题和贡献3、Related work - 小型综述性介绍4、Method - 框架图5、Experiment - 实验类型 2.综述性论文1、分类2、未来方向 3.阅读重点1、文章解决的问题及方法（或者文章提出的问题）2、可能存在的问题和解决方法3、不必过度关注实验结果4、终点关注方法的框架图5、实验用到的方法和实验内容 4、学会利用大模型来进行快速阅读总结 大模型可能会出现一些总结问题，可能有一定误差 善用提示词  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025-10-14-post23_%E4%B8%8E%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/" title="与远端服务器进行文件传输同步的方式总结">与远端服务器进行文件传输同步的方式总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-14T20:43:11.000Z" title="发表于 2025-10-14 20:43:11">2025-10-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/">编程日记</a></span></div><div class="content">摘要 1、通过git及google网盘直接down到服务器(不推荐) 2、使用Vscode中SFTP插件与服务器进行文件传输 3、使用文件传输工具进行可视化的文件传输  1、通过git及google网盘直接down到服务器(不推荐)&nbsp;&nbsp;&nbsp;&nbsp;一般服务器都是linux的系统，自带git，当文件不是很大的时候，可以通过先将项目文件传输到git仓库，再git clone 到服务器上，当然这也是比较愚笨的办法。如果文件较大，可以通过google网盘，先将项目文件上传到google网盘保存，再通过下载命令下载到服务器上即可，以上方法都是实在没办法的时候 ，才采用的方法。 2、使用Vscode中SFTP插件与服务器进行文件传输2.1  先在Vscode插件市场中，下载sftp插件2.2  然后在vscode中打开需要上传的本地文件或者项目2.3  安装完成后，使用快捷键 ctrl + shift + p，选择 sftp:config,然后回车，会在当前目录下自动生成.vscode文件夹，并在.vscode文件夹下生成sftp.json。参数解析：name...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">TCcjx</div><div class="author-info-description">生活给我出难题，我说ok小问题</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/tccjx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎志同道合的朋友，一起交流</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-05-04-post31_%E6%8B%86%E8%A7%A3ppo%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6/" title="从反向传播角度理解 PPO 损失函数">从反向传播角度理解 PPO 损失函数</a><time datetime="2026-05-04T20:16:10.000Z" title="发表于 2026-05-04 20:16:10">2026-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-05-02-post30_%E4%BB%8E%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8B%86%E8%A7%A3%E7%94%9F%E4%BA%A7%E7%BA%A7%20AI%20Agent%20%E7%9A%84%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6/" title="从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制">从底层架构到工程实战：深度拆解生产级 AI Agent 的记忆机制</a><time datetime="2026-05-02T20:16:10.000Z" title="发表于 2026-05-02 20:16:10">2026-05-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-04-23-post29_warmup%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E7%9A%84%E9%BB%84%E9%87%91%E7%BB%84%E5%90%88/" title="理解学习率调度（余弦退火 + warmup）的原理和作用">理解学习率调度（余弦退火 + warmup）的原理和作用</a><time datetime="2026-04-23T10:57:18.000Z" title="发表于 2026-04-23 10:57:18">2026-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-04-19-post28_Agent%20%E4%B8%80%E7%BA%BF%E5%AE%9E%E6%88%98%EF%BC%9A%E8%90%BD%E5%9C%B0%E7%BB%8F%E9%AA%8C%E4%B8%8E%20Know-How/" title="Agent 一线实战：落地经验与 Know-How 分享">Agent 一线实战：落地经验与 Know-How 分享</a><time datetime="2026-04-19T10:53:29.000Z" title="发表于 2026-04-19 10:53:29">2026-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-03-10-post27_CLAUDE.md%20%E6%96%87%E4%BB%B6%E6%8E%A8%E8%8D%90%E7%BA%A6%E6%9D%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%20%E2%80%8B%20-%20%E5%89%AF%E6%9C%AC/" title="CLAUDE.md 文件推荐约束提示词">CLAUDE.md 文件推荐约束提示词</a><time datetime="2026-03-10T22:23:59.000Z" title="发表于 2026-03-10 22:23:59">2026-03-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/"><span class="card-category-list-name">编程日记</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">论文阅读笔记</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/RL/" style="font-size: 1.1em; color: #999">RL</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">对比学习</a> <a href="/tags/pyenv/" style="font-size: 1.1em; color: #999">pyenv</a> <a href="/tags/CyGNet/" style="font-size: 1.1em; color: #999">CyGNet</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%A1%A5%E5%85%A8/" style="font-size: 1.1em; color: #999">时态知识图谱补全</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" style="font-size: 1.1em; color: #999">文件传输</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.4em; color: #99a5b6">深度学习</a> <a href="/tags/debug/" style="font-size: 1.1em; color: #999">debug</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" style="font-size: 1.2em; color: #999da3">注意力机制</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" style="font-size: 1.1em; color: #999">技术报告</a> <a href="/tags/Attention/" style="font-size: 1.2em; color: #999da3">Attention</a> <a href="/tags/Claude-code/" style="font-size: 1.1em; color: #999">Claude code</a> <a href="/tags/KVCache/" style="font-size: 1.1em; color: #999">KVCache</a> <a href="/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" style="font-size: 1.1em; color: #999">心路历程</a> <a href="/tags/Memory/" style="font-size: 1.1em; color: #999">Memory</a> <a href="/tags/Transformer/" style="font-size: 1.3em; color: #99a1ac">Transformer</a> <a href="/tags/%E8%A1%A5%E5%85%A8%E6%8E%A8%E7%90%86/" style="font-size: 1.2em; color: #999da3">补全推理</a> <a href="/tags/transfomers/" style="font-size: 1.1em; color: #999">transfomers</a> <a href="/tags/Pretrain/" style="font-size: 1.1em; color: #999">Pretrain</a> <a href="/tags/RLHF/" style="font-size: 1.1em; color: #999">RLHF</a> <a href="/tags/DQN%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">DQN算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">编程日记</a> <a href="/tags/%E6%B8%A9%E5%BA%A6%E5%8F%82%E6%95%B0%CF%84/" style="font-size: 1.1em; color: #999">温度参数τ</a> <a href="/tags/contrastive-learning/" style="font-size: 1.1em; color: #999">contrastive learning</a> <a href="/tags/%E6%B8%85%E5%8D%8E%E6%BA%90/" style="font-size: 1.2em; color: #999da3">清华源</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 1.1em; color: #999">时态知识图谱</a> <a href="/tags/pip/" style="font-size: 1.3em; color: #99a1ac">pip</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/PPO/" style="font-size: 1.1em; color: #999">PPO</a> <a href="/tags/Self-Attention/" style="font-size: 1.1em; color: #999">Self-Attention</a> <a href="/tags/Agent/" style="font-size: 1.3em; color: #99a1ac">Agent</a> <a href="/tags/Poetry/" style="font-size: 1.1em; color: #999">Poetry</a> <a href="/tags/NER/" style="font-size: 1.1em; color: #999">NER</a> <a href="/tags/%E5%A4%96%E6%8E%A8/" style="font-size: 1.1em; color: #999">外推</a> <a href="/tags/Hit-1-3-5-10/" style="font-size: 1.1em; color: #999">Hit@1\3\5\10</a> <a href="/tags/%E6%97%B6%E6%80%81%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A8%E7%90%86/" style="font-size: 1.2em; color: #999da3">时态知识图谱推理</a> <a href="/tags/vibe-coding/" style="font-size: 1.2em; color: #999da3">vibe coding</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.5em; color: #99a9bf">大模型</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">23.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-05T08:56:01.082Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/foot.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By TCcjx</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["让你痛苦的事情，总有一天会让你笑着讲出来","俯仰无愧天地，褒贬自有春秋"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["让你痛苦的事情，总有一天会让你笑着讲出来","俯仰无愧天地，褒贬自有春秋"])
+}
+typedJSFn.run(subtitleType)</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
