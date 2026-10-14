@@ -420,9 +420,9 @@
             
             <tag> private </tag>
             
-            <tag> 传统规则学习方法 </tag>
-            
             <tag> 时态知识图谱推理 </tag>
+            
+            <tag> 传统规则学习方法 </tag>
             
             <tag> 外推 </tag>
             
@@ -511,9 +511,9 @@
             
             <tag> private </tag>
             
-            <tag> 传统规则学习方法 </tag>
-            
             <tag> 时态知识图谱推理 </tag>
+            
+            <tag> 传统规则学习方法 </tag>
             
         </tags>
       
@@ -594,6 +594,8 @@
       
         <tags>
             
+            <tag> private </tag>
+            
             <tag> 时态知识图谱 </tag>
             
             <tag> 图谱推理任务 </tag>
@@ -601,8 +603,6 @@
             <tag> MRR </tag>
             
             <tag> Hit@1&#92;3&#92;5&#92;10 </tag>
-            
-            <tag> private </tag>
             
         </tags>
       
@@ -652,8 +652,6 @@
       
         <tags>
             
-            <tag> private </tag>
-            
             <tag> 论文阅读笔记 </tag>
             
             <tag> TKGs </tag>
@@ -663,6 +661,8 @@
             <tag> LLM </tag>
             
             <tag> 图结构信息 </tag>
+            
+            <tag> private </tag>
             
         </tags>
       
@@ -751,13 +751,13 @@
       
         <tags>
             
-            <tag> private </tag>
-            
             <tag> 论文阅读笔记 </tag>
             
             <tag> TKGs </tag>
             
             <tag> 补全推理 </tag>
+            
+            <tag> private </tag>
             
             <tag> CyGNet </tag>
             
@@ -846,9 +846,9 @@
             
             <tag> 编程日记 </tag>
             
-            <tag> 清华源 </tag>
-            
             <tag> debug </tag>
+            
+            <tag> 清华源 </tag>
             
         </tags>
       
@@ -873,9 +873,9 @@
       
         <tags>
             
-            <tag> 编程日记 </tag>
-            
             <tag> vscode </tag>
+            
+            <tag> 编程日记 </tag>
             
         </tags>
       
@@ -900,11 +900,11 @@
       
         <tags>
             
+            <tag> 深度学习 </tag>
+            
             <tag> 大模型 </tag>
             
             <tag> Bert </tag>
-            
-            <tag> 深度学习 </tag>
             
             <tag> Self-Attention </tag>
             
@@ -933,11 +933,11 @@
       
         <tags>
             
-            <tag> 大模型 </tag>
-            
             <tag> 深度学习 </tag>
             
             <tag> Transformer </tag>
+            
+            <tag> 大模型 </tag>
             
         </tags>
       
