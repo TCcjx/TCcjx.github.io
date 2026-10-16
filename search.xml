@@ -451,9 +451,9 @@
             
             <tag> private </tag>
             
-            <tag> 传统规则学习方法 </tag>
-            
             <tag> 时态知识图谱推理 </tag>
+            
+            <tag> 传统规则学习方法 </tag>
             
             <tag> 外推 </tag>
             
@@ -480,9 +480,9 @@
       
         <tags>
             
-            <tag> pip </tag>
-            
             <tag> Poetry </tag>
+            
+            <tag> pip </tag>
             
             <tag> python环境管理 </tag>
             
@@ -538,13 +538,13 @@
       
         <tags>
             
-            <tag> private </tag>
-            
             <tag> 大模型 </tag>
             
-            <tag> 传统规则学习方法 </tag>
+            <tag> private </tag>
             
             <tag> 时态知识图谱推理 </tag>
+            
+            <tag> 传统规则学习方法 </tag>
             
         </tags>
       
@@ -844,11 +844,11 @@
       
         <tags>
             
+            <tag> pip </tag>
+            
             <tag> 编程日记 </tag>
             
             <tag> 清华源 </tag>
-            
-            <tag> pip </tag>
             
         </tags>
       
@@ -873,13 +873,13 @@
       
         <tags>
             
-            <tag> 编程日记 </tag>
-            
-            <tag> 清华源 </tag>
-            
             <tag> pip </tag>
             
+            <tag> 编程日记 </tag>
+            
             <tag> debug </tag>
+            
+            <tag> 清华源 </tag>
             
         </tags>
       
@@ -904,9 +904,9 @@
       
         <tags>
             
-            <tag> 编程日记 </tag>
-            
             <tag> vscode </tag>
+            
+            <tag> 编程日记 </tag>
             
         </tags>
       
